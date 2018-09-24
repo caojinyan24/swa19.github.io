@@ -1,0 +1,11 @@
+<div class="banner">
+    <div class="container">
+        {% if page.tags != null %}
+        <a href="{{ '/categories/' | prepend: site.baseurl }}#{{page.categories}}-ref">{{page.categories}}</a>
+        /
+        <a href="{{ '/tags/' | prepend: site.baseurl }}#{{page.tags}}-ref">{{page.tags}}</a>
+        {% else %}
+        {{ site.banner }}
+        {% endif %}
+    </div>
+</div>

@@ -1,0 +1,37 @@
+# Welcome to Jekyll!Redcarpet
+#
+# This config file is meant for settings that affect your whole blog, values
+# which you are expected to set up once and rarely need to edit after that.
+# For technical reasons, this file is *NOT* reloaded automatically when you use
+# 'jekyll serve'. If you change this file, please restart the server process.
+
+# Site settings
+title: 烂笔头
+email: 
+description: 我不是个伟大的程序员，我只是个有着一些优秀习惯的好程序员--by Kent Beck
+des: 不积跬步，无以至千里
+
+url: "https://swa19.github.io/"
+github_username:  swa19
+site.baseurl: /
+# markdown
+markdown: kramdown
+kramdown:
+  auto_ids:       true
+  entity_output:  as_char
+  toc_levels:     1..6
+  smart_quotes:   lsquo,rsquo,ldquo,rdquo
+  input:          GFM
+  hard_wrap:      false
+  footnote_nr:    1
+  show_warnings:  false
+
+include: ['/_pic']
+
+
+
+
+
+
+
+
