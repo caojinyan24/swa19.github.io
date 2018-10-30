@@ -1,10 +1,11 @@
 ---
-layout: post
+layout:  post
 title:  "系统设计总结"
 date:   2017-11-14 21:58:51 +0800
 categories: 小结
 tags: design
 ---
+
 
 * TOC
 {:toc}
