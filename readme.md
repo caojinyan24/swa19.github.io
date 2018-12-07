@@ -8,4 +8,4 @@
 
 框架：netty，spring，dubbo，netty，zookeeper,redis,tomcat,springCloud ，gin   
 
-其他：python,regex    
+其他：python,regex,others    

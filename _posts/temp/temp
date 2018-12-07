@@ -1,0 +1,47 @@
+# charles
+代理到本地:手机设置host为本地ip,端口号为8888.同时charles设置8888端口.
+
+# go语言中传递url
+```
+confirmQrCodeUrl := &url.URL{
+		Scheme: "http",
+		Host:   apiRequest.GetHost(),
+		Path:   "/passport/open/confirm_qrcode",
+		RawQuery: url.Values{
+			"token": {token},
+		}.Encode(),
+	}
+```
+如果在path中直接拼,返回结果中的特殊字符会被转码
+
+
+# 二维码转换
+http://www.vgot.net/test/image2base64.php?
+
+
+
+# kite
+
+# hive
+以Hadoop为基础,提供对数据的查询功能,查询通过类sql语句,数据包括hdfs系统的文件和hbase之类的数据
+
+如果希望通过hive查询数据,首先需要把数据接入hive
+
+
+# 在go程序中调用c代码
+cgo
+示例代码
+```
+package print
+
+// #include <stdio.h>
+// #include <stdlib.h>
+import "C"
+import "unsafe"
+
+func Print(s string) {
+    cs := C.CString(s)
+    defer C.free(unsafe.Pointer(cs))
+    C.fputs(cs, (*C.FILE)(C.stdout))
+}
+```
