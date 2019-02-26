@@ -6,6 +6,6 @@
 
 基础：java，mysql，linux，web，ops,python,concet，go
 
-框架：netty，spring，dubbo，netty，zookeeper,redis,tomcat,springCloud ，gin   
+框架：netty，spring，dubbo，netty，zookeeper,redis,tomcat,springCloud,gin
 
 其他：python,regex,others    

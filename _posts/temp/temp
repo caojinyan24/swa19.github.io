@@ -45,3 +45,96 @@ func Print(s string) {
     C.fputs(cs, (*C.FILE)(C.stdout))
 }
 ```
+
+go语言标准库
+sync
+big
+
+go 语言自定义string输出
+```
+package main
+
+import (
+    "fmt"
+    "strconv"
+)
+
+type TwoInts struct {
+    a int
+    b int
+}
+
+func main() {
+    two1 := new(TwoInts)
+    two1.a = 12
+    two1.b = 10
+    fmt.Printf("two1 is: %v\n", two1)
+    fmt.Println("two1 is:", two1)
+    fmt.Printf("two1 is: %T\n", two1)
+    fmt.Printf("two1 is: %#v\n", two1)
+}
+
+func (tn *TwoInts) String() string {
+    return "(" + strconv.Itoa(tn.a) + "/" + strconv.Itoa(tn.b) + ")"
+}
+```
+
+go 多态
+```
+type Reader interface {
+    Read(p []byte) (n int, err error)
+}
+    var r io.Reader
+    r = os.Stdin    // see 12.1
+    r = bufio.NewReader(r)
+    r = new(bytes.Buffer)
+    f,_ := os.Open("test.txt")
+    r = bufio.NewReader(f)
+
+```
+
+接口的嵌套
+```
+type ReadWrite interface {
+    Read(b Buffer) bool
+    Write(b Buffer) bool
+}
+
+type Lock interface {
+    Lock()
+    Unlock()
+}
+
+type File interface {
+    ReadWrite
+    Lock
+    Close()
+}
+
+```
+类型检测
+```
+if v, ok := varI.(T); ok {  // checked type assertion
+    Process(v)
+    return
+}
+```
+
+# 分片
+https://www.cnblogs.com/xybaby/p/7076731.html
+1. 分片解决了什么问题
+2. 分片的思想
+3. 存在的问题
+4. 技术难点
+
+
+# golang 字符
+https://studygolang.com/articles/15472
+
+	var str="abcdd"
+	//a:=rune(str[0])
+	fmt.Printf("%v",string(str[0]))
+
+
+charles 使用
+dns配置
