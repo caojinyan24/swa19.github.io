@@ -1,0 +1,1095 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Dubbo远程过程调用 - </title>
+	<link rel="stylesheet" href="/css/main.css">
+	<link rel="stylesheet" href="/css/index.css">
+	<link rel="stylesheet" href="/css/fontawesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="/css/syntax.css">
+	<link rel="canonical" href="/%E6%A1%86%E6%9E%B6/2018/05/05/dubbo.html">
+	<link rel="alternate" type="application/rss+xml" title="" href="/feed.xml">
+	<meta name="keywords" content="Dubbo远程过程调用, , ">
+	<meta name="description" content="">
+	<script src="/js/jquery.min.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+	<script src="/js/html5shiv.js"></script>
+	<script src="/js/holder.min.js"></script>
+	<script src="/js/respond.js"></script>
+	<script src="/js/application.js"></script>
+	<script src="/js/lessismore.js"></script>
+  	<style type="text/css">
+	  	.docs-content{
+	  		margin-bottom: 10px;
+	  	}
+  	</style>
+</head>
+
+<body class="index">
+
+<header class="navbar navbar-inverse navbar-fixed-top docs-nav" role="banner">
+  <div class="container">
+    <div class="navbar-header">
+      <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+      <ul class="nav navbar-nav">    
+        <li>
+          <a href="/">主页</a>
+        </li>
+        <li>
+          <a href="/categories/">类别</a>
+        </li>
+        <li>
+          <a href="/tags">标签</a>
+        </li>
+      </ul>
+
+    </nav>
+  </div>
+
+</header>
+<div class="docs-header" id="content">
+  <div class="container">
+  	
+		    <h1></h1>
+      <p>不积跬步，无以至千里</p>
+      
+  </div>
+</div>
+<!---->
+<!--<div class="banner">
+    <div class="container">
+        
+        <a href="/categories/#框架-ref">框架</a>
+        /
+        <a href="/tags/#dubbo-ref">dubbo</a>
+        
+    </div>
+</div>
+-->
+<!---->
+
+<div class="container docs-container">
+    <div class="row">
+        <div class="col-md-3">
+        <div class="sidebar hidden-print" role="complementary">
+        <div id="navigation">
+    <h1>目录</h1>
+    <ul class="nav sidenav">
+        
+        
+        
+        
+        
+        
+        <li><a href="#year_2019">2019</a>
+            <ul class="nav">
+                <li><a href="#month_2019_02">02</a></li>
+                
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+    </ul>
+    </li>
+    <li><a href="#year_2018">2018</a>
+        <ul class="nav">
+            <li><a href="#month_2018_11">11</a></li>
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_10">10</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_09">09</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_08">08</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_07">07</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_06">06</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_05">05</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_04">04</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_03">03</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_02">02</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_01">01</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+    </ul>
+    </li>
+    <li><a href="#year_2017">2017</a>
+        <ul class="nav">
+            <li><a href="#month_2017_12">12</a></li>
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2017_11">11</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2017_09">09</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2017_08">08</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+            </ul>
+        </li>
+        
+            
+        </ul>
+</div>
+
+
+
+        </div>
+        </div>
+        <div class="col-md-9" role="main">
+            <div class="panel docs-content">
+            <div class="wrapper">
+                <header class="post-header">
+                    <h1 class="post-title">Dubbo远程过程调用</h1>
+                    <div class="meta"><span class="postdate">2018-05-05 14:57:58</span></div>
+                    <br/>
+                </header>
+                <article class="post-content">
+                    <p>最近在考虑写一个小工具，输入是zk注册地址、dubbo接口的类名、方法名、请求参数，返回dubbo接口的调用结果。其中，zk注册地址和请求参数为手工输入，其他输入可根据zk注册地址上的注册服务做选择。</p>
+
+<p>要实现这么一个功能，需要两个基本步骤：</p>
+
+<ol>
+  <li>获取指定zk地址的所有Provider服务</li>
+  <li>根据指定的Provider方法，发起远程调用</li>
+</ol>
+
+<p>同时，由于目前的开发测试环境并未与线上环境做隔离，我希望这个工具能够做一个防控，目前考虑的方案是只寻址注册在本地zk的服务，这样当服务打成jar包后，只会部署在开发和测试机上，也就不会对线上服务产生影响。不过这样做依旧会存在源码泄露遭修改的风险，后续有其他更好的方案的话再考虑安全校验的问题。</p>
+
+<h1 id="获取指定zk地址的服务">获取指定zk地址的服务</h1>
+
+<p>要做Dubbo相关的工具，首先需要对Dubbo源码有足够了解才行。在Dubbo-Admin项目中，存在类似的获取Dubbo服务的相关功能，可以做一个参考。</p>
+
+<p>这部分功能集中在<code class="highlighter-rouge">RegistryContainer</code>类中，需要说明的是，在Dubbo中，<code class="highlighter-rouge">URL</code>类中基本包含了Provider、Consumer所有的信息，包括注册协议、注册地址、注册的类信息、方法信息等等。</p>
+
+<p>查看初始化类的<code class="highlighter-rouge">DubboNamespaceHandler</code>，可以看到<code class="highlighter-rouge">Service</code>相关的信息保存在<code class="highlighter-rouge">ServiceBean</code>类中。</p>
+
+<p><img src="/_pic/201805/dubbo-framework.jpg" alt="" /></p>
+
+<p>这张错综复杂的架构图可以帮助理下Dubbo中各种类的功能，其中Registry通知NotifyListener注册服务的变化，通过RegisterDirector可以根据URL获得指定服务的Invoker。</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>public void start() {
+    String url = ConfigUtils.getProperty(REGISTRY_ADDRESS);
+    if (url == null || url.length() == 0) {
+        throw new IllegalArgumentException("Please set java start argument: -D" + REGISTRY_ADDRESS + "=zookeeper://127.0.0.1:2181");
+    }
+    registry = (RegistryService) SpringContainer.getContext().getBean("registryService");
+    URL subscribeUrl = new URL(Constants.ADMIN_PROTOCOL, NetUtils.getLocalHost(), 0, "",
+            Constants.INTERFACE_KEY, Constants.ANY_VALUE,
+            Constants.GROUP_KEY, Constants.ANY_VALUE,
+            Constants.VERSION_KEY, Constants.ANY_VALUE,
+            Constants.CLASSIFIER_KEY, Constants.ANY_VALUE,
+            Constants.CATEGORY_KEY, Constants.PROVIDERS_CATEGORY + ","
+            + Constants.CONSUMERS_CATEGORY,
+            Constants.CHECK_KEY, String.valueOf(false));
+    registry.subscribe(subscribeUrl, new NotifyListener() {
+        public void notify(List&lt;URL&gt; urls) {
+            if (urls == null || urls.size() == 0) {
+                return;
+            }
+            Map&lt;String, List&lt;URL&gt;&gt; proivderMap = new HashMap&lt;String, List&lt;URL&gt;&gt;();
+            Map&lt;String, List&lt;URL&gt;&gt; consumerMap = new HashMap&lt;String, List&lt;URL&gt;&gt;();
+            for (URL url : urls) {
+                String application = url.getParameter(Constants.APPLICATION_KEY);
+                if (application != null &amp;&amp; application.length() &gt; 0) {
+                    applications.add(application);
+                }
+                String service = url.getServiceInterface();
+                services.add(service);
+                String category = url.getParameter(Constants.CATEGORY_KEY, Constants.DEFAULT_CATEGORY);
+                if (Constants.PROVIDERS_CATEGORY.equals(category)) {
+                    if (Constants.EMPTY_PROTOCOL.equals(url.getProtocol())) {
+                        serviceProviders.remove(service);
+                    } else {
+                        List&lt;URL&gt; list = proivderMap.get(service);
+                        if (list == null) {
+                            list = new ArrayList&lt;URL&gt;();
+                            proivderMap.put(service, list);
+                        }
+                        list.add(url);
+                        if (application != null &amp;&amp; application.length() &gt; 0) {
+                            Set&lt;String&gt; serviceApplications = providerServiceApplications.get(service);
+                            if (serviceApplications == null) {
+                                providerServiceApplications.put(service, new ConcurrentHashSet&lt;String&gt;());
+                                serviceApplications = providerServiceApplications.get(service);
+                            }
+                            serviceApplications.add(application);
+
+                            Set&lt;String&gt; applicationServices = providerApplicationServices.get(application);
+                            if (applicationServices == null) {
+                                providerApplicationServices.put(application, new ConcurrentHashSet&lt;String&gt;());
+                                applicationServices = providerApplicationServices.get(application);
+                            }
+                            applicationServices.add(service);
+                        }
+                    }
+                } else if (Constants.CONSUMERS_CATEGORY.equals(category)) {
+                    if (Constants.EMPTY_PROTOCOL.equals(url.getProtocol())) {
+                        serviceConsumers.remove(service);
+                    } else {
+                        List&lt;URL&gt; list = consumerMap.get(service);
+                        if (list == null) {
+                            list = new ArrayList&lt;URL&gt;();
+                            consumerMap.put(service, list);
+                        }
+                        list.add(url);
+                        if (application != null &amp;&amp; application.length() &gt; 0) {
+                            Set&lt;String&gt; serviceApplications = consumerServiceApplications.get(service);
+                            if (serviceApplications == null) {
+                                consumerServiceApplications.put(service, new ConcurrentHashSet&lt;String&gt;());
+                                serviceApplications = consumerServiceApplications.get(service);
+                            }
+                            serviceApplications.add(application);
+
+                            Set&lt;String&gt; applicationServices = consumerApplicationServices.get(application);
+                            if (applicationServices == null) {
+                                consumerApplicationServices.put(application, new ConcurrentHashSet&lt;String&gt;());
+                                applicationServices = consumerApplicationServices.get(application);
+                            }
+                            applicationServices.add(service);
+                        }
+
+                    }
+                }
+            }
+            if (proivderMap != null &amp;&amp; proivderMap.size() &gt; 0) {
+                serviceProviders.putAll(proivderMap);
+            }
+            if (consumerMap != null &amp;&amp; consumerMap.size() &gt; 0) {
+                serviceConsumers.putAll(consumerMap);
+            }
+        }
+    });
+}
+</code></pre></div></div>
+
+<p><code class="highlighter-rouge"> RegistryService.subscribe(URL url, NotifyListener listener);</code>方法对注册在zk地址和订阅了url地址的服务做了监听，当节点数据发生变更时，可以接收到通知，并更新相关信息。RegisterFactory根据SPI扩展在配置文件中指定，从而使得在服务启动时，可根据Dubbo配置获取到对应的RegisterService示例。如此完成了启动时对配置的Dubbo相关服务的注册和订阅过程。</p>
+
+<p>以上可以看到服务订阅过程为：RegisterFactory-&gt;RegistryService-&gt;NotifyListener.在结构图中，Invoke和Directory是相互关联的，按照这个调用链，可以继续理下远程过程调用的过程。</p>
+
+<h1 id="远程过程调用">远程过程调用</h1>
+
+<p>通过Debug跟踪Consumer对Provider的调用过程，</p>
+
+<p>InvokerInvocationHandler.invoke//jM=dk的动态代理</p>
+
+<p>RpcInvocation</p>
+
+<p>MockClusterInvoker.invoke</p>
+
+<p>AbstractClusterInvoker.invoke</p>
+
+<p>FailoverClusterInvoker.doInvoke</p>
+
+<p>DubboInvoker.doInvoke</p>
+
+<p>MonitorFilter.invoke</p>
+
+<p>ProtocolFilterWrapper.buildInvokerChain</p>
+
+                </article>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<footer class="footer" role="contentinfo">
+	<div class="container">
+		<div class="footer-col-wrapper">
+			<div class="footer-col footer-col-2">
+				<ul class="social-media-list">
+					
+					<li>
+						<a href="https://github.com/swa19"><span class="icon icon--github"><svg viewBox="0 0 16 16"><path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/></svg>
+</span><span class="username">swa19</span></a>
+
+					</li>
+					
+				</ul>
+			</div>
+			<div class="footer-col footer-col-3">
+				<p>我不是个伟大的程序员，我只是个有着一些优秀习惯的好程序员--by Kent Beck</p>
+			</div>
+		</div>
+	</div>
+</footer>
+
+
+</body>
+</html>

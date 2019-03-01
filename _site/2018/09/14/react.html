@@ -1,0 +1,36 @@
+
+<h1 id="前端显示的实时刷新">前端显示的实时刷新</h1>
+
+<p>通过每秒调用一次setInterval实现页面显示的刷新</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+<span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"UTF-8"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;title&gt;</span>Hello React!<span class="nt">&lt;/title&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://cdn.bootcss.com/react/16.4.0/umd/react.development.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://cdn.bootcss.com/react-dom/16.4.0/umd/react-dom.development.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://cdn.bootcss.com/babel-standalone/6.26.0/babel.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+
+<span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"example"</span><span class="nt">&gt;&lt;/div&gt;</span>
+<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/babel"</span><span class="nt">&gt;</span>
+<span class="kd">function</span> <span class="nx">tick</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">element</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="nx">h1</span><span class="o">&gt;</span><span class="nx">Hello</span><span class="p">,</span> <span class="nx">world</span><span class="o">!&lt;</span><span class="sr">/h1</span><span class="err">&gt;
+</span>      <span class="o">&lt;</span><span class="nx">h2</span><span class="o">&gt;</span><span class="err">现在是</span> <span class="p">{</span><span class="k">new</span> <span class="nb">Date</span><span class="p">().</span><span class="nx">toLocaleTimeString</span><span class="p">()}.</span><span class="o">&lt;</span><span class="sr">/h2</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>  <span class="p">);</span>
+  <span class="nx">ReactDOM</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span>
+    <span class="nx">element</span><span class="p">,</span>
+    <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'example'</span><span class="p">)</span>
+  <span class="p">);</span>
+<span class="p">}</span>
+<span class="nx">setInterval</span><span class="p">(</span><span class="nx">tick</span><span class="p">,</span> <span class="mi">1000</span><span class="p">);</span>
+<span class="nt">&lt;/script&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+
+</code></pre></div></div>

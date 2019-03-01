@@ -1,0 +1,1102 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>并发安全Map实现 - </title>
+	<link rel="stylesheet" href="/css/main.css">
+	<link rel="stylesheet" href="/css/index.css">
+	<link rel="stylesheet" href="/css/fontawesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="/css/syntax.css">
+	<link rel="canonical" href="/%E5%9F%BA%E7%A1%80/2018/11/12/go-map.html">
+	<link rel="alternate" type="application/rss+xml" title="" href="/feed.xml">
+	<meta name="keywords" content="并发安全Map实现, , ">
+	<meta name="description" content="">
+	<script src="/js/jquery.min.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+	<script src="/js/html5shiv.js"></script>
+	<script src="/js/holder.min.js"></script>
+	<script src="/js/respond.js"></script>
+	<script src="/js/application.js"></script>
+	<script src="/js/lessismore.js"></script>
+  	<style type="text/css">
+	  	.docs-content{
+	  		margin-bottom: 10px;
+	  	}
+  	</style>
+</head>
+
+<body class="index">
+
+<header class="navbar navbar-inverse navbar-fixed-top docs-nav" role="banner">
+  <div class="container">
+    <div class="navbar-header">
+      <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+      <ul class="nav navbar-nav">    
+        <li>
+          <a href="/">主页</a>
+        </li>
+        <li>
+          <a href="/categories/">类别</a>
+        </li>
+        <li>
+          <a href="/tags">标签</a>
+        </li>
+      </ul>
+
+    </nav>
+  </div>
+
+</header>
+<div class="docs-header" id="content">
+  <div class="container">
+  	
+		    <h1></h1>
+      <p>不积跬步，无以至千里</p>
+      
+  </div>
+</div>
+<!---->
+<!--<div class="banner">
+    <div class="container">
+        
+        <a href="/categories/#基础-ref">基础</a>
+        /
+        <a href="/tags/#go-ref">go</a>
+        
+    </div>
+</div>
+-->
+<!---->
+
+<div class="container docs-container">
+    <div class="row">
+        <div class="col-md-3">
+        <div class="sidebar hidden-print" role="complementary">
+        <div id="navigation">
+    <h1>目录</h1>
+    <ul class="nav sidenav">
+        
+        
+        
+        
+        
+        
+        <li><a href="#year_2019">2019</a>
+            <ul class="nav">
+                <li><a href="#month_2019_02">02</a></li>
+                
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+    </ul>
+    </li>
+    <li><a href="#year_2018">2018</a>
+        <ul class="nav">
+            <li><a href="#month_2018_11">11</a></li>
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_10">10</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_09">09</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_08">08</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_07">07</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_06">06</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_05">05</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_04">04</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_03">03</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_02">02</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_01">01</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+    </ul>
+    </li>
+    <li><a href="#year_2017">2017</a>
+        <ul class="nav">
+            <li><a href="#month_2017_12">12</a></li>
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2017_11">11</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2017_09">09</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2017_08">08</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+            </ul>
+        </li>
+        
+            
+        </ul>
+</div>
+
+
+
+        </div>
+        </div>
+        <div class="col-md-9" role="main">
+            <div class="panel docs-content">
+            <div class="wrapper">
+                <header class="post-header">
+                    <h1 class="post-title">并发安全Map实现</h1>
+                    <div class="meta"><span class="postdate">2018-11-12 13:10:39</span></div>
+                    <br/>
+                </header>
+                <article class="post-content">
+                    <p>不同语言下都会有Map的实现,Map的存在使得查找的复杂度降低到O(1),但Map并不是并发安全的,使用原生的Map做并发操作时,需要添加同步锁才能保证多线程读写的安全性,但加锁的机制同时会造成读阻塞.</p>
+
+<p>java中的ConcurrentHashMap通过分段锁降低了读阻塞的概率,但是当对某一个段做频繁的读写操作的话,依旧会对性能造成较大的影响.而HashTable通过sychronized关键字实现的同步机制更不必说.</p>
+
+<p>在golang中,sync包下同样实现了Map来应对并发.</p>
+
+<p>首先看结构体定义:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>type Map struct {
+	mu Mutex
+	read atomic.Value // readOnly
+	dirty map[interface{}]*entry
+	misses int
+}
+</code></pre></div></div>
+
+<ul>
+  <li>mu  <br />
+mu是一个同步锁</li>
+  <li>read  <br />
+read可以看做是dirty的一份拷贝,对读操作和更新操作线程安全,但不能新增key</li>
+  <li>dirty  <br />
+对dirty做操作时,需要通过mu做同步</li>
+  <li>misses  <br />
+misses记录了读操作时无法获取到指定key的次数</li>
+</ul>
+
+<p>可以看到Map中维护两份数据,一个用来读,一个用来写.对应的两个主要的方法有Load,Store</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>type entry struct {
+	// p points to the interface{} value stored for the entry.
+	//
+	// If p == nil, the entry has been deleted and m.dirty == nil.
+	//
+	// If p == expunged, the entry has been deleted, m.dirty != nil, and the entry
+	// is missing from m.dirty.
+	//
+	// Otherwise, the entry is valid and recorded in m.read.m[key] and, if m.dirty
+	// != nil, in m.dirty[key].
+	//
+	// An entry can be deleted by atomic replacement with nil: when m.dirty is
+	// next created, it will atomically replace nil with expunged and leave
+	// m.dirty[key] unset.
+	//
+	// An entry's associated value can be updated by atomic replacement, provided
+	// p != expunged. If p == expunged, an entry's associated value can be updated
+	// only after first setting m.dirty[key] = e so that lookups using the dirty
+	// map find the entry.
+	p unsafe.Pointer // *interface{}
+}
+</code></pre></div></div>
+
+<p>read和dirty的底层数据都指向一个entry</p>
+
+<h2 id="读取">读取</h2>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>func (m *Map) Load(key interface{}) (value interface{}, ok bool) {
+	read, _ := m.read.Load().(readOnly)
+	e, ok := read.m[key]
+	if !ok &amp;&amp; read.amended {
+		m.mu.Lock()
+		// Avoid reporting a spurious miss if m.dirty got promoted while we were
+		// blocked on m.mu. (If further loads of the same key will not miss, it's
+		// not worth copying the dirty map for this key.)
+		read, _ = m.read.Load().(readOnly)
+		e, ok = read.m[key]
+		if !ok &amp;&amp; read.amended {
+			e, ok = m.dirty[key]
+			// Regardless of whether the entry was present, record a miss: this key
+			// will take the slow path until the dirty map is promoted to the read
+			// map.
+			m.missLocked()
+		}
+		m.mu.Unlock()
+	}
+	if !ok {
+		return nil, false
+	}
+	return e.load()
+}
+</code></pre></div></div>
+
+<p>相关流程可以总结为:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>从read取数据    
+    取到数据
+    未取到数据,并且dirty中包含read中没有的key
+        加锁
+        从dirty取数据
+        记录misses//当missed的个数和read的个数相当时,用dirty替换read
+        解锁
+返回数据
+</code></pre></div></div>
+
+<h2 id="写入">写入</h2>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>func (m *Map) Store(key, value interface{}) {
+	read, _ := m.read.Load().(readOnly)
+	if e, ok := read.m[key]; ok &amp;&amp; e.tryStore(&amp;value) {
+		return
+	}
+
+	m.mu.Lock()
+	read, _ = m.read.Load().(readOnly)
+	if e, ok := read.m[key]; ok {
+		if e.unexpungeLocked() {
+			// The entry was previously expunged, which implies that there is a
+			// non-nil dirty map and this entry is not in it.
+			m.dirty[key] = e
+		}
+		e.storeLocked(&amp;value)
+	} else if e, ok := m.dirty[key]; ok {
+		e.storeLocked(&amp;value)
+	} else {
+		if !read.amended {
+			// We're adding the first new key to the dirty map.
+			// Make sure it is allocated and mark the read-only map as incomplete.
+			m.dirtyLocked()
+			m.read.Store(readOnly{m: read.m, amended: true})
+		}
+		m.dirty[key] = newEntry(value)
+	}
+	m.mu.Unlock()
+}
+</code></pre></div></div>
+<p>相关流程可以总结为:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>从read取数据    
+    取到数据,并且取到的数据和要写入的数据相等
+返回
+加锁
+再次从read取数据
+    取到数据
+        把read中的entry删除
+        成功?
+            dirty中添加entry
+    entry中的value赋值
+未取到数据,从dirty中取到数据
+    entry中的value赋值
+read和dirty的数据一致//read和dirty都没有读到指定key的数据,并且数据一样,说明这个key是新添加的key
+    read中的amended标记为true,表示dirty中包含read中没有的key
+    dirty添加元素
+解锁
+</code></pre></div></div>
+
+<p>以上可以看到golang中实现map多现成安全的策略是读写分离,read用来读,dirty用来写,从read中获取不到指定key的时候才从dirty中读取;同时misses达到一定次数之后才会用dirty替换read,达到更新read的目的.</p>
+
+<p>由于对dirty的更新同样需要借助锁同步,所以当写入操作频繁的话,读操作获取不到指定的key,读的压力依旧会落到dirty,除非及时更新read.所以这里misses的设定需要设定一个比较合理的值,才能让读写达到更好的效率.</p>
+
+<p>简单来说,如果写频繁,可以将misses的值设小一点,及时更新read,避免影响度读效率;而如果读操作更加频繁,misses可以设定高一点,避免频繁更新read.</p>
+
+                </article>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<footer class="footer" role="contentinfo">
+	<div class="container">
+		<div class="footer-col-wrapper">
+			<div class="footer-col footer-col-2">
+				<ul class="social-media-list">
+					
+					<li>
+						<a href="https://github.com/swa19"><span class="icon icon--github"><svg viewBox="0 0 16 16"><path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/></svg>
+</span><span class="username">swa19</span></a>
+
+					</li>
+					
+				</ul>
+			</div>
+			<div class="footer-col footer-col-3">
+				<p>我不是个伟大的程序员，我只是个有着一些优秀习惯的好程序员--by Kent Beck</p>
+			</div>
+		</div>
+	</div>
+</footer>
+
+
+</body>
+</html>

@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>docker初探 - </title>
+	<link rel="stylesheet" href="/css/main.css">
+	<link rel="stylesheet" href="/css/index.css">
+	<link rel="stylesheet" href="/css/fontawesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="/css/syntax.css">
+	<link rel="canonical" href="/%E6%A1%86%E6%9E%B6/2018/04/29/docker.html">
+	<link rel="alternate" type="application/rss+xml" title="" href="/feed.xml">
+	<meta name="keywords" content="docker初探, , ">
+	<meta name="description" content="">
+	<script src="/js/jquery.min.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+	<script src="/js/html5shiv.js"></script>
+	<script src="/js/holder.min.js"></script>
+	<script src="/js/respond.js"></script>
+	<script src="/js/application.js"></script>
+	<script src="/js/lessismore.js"></script>
+  	<style type="text/css">
+	  	.docs-content{
+	  		margin-bottom: 10px;
+	  	}
+  	</style>
+</head>
+
+<body class="index">
+
+<header class="navbar navbar-inverse navbar-fixed-top docs-nav" role="banner">
+  <div class="container">
+    <div class="navbar-header">
+      <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+      <ul class="nav navbar-nav">    
+        <li>
+          <a href="/">主页</a>
+        </li>
+        <li>
+          <a href="/categories/">类别</a>
+        </li>
+        <li>
+          <a href="/tags">标签</a>
+        </li>
+      </ul>
+
+    </nav>
+  </div>
+
+</header>
+<div class="docs-header" id="content">
+  <div class="container">
+  	
+		    <h1></h1>
+      <p>不积跬步，无以至千里</p>
+      
+  </div>
+</div>
+<!---->
+<!--<div class="banner">
+    <div class="container">
+        
+        <a href="/categories/#框架-ref">框架</a>
+        /
+        <a href="/tags/#docker-ref">docker</a>
+        
+    </div>
+</div>
+-->
+<!---->
+
+<div class="container docs-container">
+    <div class="row">
+        <div class="col-md-3">
+        <div class="sidebar hidden-print" role="complementary">
+        <div id="navigation">
+    <h1>目录</h1>
+    <ul class="nav sidenav">
+        
+        
+        
+        
+        
+        
+        <li><a href="#year_2019">2019</a>
+            <ul class="nav">
+                <li><a href="#month_2019_02">02</a></li>
+                
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+    </ul>
+    </li>
+    <li><a href="#year_2018">2018</a>
+        <ul class="nav">
+            <li><a href="#month_2018_11">11</a></li>
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_10">10</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_09">09</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_08">08</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_07">07</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_06">06</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_05">05</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_04">04</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_03">03</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_02">02</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_01">01</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+    </ul>
+    </li>
+    <li><a href="#year_2017">2017</a>
+        <ul class="nav">
+            <li><a href="#month_2017_12">12</a></li>
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2017_11">11</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2017_09">09</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2017_08">08</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+            </ul>
+        </li>
+        
+            
+        </ul>
+</div>
+
+
+
+        </div>
+        </div>
+        <div class="col-md-9" role="main">
+            <div class="panel docs-content">
+            <div class="wrapper">
+                <header class="post-header">
+                    <h1 class="post-title">docker初探</h1>
+                    <div class="meta"><span class="postdate">2018-04-29 22:02:07</span></div>
+                    <br/>
+                </header>
+                <article class="post-content">
+                    <ul id="markdown-toc">
+  <li><a href="#环境配置" id="markdown-toc-环境配置">环境配置</a></li>
+  <li><a href="#应用" id="markdown-toc-应用">应用</a>    <ul>
+      <li><a href="#基本命令" id="markdown-toc-基本命令">基本命令</a></li>
+      <li><a href="#共享镜像" id="markdown-toc-共享镜像">共享镜像</a></li>
+      <li><a href="#服务" id="markdown-toc-服务">服务</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="环境配置">环境配置</h1>
+
+<ol>
+  <li>安装
+Ubuntu版本16.04，参考安装步骤：<code class="highlighter-rouge">http://docs.docker-cn.com/engine/installation/linux/docker-ce/ubuntu/#%E4%BD%BF%E7%94%A8%E9%95%9C%E5%83%8F%E4%BB%93%E5%BA%93%E8%BF%9B%E8%A1%8C%E5%AE%89%E8%A3%85</code>
+安装完成后，通过<code class="highlighter-rouge">sudo docker run hello-world</code>测试是否安装成功</li>
+</ol>
+
+<h1 id="应用">应用</h1>
+
+<h2 id="基本命令">基本命令</h2>
+
+<ul>
+  <li>构建应用：<code class="highlighter-rouge">docker build -t appName .</code></li>
+  <li>添加<code class="highlighter-rouge">-d</code>使得后台运行应用：<code class="highlighter-rouge">docker run -d -p 4000:80 app</code></li>
+  <li>查看docker中运行的程序进程（即容器ID）：<code class="highlighter-rouge">docker ps</code></li>
+  <li>结束进程：<code class="highlighter-rouge">docker stop ${containerId}</code></li>
+</ul>
+
+<h2 id="共享镜像">共享镜像</h2>
+
+<p>在本地构建好应用之后，为了使得本地的应用能在其他地方运行，需要将构件好的应用上传到镜像库。</p>
+<ul>
+  <li>登录Docker公共镜像库：<code class="highlighter-rouge">docker login</code></li>
+  <li>将本地应用发布到公共镜像库：<code class="highlighter-rouge">docker tag ${image} ${username}/${repository}:${tag}</code>
+发布完成后，可以通过<code class="highlighter-rouge">docker images</code>查看镜像</li>
+  <li>将镜像库的镜像上传到镜像仓库：<code class="highlighter-rouge">docker push ${image} ${username}/${repository}:${tag}</code>
+上传后，可以登录<code class="highlighter-rouge">https://hub.docker.com/</code>查看新发布的镜像</li>
+  <li>将远程镜像拉取到本地并运行：<code class="highlighter-rouge">docker run -p 4000:80 ${username}/${repository}:${tag}</code></li>
+</ul>
+
+<h2 id="服务">服务</h2>
+
+<p>添加docker-compose.yml文件：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>version: "3"
+services:
+  web:
+    # 将 username/repo:tag 替换为您的名称和镜像详细信息
+    image: caojinyan/demo:1
+    deploy:
+      replicas: 5
+      resources:
+        limits:
+          cpus: "0.1"
+          memory: 50M
+      restart_policy:
+        condition: on-failure
+    ports:
+      - "80:80"
+    networks:
+      - webnet
+networks:
+  webnet:
+</code></pre></div></div>
+<p>需要注意的是，yml文件的：号后必须添加空格，否则执行会报错。</p>
+
+<ul>
+  <li>将服务设置为swarm集群管理：<code class="highlighter-rouge">docker swarm init</code></li>
+  <li>使其他机器以工作节点加入swarm：<code class="highlighter-rouge">docker swarm join</code></li>
+  <li>修改docker-compose.yml文件后，更新配置：<code class="highlighter-rouge">docker stack deploy -c docker-compose.yml getstartedlab</code></li>
+</ul>
+
+<p>Linux系统安装docker-machine:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>base=https://github.com/docker/machine/releases/download/v0.14.0 &amp;&amp;
+  curl -L $base/docker-machine-$(uname -s)-$(uname -m) &gt;/tmp/docker-machine &amp;&amp;
+  sudo install /tmp/docker-machine /usr/local/bin/docker-machine
+</code></pre></div></div>
+<p>安装好docker-machine后，在本地创建两个虚拟机：
+<code class="highlighter-rouge">docker-machine create --driver virtualbox myvm1</code>  <br />
+<code class="highlighter-rouge">docker-machine create --driver virtualbox myvm2
+</code>
+这里创建的时候，一直报连接超时。。。</p>
+
+                </article>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<footer class="footer" role="contentinfo">
+	<div class="container">
+		<div class="footer-col-wrapper">
+			<div class="footer-col footer-col-2">
+				<ul class="social-media-list">
+					
+					<li>
+						<a href="https://github.com/swa19"><span class="icon icon--github"><svg viewBox="0 0 16 16"><path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/></svg>
+</span><span class="username">swa19</span></a>
+
+					</li>
+					
+				</ul>
+			</div>
+			<div class="footer-col footer-col-3">
+				<p>我不是个伟大的程序员，我只是个有着一些优秀习惯的好程序员--by Kent Beck</p>
+			</div>
+		</div>
+	</div>
+</footer>
+
+
+</body>
+</html>

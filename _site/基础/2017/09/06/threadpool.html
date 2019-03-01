@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>JAVA线程池 - </title>
+	<link rel="stylesheet" href="/css/main.css">
+	<link rel="stylesheet" href="/css/index.css">
+	<link rel="stylesheet" href="/css/fontawesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="/css/syntax.css">
+	<link rel="canonical" href="/%E5%9F%BA%E7%A1%80/2017/09/06/threadpool.html">
+	<link rel="alternate" type="application/rss+xml" title="" href="/feed.xml">
+	<meta name="keywords" content="JAVA线程池, , ">
+	<meta name="description" content="">
+	<script src="/js/jquery.min.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+	<script src="/js/html5shiv.js"></script>
+	<script src="/js/holder.min.js"></script>
+	<script src="/js/respond.js"></script>
+	<script src="/js/application.js"></script>
+	<script src="/js/lessismore.js"></script>
+  	<style type="text/css">
+	  	.docs-content{
+	  		margin-bottom: 10px;
+	  	}
+  	</style>
+</head>
+
+<body class="index">
+
+<header class="navbar navbar-inverse navbar-fixed-top docs-nav" role="banner">
+  <div class="container">
+    <div class="navbar-header">
+      <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+      <ul class="nav navbar-nav">    
+        <li>
+          <a href="/">主页</a>
+        </li>
+        <li>
+          <a href="/categories/">类别</a>
+        </li>
+        <li>
+          <a href="/tags">标签</a>
+        </li>
+      </ul>
+
+    </nav>
+  </div>
+
+</header>
+<div class="docs-header" id="content">
+  <div class="container">
+  	
+		    <h1></h1>
+      <p>不积跬步，无以至千里</p>
+      
+  </div>
+</div>
+<!---->
+<!--<div class="banner">
+    <div class="container">
+        
+        <a href="/categories/#基础-ref">基础</a>
+        /
+        <a href="/tags/#java-ref">java</a>
+        
+    </div>
+</div>
+-->
+<!---->
+
+<div class="container docs-container">
+    <div class="row">
+        <div class="col-md-3">
+        <div class="sidebar hidden-print" role="complementary">
+        <div id="navigation">
+    <h1>目录</h1>
+    <ul class="nav sidenav">
+        
+        
+        
+        
+        
+        
+        <li><a href="#year_2019">2019</a>
+            <ul class="nav">
+                <li><a href="#month_2019_02">02</a></li>
+                
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+    </ul>
+    </li>
+    <li><a href="#year_2018">2018</a>
+        <ul class="nav">
+            <li><a href="#month_2018_11">11</a></li>
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_10">10</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_09">09</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_08">08</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_07">07</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_06">06</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_05">05</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_04">04</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_03">03</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_02">02</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_01">01</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+    </ul>
+    </li>
+    <li><a href="#year_2017">2017</a>
+        <ul class="nav">
+            <li><a href="#month_2017_12">12</a></li>
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2017_11">11</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2017_09">09</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2017_08">08</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+            </ul>
+        </li>
+        
+            
+        </ul>
+</div>
+
+
+
+        </div>
+        </div>
+        <div class="col-md-9" role="main">
+            <div class="panel docs-content">
+            <div class="wrapper">
+                <header class="post-header">
+                    <h1 class="post-title">JAVA线程池</h1>
+                    <div class="meta"><span class="postdate">2017-09-06 17:01:38</span></div>
+                    <br/>
+                </header>
+                <article class="post-content">
+                    <ul id="markdown-toc">
+  <li><a href="#什么是线程池" id="markdown-toc-什么是线程池">什么是线程池</a></li>
+  <li><a href="#线程池对线程的管理" id="markdown-toc-线程池对线程的管理">线程池对线程的管理</a></li>
+  <li><a href="#线程池的相关概念" id="markdown-toc-线程池的相关概念">线程池的相关概念</a></li>
+  <li><a href="#线程池的设计" id="markdown-toc-线程池的设计">线程池的设计</a></li>
+</ul>
+
+<h1 id="什么是线程池">什么是线程池</h1>
+
+<p>线程池可以认为是一个存放当前可用线程的list，当需要新建一个线程的时候，不会新建线程，而是先检查线程池中是否有可用线程，如果有的话，从线程池中取出线程执行当前的任务。否则等待。</p>
+
+<p>那么为什么需要一个线程池来管理线程呢？</p>
+
+<p>在服务器端的服务中，有些线程的创建和消耗是比较耗费资源的，如处理web请求，数据库连接，文件IO操作等等，如果每个请求的到来都为它创建一个线程，那么在并发量比较大的情况下，对系统的压力可想而知。</p>
+
+<p>为了降低这种线程创建和销毁的资源消耗，采用了线程池的方案，通过这种方式实现了线程的复用，降低服务器资源消耗。</p>
+
+<h1 id="线程池对线程的管理">线程池对线程的管理</h1>
+
+<p>线程池实现了对池内线程的管理。
+当请求尚未到来时，线程池就会创建一批线程放入到空闲线程的列表中。这些线程尚未分配任务，所以只占用一部分内存，不会消耗CPU资源。当有任务到来时，会通过线程池获取一个空闲线程，然后通过这个空闲线程来执行当前任务。</p>
+
+<h1 id="线程池的相关概念">线程池的相关概念</h1>
+
+<ul>
+  <li>核心线程数</li>
+</ul>
+
+<p>核心线程数是线程池初始化之后，预先创建的线程个数　
+　</p>
+<ul>
+  <li>最大线程数　　</li>
+</ul>
+
+<p>最大线程数要大于或者等于核心线程数。当核心线程不够用的时候，会根据最大线程数继续创建新的线程。要注意的是，这里的线程只有当核心线程数不够用的时候才会创建新线程。那么如果当前线程数达到了最大线程数呢？这个时候如果继续添加任务，这些任务根据处理的不同而不同，一般而言会被丢弃掉，或者把任务放在一个任务队列中，等待空闲线程。　　</p>
+<ul>
+  <li>线程空闲时间　　</li>
+</ul>
+
+<p>当线程池中的线程数大于核心线程数，且这些线程的空闲时间达到了设置的线程空闲时间，这些多出的线程将会被销毁掉。所以这里的最大线程可以理解为一种应急机制。不会</p>
+
+<h1 id="线程池的设计">线程池的设计</h1>
+
+<p>典型的线程池包含以下几个部分：</p>
+
+<ol>
+  <li>线程池管理器，用来启动、停用、管理线程池</li>
+  <li>工作线程：线程池中的可用线程</li>
+  <li>请求接口:创建请求对象，以供工作线程调度任务的执行　　</li>
+  <li>请求队列:用于存放和提取请求</li>
+  <li>结果队列:用于存储请求执行后返回的结果</li>
+</ol>
+
+<p>以java的ThreadPoolExecutor类为例，
+<code class="highlighter-rouge">private final AtomicInteger ctl = new AtomicInteger(ctlOf(RUNNING, 0));</code><br />
+用来控制线程池的运行状态，包括RUNNING,SHUTDOWN,STOP,TIDYING,TERMINATED这五种，那么每次在对线程池做操作，如添加任务，终止线程的时候，需要通过ctl来检查当前线程池的运行状态，所以这个变量实现了线程池的管理功能。　　</p>
+
+<p><code class="highlighter-rouge">private final HashSet&lt;Worker&gt; workers = new HashSet&lt;Worker&gt;();</code><br />
+workers是当前线程池中所有的工作线程，需要注意的是，在访问这个变量的时候需要先获取到锁，即<code class="highlighter-rouge">private final ReentrantLock mainLock = new ReentrantLock();</code></p>
+
+                </article>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<footer class="footer" role="contentinfo">
+	<div class="container">
+		<div class="footer-col-wrapper">
+			<div class="footer-col footer-col-2">
+				<ul class="social-media-list">
+					
+					<li>
+						<a href="https://github.com/swa19"><span class="icon icon--github"><svg viewBox="0 0 16 16"><path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/></svg>
+</span><span class="username">swa19</span></a>
+
+					</li>
+					
+				</ul>
+			</div>
+			<div class="footer-col footer-col-3">
+				<p>我不是个伟大的程序员，我只是个有着一些优秀习惯的好程序员--by Kent Beck</p>
+			</div>
+		</div>
+	</div>
+</footer>
+
+
+</body>
+</html>

@@ -1,0 +1,1125 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>任务调度系统开发记录 - </title>
+	<link rel="stylesheet" href="/css/main.css">
+	<link rel="stylesheet" href="/css/index.css">
+	<link rel="stylesheet" href="/css/fontawesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="/css/syntax.css">
+	<link rel="canonical" href="/%E6%A1%86%E6%9E%B6/2017/11/06/job_schedule.html">
+	<link rel="alternate" type="application/rss+xml" title="" href="/feed.xml">
+	<meta name="keywords" content="任务调度系统开发记录, , ">
+	<meta name="description" content="">
+	<script src="/js/jquery.min.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+	<script src="/js/html5shiv.js"></script>
+	<script src="/js/holder.min.js"></script>
+	<script src="/js/respond.js"></script>
+	<script src="/js/application.js"></script>
+	<script src="/js/lessismore.js"></script>
+  	<style type="text/css">
+	  	.docs-content{
+	  		margin-bottom: 10px;
+	  	}
+  	</style>
+</head>
+
+<body class="index">
+
+<header class="navbar navbar-inverse navbar-fixed-top docs-nav" role="banner">
+  <div class="container">
+    <div class="navbar-header">
+      <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+      <ul class="nav navbar-nav">    
+        <li>
+          <a href="/">主页</a>
+        </li>
+        <li>
+          <a href="/categories/">类别</a>
+        </li>
+        <li>
+          <a href="/tags">标签</a>
+        </li>
+      </ul>
+
+    </nav>
+  </div>
+
+</header>
+<div class="docs-header" id="content">
+  <div class="container">
+  	
+		    <h1></h1>
+      <p>不积跬步，无以至千里</p>
+      
+  </div>
+</div>
+<!---->
+<!--<div class="banner">
+    <div class="container">
+        
+        <a href="/categories/#框架-ref">框架</a>
+        /
+        <a href="/tags/#spring-ref">spring</a>
+        
+    </div>
+</div>
+-->
+<!---->
+
+<div class="container docs-container">
+    <div class="row">
+        <div class="col-md-3">
+        <div class="sidebar hidden-print" role="complementary">
+        <div id="navigation">
+    <h1>目录</h1>
+    <ul class="nav sidenav">
+        
+        
+        
+        
+        
+        
+        <li><a href="#year_2019">2019</a>
+            <ul class="nav">
+                <li><a href="#month_2019_02">02</a></li>
+                
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+    </ul>
+    </li>
+    <li><a href="#year_2018">2018</a>
+        <ul class="nav">
+            <li><a href="#month_2018_11">11</a></li>
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_10">10</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_09">09</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_08">08</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_07">07</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_06">06</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_05">05</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_04">04</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_03">03</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_02">02</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_01">01</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+    </ul>
+    </li>
+    <li><a href="#year_2017">2017</a>
+        <ul class="nav">
+            <li><a href="#month_2017_12">12</a></li>
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2017_11">11</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2017_09">09</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2017_08">08</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+            </ul>
+        </li>
+        
+            
+        </ul>
+</div>
+
+
+
+        </div>
+        </div>
+        <div class="col-md-9" role="main">
+            <div class="panel docs-content">
+            <div class="wrapper">
+                <header class="post-header">
+                    <h1 class="post-title">任务调度系统开发记录</h1>
+                    <div class="meta"><span class="postdate">2017-11-06 18:57:30</span></div>
+                    <br/>
+                </header>
+                <article class="post-content">
+                    <ul id="markdown-toc">
+  <li><a href="#进程间通信" id="markdown-toc-进程间通信">进程间通信</a></li>
+  <li><a href="#tips" id="markdown-toc-tips">tips</a>    <ul>
+      <li><a href="#jar" id="markdown-toc-jar">jar</a></li>
+      <li><a href="#classpath和classpath" id="markdown-toc-classpath和classpath">classpath*和classpath</a></li>
+    </ul>
+  </li>
+  <li><a href="#获取bean" id="markdown-toc-获取bean">获取bean</a></li>
+  <li><a href="#阿里之schedulex" id="markdown-toc-阿里之schedulex">阿里之ScheduleX</a></li>
+</ul>
+
+<p>我的简陋版任务调度系统后端部分总算调通了，功能包括配置按照一定频率执行和立即执行两种，且配置相当简单：首先在spring启动文件中添加指定注解配置client开启的端口号，然后在方法上添加注解，最后在提供的页面上配置调度服务器地址即可。然后就可以轻松实现任务的自动调度。</p>
+
+<h1 id="进程间通信">进程间通信</h1>
+
+<p>做分布式调度不可避免地要用到进程间通信。hot-deploy由于只需要client端向server端通信，所以之前的实现采用了在server端配置servlet的做法。但任务调度系统需要client端和server端做双向通信：client向server通知注册的job信息，server端向client发送job的调度请求。</p>
+
+<p>使用servlet的方式，需要在client端配置servlet类信息，为了最大程度减少client端的配置，我最后采用了netty来做client和server端之间的通信</p>
+
+<p>netty包括server和client，其中Server需要配置绑定的IP地址和开放端口号，而client作为请求发送者，需要对要发送的服务器地址和端口号做配置</p>
+
+<p>原理和实际编码之间是有距离的，我在开发中遇到的问题有：</p>
+
+<ol>
+  <li>添加的Encoder和Decoder没有起到作用</li>
+  <li>server端无法接收到请求</li>
+</ol>
+
+<p>这两个问题都是由于Encoder和Decoder配置不正确导致的。</p>
+
+<p>解决这个问题需要先了解下channelHandler相关的东西。netty是非阻塞io通信框架，每当一个channel注册时，Netty会把这个channel和一个EventLoop绑定起来，一个event到达channel后，和channel绑定的channelPipeline中的各个ChannelHandler会按照添加顺序处理这个event事件</p>
+
+<p><img src="/_pic/201710/netty.png" alt="" /></p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>//client
+    Bootstrap b = new Bootstrap();
+    b.group(group)
+            .channel(NioSocketChannel.class)
+            .handler(new ChannelInitializer&lt;SocketChannel&gt;() {
+                @Override
+                public void initChannel(SocketChannel ch) throws Exception {
+                    ch.pipeline().addFirst(new JobScheduleInvoker(jobInfo));
+                    ch.pipeline().addLast(new DataEncoder());
+                }
+            });
+    channel = b.connect(host, port).sync().channel();
+    channel.closeFuture().sync();
+//server
+    ServerBootstrap serverBootstrap = new ServerBootstrap();
+    serverBootstrap.group(group)
+            .channel(NioServerSocketChannel.class)
+            .childHandler(new ChannelInitializer&lt;SocketChannel&gt;() {//处理每一个connection
+                @Override
+                protected void initChannel(SocketChannel ch) throws Exception {
+                    ch.pipeline().addFirst(new DataDecoder());
+                    ch.pipeline().addLast(new JobInfoReceiver());
+
+                }
+            });
+    ChannelFuture f = serverBootstrap.bind(host, port).sync();//创建一个channel并和这个channel绑定
+    f.channel().closeFuture().sync();
+</code></pre></div></div>
+
+<p>其中JobScheduleInvoker和DataEncoder都是OutboundHandler，DataDecoder和JobInfoReceiver是InboundHandler。client端负责发送数据，channel绑定的channelPipeline，先通过OutboundHandler处理，然后由Inboundhandler处理，根据添加顺序，event的处理顺序为JobScheduleInvoker-&gt;DataEncoder-&gt;网络传输-&gt;DataDecoder-&gt;JobInfoReceiver.数据在网络中通过字节码进行传输，所以两端需要通过完成byte和String之间的转换，然后再做相应的逻辑处理。所以一旦添加的顺序出错，发送和接收就会出现问题。</p>
+
+<h1 id="tips">tips</h1>
+
+<h2 id="jar">jar</h2>
+
+<p>通过jar命令打jar包：jar vf jarName.jar
+通过jar命令查看jar包中包含的文件信息：jar tf jarName.jar</p>
+
+<h2 id="classpath和classpath">classpath*和classpath</h2>
+
+<p>首先classpath是指WEB-INF文件夹下的classes目录，当使用classpath时，加载资源时，会从所在jar包的WEB-INF文件夹下的classes目录下查找资源文件；而classpath<em>则会查找所有jar包中的资源文件。
+用classpath</em>:需要遍历所有的classpath，所以加载效率会比较差一些，如果只使用classpath:,需要规划好资源文件的路径，尽量避免重名，导致资源文件加载不到的问题。</p>
+
+<h1 id="获取bean">获取bean</h1>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>RootBeanDefinition applicationLoader = new RootBeanDefinition(ApplicationLoader.class);
+parserContext.getRegistry().registerBeanDefinition(QSCHEDULE_ANNOTATION, applicationLoader);   //通过这种方式在spring启动时生成ApplicationLoader的bean实例
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>public class ApplicationLoader implements ApplicationContextAware {
+    private static ApplicationContext applicationContext;
+
+    public static &lt;T&gt; T getBean(String beanName) {
+        return (T) applicationContext.getBean(beanName);
+    }
+
+
+
+    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+        ApplicationLoader.applicationContext = applicationContext;
+    }
+
+}
+</code></pre></div></div>
+
+<p>开发中出现的问题：applicationContext为null。问题解决：在系统启动的时候，调用了getBean方法，但此时spring的bean加载和初始化尚未完成，导致在调用getBean方法时无法获取到资源锁，从而阻塞线程，后续sping的加载过程被也被中断。解决这个问题的方法就是把getBean方法的调用放入到新线程中去执行，这样spring的加载过程得以继续进行，当初始化完成，getBean便可以获得返回结果。
+另外netty的server启动也会阻塞线程，需要放入到新线程中启动，否则也会导致系统启动时，阻塞spring的加载过程</p>
+
+<h1 id="阿里之schedulex">阿里之ScheduleX</h1>
+
+<p>在开发过程中，了解到阿里也做了一个付费版调度系统，简单通过使用文档，大概了解了下阿里的ScheduleX实现方案。</p>
+
+<ol>
+  <li>创建定时任务处理器
+第一部分创建定时任务处理器介绍了client端的配置，包括添加jar包和添加调度任务类</li>
+</ol>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>public class ExecuteShellJobProcessor implements ScxSimpleJobProcessor {
+ public ProcessResult process(ScxSimpleJobContext context) {
+  System.out.println("Hello World! "+new Date());
+  return new ProcessResult(true);//true表示执行成功，false表示失败
+ }
+}
+</code></pre></div></div>
+
+<p>所有调度任务类实现了ScxSimpleJobProcessor的process接口
+添加client配置：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    &lt;bean id="schedulerXClient" class="com.alibaba.edas.schedulerX.SchedulerXClient"  init-method="init"&gt;
+    &lt;property name="groupId"&gt;
+    &lt;value&gt;101-1-1-77&lt;/value&gt;
+    &lt;/property&gt;
+    &lt;property name="regionName"&gt;
+    &lt;value&gt;cn-hangzhou&lt;/value&gt;
+    &lt;/property&gt;
+    &lt;!--如果使用的是上海Region集群，需要设置domainName属性，同时指定RegionName为cn-shanghai
+    &lt;property name="regionName"&gt;
+    &lt;value&gt;cn-shanghai&lt;/value&gt;
+    &lt;/property&gt;
+    &lt;property name="domainName"&gt;
+    &lt;value&gt;schedulerx-shanghai.console.aliyun.com&lt;/value&gt;
+    &lt;/property&gt;--&gt;
+    &lt;/bean&gt;
+</code></pre></div></div>
+
+<p>另外有java应用方式启动的</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   SchedulerXClient schedulerXClient = new SchedulerXClient();
+   schedulerXClient.setGroupId("101-1-1-52");
+   schedulerXClient.setRegionName("cn-hangzhou");
+   /*
+   //如果使用的是上海Region集群，需要设置domainName属性，同时指定RegionName为cn-shanghai
+   schedulerXClient.setRegionName("cn-shanghai");
+   schedulerXClient.setDomainName("schedulerx-shanghai.console.aliyun.com");
+   */
+   try {
+         schedulerXClient.init();
+       } catch (Throwable e) {
+           e.printStackTrace();
+       }
+   }
+</code></pre></div></div>
+
+<p>可以在client端需要做的配置有groupid和regionname，client启动方法为init（）</p>
+
+<ol>
+  <li>
+    <p>代码完成后，在web页面做配置
+<img src="/_pic/201710/alischedule.png" alt="" />
+在页面上需要配置执行任务的接口名称</p>
+  </li>
+  <li>
+    <p>总结
+没看源代码，只从配置来说，可以看到scheduleX是通过页面手工添加任务调度类，这样避免了client向server端的通信。但是如果能通过client端将Job的相关信息发送到server端的话，就可以免去这个配置的过程。
+groupId应该是为了做分布式调度的，之前的考虑是把所有应用相关的机器地址放在远程，每次调度的时候从zookeeper中动态获取当前可用的服务地址</p>
+  </li>
+</ol>
+
+                </article>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<footer class="footer" role="contentinfo">
+	<div class="container">
+		<div class="footer-col-wrapper">
+			<div class="footer-col footer-col-2">
+				<ul class="social-media-list">
+					
+					<li>
+						<a href="https://github.com/swa19"><span class="icon icon--github"><svg viewBox="0 0 16 16"><path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/></svg>
+</span><span class="username">swa19</span></a>
+
+					</li>
+					
+				</ul>
+			</div>
+			<div class="footer-col footer-col-3">
+				<p>我不是个伟大的程序员，我只是个有着一些优秀习惯的好程序员--by Kent Beck</p>
+			</div>
+		</div>
+	</div>
+</footer>
+
+
+</body>
+</html>

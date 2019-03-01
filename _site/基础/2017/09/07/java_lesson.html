@@ -1,0 +1,1090 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>JAVA开发踩到过的坑 - </title>
+	<link rel="stylesheet" href="/css/main.css">
+	<link rel="stylesheet" href="/css/index.css">
+	<link rel="stylesheet" href="/css/fontawesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="/css/syntax.css">
+	<link rel="canonical" href="/%E5%9F%BA%E7%A1%80/2017/09/07/java_lesson.html">
+	<link rel="alternate" type="application/rss+xml" title="" href="/feed.xml">
+	<meta name="keywords" content="JAVA开发踩到过的坑, , ">
+	<meta name="description" content="">
+	<script src="/js/jquery.min.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+	<script src="/js/html5shiv.js"></script>
+	<script src="/js/holder.min.js"></script>
+	<script src="/js/respond.js"></script>
+	<script src="/js/application.js"></script>
+	<script src="/js/lessismore.js"></script>
+  	<style type="text/css">
+	  	.docs-content{
+	  		margin-bottom: 10px;
+	  	}
+  	</style>
+</head>
+
+<body class="index">
+
+<header class="navbar navbar-inverse navbar-fixed-top docs-nav" role="banner">
+  <div class="container">
+    <div class="navbar-header">
+      <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+      <ul class="nav navbar-nav">    
+        <li>
+          <a href="/">主页</a>
+        </li>
+        <li>
+          <a href="/categories/">类别</a>
+        </li>
+        <li>
+          <a href="/tags">标签</a>
+        </li>
+      </ul>
+
+    </nav>
+  </div>
+
+</header>
+<div class="docs-header" id="content">
+  <div class="container">
+  	
+		    <h1></h1>
+      <p>不积跬步，无以至千里</p>
+      
+  </div>
+</div>
+<!---->
+<!--<div class="banner">
+    <div class="container">
+        
+        <a href="/categories/#基础-ref">基础</a>
+        /
+        <a href="/tags/#java-ref">java</a>
+        
+    </div>
+</div>
+-->
+<!---->
+
+<div class="container docs-container">
+    <div class="row">
+        <div class="col-md-3">
+        <div class="sidebar hidden-print" role="complementary">
+        <div id="navigation">
+    <h1>目录</h1>
+    <ul class="nav sidenav">
+        
+        
+        
+        
+        
+        
+        <li><a href="#year_2019">2019</a>
+            <ul class="nav">
+                <li><a href="#month_2019_02">02</a></li>
+                
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+    </ul>
+    </li>
+    <li><a href="#year_2018">2018</a>
+        <ul class="nav">
+            <li><a href="#month_2018_11">11</a></li>
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_10">10</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_09">09</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_08">08</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_07">07</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_06">06</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_05">05</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_04">04</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_03">03</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_02">02</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_01">01</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+    </ul>
+    </li>
+    <li><a href="#year_2017">2017</a>
+        <ul class="nav">
+            <li><a href="#month_2017_12">12</a></li>
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2017_11">11</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2017_09">09</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2017_08">08</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+            </ul>
+        </li>
+        
+            
+        </ul>
+</div>
+
+
+
+        </div>
+        </div>
+        <div class="col-md-9" role="main">
+            <div class="panel docs-content">
+            <div class="wrapper">
+                <header class="post-header">
+                    <h1 class="post-title">JAVA开发踩到过的坑</h1>
+                    <div class="meta"><span class="postdate">2017-09-07 16:49:48</span></div>
+                    <br/>
+                </header>
+                <article class="post-content">
+                    <ul id="markdown-toc">
+  <li><a href="#string转json" id="markdown-toc-string转json">String转Json</a></li>
+  <li><a href="#通过offsetlimit做查询和更新2018-03-20" id="markdown-toc-通过offsetlimit做查询和更新2018-03-20">通过offset,limit做查询和更新(2018-03-20)</a></li>
+  <li><a href="#全局变量初始化" id="markdown-toc-全局变量初始化">全局变量初始化</a></li>
+  <li><a href="#循环中的continue和break" id="markdown-toc-循环中的continue和break">循环中的continue和break</a></li>
+  <li><a href="#rocketmqsubject和tag配置问题导致消息重复发送" id="markdown-toc-rocketmqsubject和tag配置问题导致消息重复发送">RocketMqsubject和tag配置问题导致消息重复发送</a></li>
+  <li><a href="#java引用" id="markdown-toc-java引用">java引用</a></li>
+  <li><a href="#static变量" id="markdown-toc-static变量">static变量</a></li>
+</ul>
+
+<h1 id="string转json">String转Json</h1>
+
+<p>今天发现一个差点被带到线上的bug,为了解析json串,我新建了一个类,将Json串转成这个类的java对象.测试进行很顺利,但后边diff代码的时候,发现这个类的一堆gettersetter方法未被调用,在idea的提示下,我把这些方法删掉了,果然代码好看了很多.
+但就在刚刚,在测试已经测试完成之后,我自己又跑了一下测试数据,并且出狱莫名的无聊,我加了行日志,打印了这个java对象,发现所有的属性都是null?!而这个问题发生的源头就在我出于洁癖删除的gettersetter方法.
+同样删除gettersetter方法可能会导致的问题就是Mybatis查询,因为Mybatis同样是通过无参的构造函数和gettersetter方法来给Entity实体赋值的.
+所以,在完成全面测试之后,不要轻易改动东西;如果真要改,再次做全面测试,bug往往生于一个不经意.
+另一个就是代码洁癖也是要稍稍控制下的,编译器的提示仅仅是提示.</p>
+
+<h1 id="通过offsetlimit做查询和更新2018-03-20">通过offset,limit做查询和更新(2018-03-20)</h1>
+
+<p>看下代码:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Long offset = 0L;
+        Long pageSize = 1000L;
+        while (true) {
+            List&lt;Long&gt; ids = ylKxCustContactMapper.queryEmptyTel(offset, pageSize);
+            if (CollectionUtils.isEmpty(ids)) {
+                break;
+            }
+            ylKxCustContactMapper.deleteEmptyTel(ids);
+            offset += pageSize;
+        }
+</code></pre></div></div>
+
+<p>代码执行后,检查数据发现空的电话号码并未被全部删除,哪里出了问题呢?检查代码后恍然大悟:这个代码片段,首先按照offset查找空的电话号码,然后对查出的数据做删除;接着offset增加,再次查询时,空的电话号码总数将变少,当增加offset后,将会有部分未处理的数据被跳过.
+所以这就是根据某个状态做分页查询,再根据查询结果对这个状态做变更后,再次查询下一页数据做同样的操作时,将会导致部分数据被遗漏.</p>
+
+<h1 id="全局变量初始化">全局变量初始化</h1>
+
+<p>上段代码：</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@Service
+public class DemoImpl implements Demo{
+    private static CountDownLatch count = new CountDownLatch(1);
+    private ExecutorService executorService = Executors.newFixedThreadPool(5);
+    public Boolean doSth() {        
+        executorService.submit(new Runnable() {
+            @Override
+            public void run() {
+                doThings();
+            }
+        });      
+        try {
+            count.await();
+        } catch (InterruptedException e) {
+            throw new RuntimeException("run deduct data sync interrupted");
+        }
+        return true;
+    }
+}
+</code></pre></div></div>
+
+<p>这个方法会没有通过定时任务执行，每天执行一次。有个很奇怪的情况，正常<code class="highlighter-rouge">doThings()</code>这个方法需要执行20分钟左右，但这个定时任务执行时间一般只有十几ms，某些时候又会变成正常的20分钟左右。一开始以为同步锁没锁上，是我在使用的时候哪里有问题，但是仔细理了下代码之后发现了问题。
+由于该服务部署在tomcat服务器，使用spring框架。在做类的初始化时默认都是单例，所以这个count只会在重新部署启动时初始化为1，在一次执行完成后，count值变为0；第二次再次执行时，count依旧是0.所以就出现了以上的问题。
+怎么解决这个问题呢?</p>
+
+<ol>
+  <li>首先需要保证每次在执行<code class="highlighter-rouge">doSth</code>方法时对<code class="highlighter-rouge">count</code>变量重新做初化</li>
+  <li>其次保证同一时刻只有一个线程执行<code class="highlighter-rouge">doSth</code>方法，也就是做线程同步</li>
+</ol>
+
+<p>修改后的代码为：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@Service
+public class DemoImpl implements Demo{
+    private static CountDownLatch count;
+    private ExecutorService executorService = Executors.newFixedThreadPool(5);
+    public sychronized Boolean doSth() {        
+        count = new CountDownLatch(1);
+        executorService.submit(new Runnable() {
+            @Override
+            public void run() {
+                doThings();
+            }
+        });      
+        try {
+            count.await();
+        } catch (InterruptedException e) {
+            throw new RuntimeException("run deduct data sync interrupted");
+        }
+        return true;
+    }
+}
+</code></pre></div></div>
+<p>修改后定时任务的时间记录正常</p>
+
+<h1 id="循环中的continue和break">循环中的continue和break</h1>
+
+<p>前几天出的一个线上问题,符合条件的数据有3000条,但实际插入到数据库的只有两条.最后查看代码发现这批数据通过for循环插入,而在这个循环中,一个判断条件中增加了<code class="highlighter-rouge">break</code>导致循环中断.
+所以对于循环中出现break和continue的,一定要重点检查下是否符合业务逻辑.</p>
+
+<h1 id="rocketmqsubject和tag配置问题导致消息重复发送">RocketMqsubject和tag配置问题导致消息重复发送</h1>
+
+<p>在A系统中会发送给B系统一个RocketMq消息，B系统在接收到这个消息之后，发送消息给C系统<br />
+根据日志，ProducerA发送了一条消息，但是到ConsumerB的之后，首先接收到和Producer发送消息一样的msgId的消息，然后不断刷日志，显示ConsumerB持续不断地接收到同样消息内容，但是msgId不同的消息。<br />
+开始因为初次配置使用RocketMq，怀疑RocketMq的处理机制问题，但其他系统应用不存在这个问题；后来在梳理业务逻辑的时候，发现C系统接收的是来自A系统的消息，而这个是不合理的，需要对C系统和B系统接收消息的tag做一个区分，由此才意识到，原来B系统一直在接收消息，然后发送消息，发送的消息由于subject和tag配置的问题，B系统会接收到自己发送的消息并处理，由此，一个死循环导致了消息被不断地重复发送和接收和处理<br />
+遇到问题而不得其解的时候，不要怀疑人生。有句话说：事出反常必有妖</p>
+
+<h1 id="java引用">java引用</h1>
+
+<p>对变量做临时赋值后，后续在用的时候没有恢复成原有的值 <br />
+由于java中的变量传递的是变量的引用，所以在方法内对一个变量做的改变在这个方法调用结束之后会继续保留，这个错误很弱智，但也很容易被忽略</p>
+
+<h1 id="static变量">static变量</h1>
+
+<p>对于一个类中定义的static变量，这个变量在多个类实例中共用。看一个类的定义:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>public class ScheduleJobList {
+    private static final Logger logger = LoggerFactory.getLogger(ScheduleJobList.class);
+    private  static PriorityBlockingQueue&lt;JobInfoWrapper&gt; list;
+}
+</code></pre></div></div>
+
+<p>使用时：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    public static void addRegisteredJob(String jobInfoStr) {
+        Map&lt;JobInfo, ScheduleJobList&gt; jobMap = new ConcurrentHashMap&lt;JobInfo, ScheduleJobList&gt;();
+        JobScheduleParser.ScheduleMsgBody msg = JSON.parseObject(jobInfoStr, JobScheduleParser.ScheduleMsgBody.class);
+        ScheduleJobList scheduleJobList = new ScheduleJobList();
+        scheduleJobList.addJob(JobInfoWrapper.newWrapperJob(msg.getNewJob()));//将当前需要执行的任务添加到任务列表中
+        jobMap.remove(msg.getOldJob());
+        jobMap.put(msg.getNewJob(), scheduleJobList);
+    }
+</code></pre></div></div>
+
+<p>问题是，当我对一个JobInfo实例的ScheduleJobList做了dequeue操作，其他JobInfo实例的ScheduleJobList中的数据也会减少，一开始百思不得其解，直到看ScheduleJobList类的时候注意到static关键词，才恍然大悟。
+static关键词修饰的静态变量只会保存在一个内存空间，当需要它在各个类中不共享的时候，坑就出现了。</p>
+
+                </article>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<footer class="footer" role="contentinfo">
+	<div class="container">
+		<div class="footer-col-wrapper">
+			<div class="footer-col footer-col-2">
+				<ul class="social-media-list">
+					
+					<li>
+						<a href="https://github.com/swa19"><span class="icon icon--github"><svg viewBox="0 0 16 16"><path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/></svg>
+</span><span class="username">swa19</span></a>
+
+					</li>
+					
+				</ul>
+			</div>
+			<div class="footer-col footer-col-3">
+				<p>我不是个伟大的程序员，我只是个有着一些优秀习惯的好程序员--by Kent Beck</p>
+			</div>
+		</div>
+	</div>
+</footer>
+
+
+</body>
+</html>

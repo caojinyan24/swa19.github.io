@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>系统设计总结 - </title>
+	<link rel="stylesheet" href="/css/main.css">
+	<link rel="stylesheet" href="/css/index.css">
+	<link rel="stylesheet" href="/css/fontawesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="/css/syntax.css">
+	<link rel="canonical" href="/%E5%B0%8F%E7%BB%93/2017/11/14/system_design.html">
+	<link rel="alternate" type="application/rss+xml" title="" href="/feed.xml">
+	<meta name="keywords" content="系统设计总结, , ">
+	<meta name="description" content="">
+	<script src="/js/jquery.min.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+	<script src="/js/html5shiv.js"></script>
+	<script src="/js/holder.min.js"></script>
+	<script src="/js/respond.js"></script>
+	<script src="/js/application.js"></script>
+	<script src="/js/lessismore.js"></script>
+  	<style type="text/css">
+	  	.docs-content{
+	  		margin-bottom: 10px;
+	  	}
+  	</style>
+</head>
+
+<body class="index">
+
+<header class="navbar navbar-inverse navbar-fixed-top docs-nav" role="banner">
+  <div class="container">
+    <div class="navbar-header">
+      <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+      <ul class="nav navbar-nav">    
+        <li>
+          <a href="/">主页</a>
+        </li>
+        <li>
+          <a href="/categories/">类别</a>
+        </li>
+        <li>
+          <a href="/tags">标签</a>
+        </li>
+      </ul>
+
+    </nav>
+  </div>
+
+</header>
+<div class="docs-header" id="content">
+  <div class="container">
+  	
+		    <h1></h1>
+      <p>不积跬步，无以至千里</p>
+      
+  </div>
+</div>
+<!---->
+<!--<div class="banner">
+    <div class="container">
+        
+        <a href="/categories/#小结-ref">小结</a>
+        /
+        <a href="/tags/#design-ref">design</a>
+        
+    </div>
+</div>
+-->
+<!---->
+
+<div class="container docs-container">
+    <div class="row">
+        <div class="col-md-3">
+        <div class="sidebar hidden-print" role="complementary">
+        <div id="navigation">
+    <h1>目录</h1>
+    <ul class="nav sidenav">
+        
+        
+        
+        
+        
+        
+        <li><a href="#year_2019">2019</a>
+            <ul class="nav">
+                <li><a href="#month_2019_02">02</a></li>
+                
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+    </ul>
+    </li>
+    <li><a href="#year_2018">2018</a>
+        <ul class="nav">
+            <li><a href="#month_2018_11">11</a></li>
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_10">10</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_09">09</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_08">08</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_07">07</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_06">06</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_05">05</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_04">04</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_03">03</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_02">02</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_01">01</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+    </ul>
+    </li>
+    <li><a href="#year_2017">2017</a>
+        <ul class="nav">
+            <li><a href="#month_2017_12">12</a></li>
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2017_11">11</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2017_09">09</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2017_08">08</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+            </ul>
+        </li>
+        
+            
+        </ul>
+</div>
+
+
+
+        </div>
+        </div>
+        <div class="col-md-9" role="main">
+            <div class="panel docs-content">
+            <div class="wrapper">
+                <header class="post-header">
+                    <h1 class="post-title">系统设计总结</h1>
+                    <div class="meta"><span class="postdate">2017-11-14 21:58:51</span></div>
+                    <br/>
+                </header>
+                <article class="post-content">
+                    <ul id="markdown-toc">
+  <li><a href="#系统的可扩展性" id="markdown-toc-系统的可扩展性">系统的可扩展性</a></li>
+  <li><a href="#系统的可维护性" id="markdown-toc-系统的可维护性">系统的可维护性</a></li>
+  <li><a href="#持久层代码的通用性" id="markdown-toc-持久层代码的通用性">持久层代码的通用性</a></li>
+  <li><a href="#业务惟一键" id="markdown-toc-业务惟一键">业务惟一键</a></li>
+</ul>
+
+<p>最近在对系统做大修改，业务背景是：原本的只处理一个产品场景的系统，现在由于业务发展，需要支持两种产品。所以主要的问题就是实现原有系统的抽象和复用。</p>
+
+<h1 id="系统的可扩展性">系统的可扩展性</h1>
+
+<p>系统扩展性强的前提是复用度高。否则一味的新增代码，只会徒增系统的复杂度，甚至在某种程度上，复杂度将会呈指数级增长。</p>
+<ol>
+  <li>
+    <p>数据持久层封装
+虽然新增了一种产品（CODE），但是对于关键的数据表不再复用，而是针对新的产品创建新表，且由于产品概念的不统一，两个产品对应的数据表的字段也存在差别；虽然业务流程一致，但由于底层数据表及其对应的实体的差异，导致所有持久层代码全部需要重新写，这是一个繁琐且极易出错的任务。
+为了应对后续未知的需求变动，对数据持久层的上层再次做封装，负责屏蔽掉数据表中实体的差异，使得上层逻辑对底层的数据表的变更不再敏感。</p>
+  </li>
+  <li>
+    <p>对接口的封装
+对接口做抽象和封装的最大敌人就是CtrlC+CtrlV，一旦开始了CtrlC+CtrlV，原本两个逻辑一致的代码，后续可能发展成为不断交错的两条曲线，再想择干净就需要先细细地读上半天代码，真的有机会去改的话也要战战兢兢，免得有所遗漏。在业务开发中，不会有专门的机会去重构代码，看到一坨丑陋的代码，只能祈祷永远不要再让自己看到，或者涉及到的功能发生需求变更，趁此机会把它CLEAN UP，毕竟，修改的每一行代码都要通过测试人员去上线，而鲜有测试人员会为自己的洁癖买单。</p>
+  </li>
+  <li>
+    <p>持久层尽量避免业务逻辑
+在现有系统中，大量的业务逻辑透过Service直接到达dao持久层，导致对一个数据表的更新操作可能存在10个mapper方法，对本次修改造成极大的麻烦。如果能把持久层做出通用的接口，把业务逻辑和持久层做分离，那么持久层的表和字段变动对上层业务逻辑的影响会降至最低。</p>
+  </li>
+</ol>
+
+<h1 id="系统的可维护性">系统的可维护性</h1>
+
+<p>原有的系统为了避免修改影响原有功能，提倡需要修改原有逻辑的，新加接口，避免修改原有接口。也可能是团队同时开发，代码review形同虚设，系统代码无法维持一个统一的风格，导致现有系统中，一个简单的查询sql就有不计其数个，这给我的此次工作造成了极大的负担。</p>
+
+<p>怎样的系统最好维护？当然是代码越少越好，一个需求，能用10行代码写完的，完全没必要拆成20行来写（当然，代码的可读性还是要保证的，不然所有的接口放在一行代码里传递，读起来晦涩难懂，也无从谈维护了）。后续需求变更，修改1个方法，总好过10个方法一一改过。</p>
+
+<p>这次对所有的查询和更新sql，做了一个统一的实现，替换原有的sql</p>
+
+<p>对重载方法，特别是重载的facade方法，一律删除重复的，把请求参数封装到一个实体中传递</p>
+
+<p>对如method（String strList）和method（List<String>str）之类，只保留一个method（List<String>str），至于请求参数的不同，交给调用方去处理</String></String></p>
+
+<h1 id="持久层代码的通用性">持久层代码的通用性</h1>
+
+<p>在业务数据量比较大的情况，DBA总是会建议尽量避免联结查询。在这种情况下，对一个表的操作大部分情况下就是查询，更新操作。对于这种通用的情况，可以考虑使用通用的sql来完成。在现有的系统中发现的一个问题就是，对代码没有统一的管理，对同一个表的更新，添加了数个update。当对一个表添加字段，或者需要对代码做抽象整理时，这些重复的持久层代码将会造成极大的工作量。</p>
+
+<h1 id="业务惟一键">业务惟一键</h1>
+
+<p>在自己的业务系统中，尽量使用自己的流水号，尽量避免使用上游的流水号作为自己的业务惟一键。一般来说，不同的业务系统，通常用来处理不同的业务流程，如订单系统中，会以订单号作为自己的惟一键，串联整个业务流程；而一笔订单到了账务系统中后，业务系统需要根据这个订单号生成自己的账务流水号来进行账务系统的业务串联。</p>
+
+<p>在目前所做的催收系统中，存在一个问题：在业务处理中，催收系统没有自己重新生成新的对应于催收业务的流水号，而是沿用了贷后传递的贷款订单号；但是在催收系统中，同一个贷款订单号会存在多次逾期的情况。为了区分多次进来的贷款订单，只能使用在催表中的自增ID来标示唯一的催收记录。</p>
+
+<p>在MySQL的设计中，主键一般建议使用自增ID，并且不应当具有业务含义。虽然在业务处理中，不会主动对在催表中的ID做修改操作，似乎不会对MySQL的性能造成什么不好影响，但在实际的业务流程中，这种设计方案还是给业务处理造成了很多不便，而这些不便其实都可以通过生成自己的业务流水号来避免。具体造成的业务问题，不再赘述。</p>
+
+                </article>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<footer class="footer" role="contentinfo">
+	<div class="container">
+		<div class="footer-col-wrapper">
+			<div class="footer-col footer-col-2">
+				<ul class="social-media-list">
+					
+					<li>
+						<a href="https://github.com/swa19"><span class="icon icon--github"><svg viewBox="0 0 16 16"><path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/></svg>
+</span><span class="username">swa19</span></a>
+
+					</li>
+					
+				</ul>
+			</div>
+			<div class="footer-col footer-col-3">
+				<p>我不是个伟大的程序员，我只是个有着一些优秀习惯的好程序员--by Kent Beck</p>
+			</div>
+		</div>
+	</div>
+</footer>
+
+
+</body>
+</html>

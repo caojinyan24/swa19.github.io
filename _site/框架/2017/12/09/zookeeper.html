@@ -1,0 +1,1257 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Zookeeper学习总结 - </title>
+	<link rel="stylesheet" href="/css/main.css">
+	<link rel="stylesheet" href="/css/index.css">
+	<link rel="stylesheet" href="/css/fontawesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="/css/syntax.css">
+	<link rel="canonical" href="/%E6%A1%86%E6%9E%B6/2017/12/09/zookeeper.html">
+	<link rel="alternate" type="application/rss+xml" title="" href="/feed.xml">
+	<meta name="keywords" content="Zookeeper学习总结, , ">
+	<meta name="description" content="">
+	<script src="/js/jquery.min.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+	<script src="/js/html5shiv.js"></script>
+	<script src="/js/holder.min.js"></script>
+	<script src="/js/respond.js"></script>
+	<script src="/js/application.js"></script>
+	<script src="/js/lessismore.js"></script>
+  	<style type="text/css">
+	  	.docs-content{
+	  		margin-bottom: 10px;
+	  	}
+  	</style>
+</head>
+
+<body class="index">
+
+<header class="navbar navbar-inverse navbar-fixed-top docs-nav" role="banner">
+  <div class="container">
+    <div class="navbar-header">
+      <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+      <ul class="nav navbar-nav">    
+        <li>
+          <a href="/">主页</a>
+        </li>
+        <li>
+          <a href="/categories/">类别</a>
+        </li>
+        <li>
+          <a href="/tags">标签</a>
+        </li>
+      </ul>
+
+    </nav>
+  </div>
+
+</header>
+<div class="docs-header" id="content">
+  <div class="container">
+  	
+		    <h1></h1>
+      <p>不积跬步，无以至千里</p>
+      
+  </div>
+</div>
+<!---->
+<!--<div class="banner">
+    <div class="container">
+        
+        <a href="/categories/#框架-ref">框架</a>
+        /
+        <a href="/tags/#zookeeper-ref">zookeeper</a>
+        
+    </div>
+</div>
+-->
+<!---->
+
+<div class="container docs-container">
+    <div class="row">
+        <div class="col-md-3">
+        <div class="sidebar hidden-print" role="complementary">
+        <div id="navigation">
+    <h1>目录</h1>
+    <ul class="nav sidenav">
+        
+        
+        
+        
+        
+        
+        <li><a href="#year_2019">2019</a>
+            <ul class="nav">
+                <li><a href="#month_2019_02">02</a></li>
+                
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+    </ul>
+    </li>
+    <li><a href="#year_2018">2018</a>
+        <ul class="nav">
+            <li><a href="#month_2018_11">11</a></li>
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_10">10</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_09">09</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_08">08</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_07">07</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_06">06</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_05">05</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_04">04</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_03">03</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_02">02</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_01">01</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+    </ul>
+    </li>
+    <li><a href="#year_2017">2017</a>
+        <ul class="nav">
+            <li><a href="#month_2017_12">12</a></li>
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2017_11">11</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2017_09">09</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2017_08">08</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+            </ul>
+        </li>
+        
+            
+        </ul>
+</div>
+
+
+
+        </div>
+        </div>
+        <div class="col-md-9" role="main">
+            <div class="panel docs-content">
+            <div class="wrapper">
+                <header class="post-header">
+                    <h1 class="post-title">Zookeeper学习总结</h1>
+                    <div class="meta"><span class="postdate">2017-12-09 15:56:20</span></div>
+                    <br/>
+                </header>
+                <article class="post-content">
+                    <ul id="markdown-toc">
+  <li><a href="#zookeeper可以做什么" id="markdown-toc-zookeeper可以做什么">ZooKeeper可以做什么</a></li>
+  <li><a href="#zookeeper相关" id="markdown-toc-zookeeper相关">ZooKeeper相关</a>    <ul>
+      <li><a href="#zookeeper数据的存储结构" id="markdown-toc-zookeeper数据的存储结构">ZooKeeper数据的存储结构</a></li>
+      <li><a href="#zookeeper节点类型" id="markdown-toc-zookeeper节点类型">ZooKeeper节点类型</a></li>
+      <li><a href="#zookeeper的集群管理" id="markdown-toc-zookeeper的集群管理">ZooKeeper的集群管理</a></li>
+      <li><a href="#zookeeper的watcher机制" id="markdown-toc-zookeeper的watcher机制">ZooKeeper的watcher机制</a></li>
+      <li><a href="#zookeeper做数据管理" id="markdown-toc-zookeeper做数据管理">ZooKeeper做数据管理</a></li>
+      <li><a href="#获得一个zookeeper连接的过程" id="markdown-toc-获得一个zookeeper连接的过程">获得一个ZooKeeper连接的过程：</a></li>
+      <li><a href="#zookeeper运行模式" id="markdown-toc-zookeeper运行模式">ZooKeeper运行模式</a></li>
+      <li><a href="#sessionid" id="markdown-toc-sessionid">sessionId</a></li>
+    </ul>
+  </li>
+  <li><a href="#配置与使用" id="markdown-toc-配置与使用">配置与使用</a></li>
+  <li><a href="#使用zookeeper开发" id="markdown-toc-使用zookeeper开发">使用ZooKeeper开发</a>    <ul>
+      <li><a href="#创建节点" id="markdown-toc-创建节点">创建节点</a></li>
+      <li><a href="#对节点做监听" id="markdown-toc-对节点做监听">对节点做监听</a></li>
+    </ul>
+  </li>
+  <li><a href="#其他" id="markdown-toc-其他">其他</a></li>
+  <li><a href="#参考" id="markdown-toc-参考">参考：</a></li>
+</ul>
+
+<h1 id="zookeeper可以做什么">ZooKeeper可以做什么</h1>
+
+<p>Zookeeper是分布式服务框架，主要是用来解决分布式应用中经常遇到的一些数据管理问题，如：统一命名服务、状态同步服务、集群管理、分布式应用配置项的管理等等。</p>
+
+<p>首先ZooKeeper用于分布式应用管理，要了解ZooKeeper的特性，首先要考虑分布式系统设计的痛点在哪里？分布式系统就是将一个应用部署在多个物理机器上，对外提供统一的服务。这种系统设计会遇到的问题有：</p>
+
+<ul>
+  <li>扩展问题
+当需要添加或减少服务器时，需要修改相关配置</li>
+  <li>故障处理
+当一台机器出现问题的时候，能及时下线该服务，避免请求继续指向这台已经挂掉的服务器上</li>
+</ul>
+
+<p>ZooKeeper提供了动态管理机器的功能，Zookeeper的系统架构为</p>
+
+<p><img src="/_pic/201711/zookeeper-struct.jpeg" alt="" /></p>
+
+<p>当服务启动时，自动向注册中心注册节点，client端则从注册中心获取可用的服务器信息；同时注册中心会定时向服务器发送心跳消息，及时删除无响应的服务节点信息．</p>
+
+<p>分布式系统设计中广泛采用的系统架构：主从架构。</p>
+
+<p>主从架构需要考虑的问题：主节点崩溃；从节点崩溃；主从节点间发生通信故障</p>
+
+<h1 id="zookeeper相关">ZooKeeper相关</h1>
+
+<h2 id="zookeeper数据的存储结构">ZooKeeper数据的存储结构</h2>
+
+<p>Zookeeper采用了树形的文件存储结构</p>
+
+<h2 id="zookeeper节点类型">ZooKeeper节点类型</h2>
+
+<p>ZooKeeper的节点包括四种，持久节点；临时节点；持久有序节点；临时有序节点；</p>
+
+<p>基于通知的访问机制，客户端每次访问节点的时候，都会放置一个监控点；当节点发生变更时，先发送通知给客户端，然后变更数据。</p>
+
+<p>解决并行更新节点数据的问题：引入版本控制，当版本不一致时，更新失败</p>
+
+<p>ZooKeeper的服务器端运行模式：</p>
+
+<p>独立模式和仲裁模式，对于仲裁模式，需要设定法定人数，这对ZooKeeper的服务器数量提出了要求。法定人数过多，过少都不好，最好的选择是服务器数量为奇数，法定数量为大于一半的最小数。</p>
+
+<h2 id="zookeeper的集群管理">ZooKeeper的集群管理</h2>
+
+<p>服务器节点有三种：leader，follower，observer</p>
+
+<p>leader负责所有状态变更的请求，在处理的时候会对事件进行排序和编号，保证集群内部消息处理的先后顺序。</p>
+
+<p>使用ZooKeeper服务，首先需要实例化一个ZooKeeper的实例client，一旦获得一个server的连接，一个sessionId会被分配给client，之后，client和server之间维持长连接，并持续发送心跳给server，如果超过一定时间没有收到心跳消息，则session过期。</p>
+
+<p>只要这个连接有效，应用都可以通过client获得Zookeeper的API。若client在一定时间内未发送心跳，server会将这个session置为失效。若client当前连接的server无响应，若session仍旧有效，client会自动尝试重连另一个server。</p>
+
+<p>当集群中半数以上的机器同时挂掉，则，整个集群不可用；当leader挂掉，当半数以上的follower选举同意时，某server被选举为leader。</p>
+
+<p>由于ZooKeeper的写入首先需要通过Leader，然后这个写入的消息需要传播到半数以上的Fellower通过才能完成整个写入。所以整个集群写入的性能无法通过增加服务器的数量达到目的，相反，整个集群中Fellower数量越多，整个集群写入的性能越差；ZooKeeper集群中的每一台服务器都可以提供数据的读取服务，所以整个集群中服务器的数量越多，读取的性能就越好。但是Fellower增加又会降低整个集群的写入性能。</p>
+
+<p>为了避免这个问题，可以将ZooKeeper集群中部分服务器指定为Observer。observers不参与投票，只监听投票结果。除了这个区别之外，其他的功能和followers一样：客户端可以连接服务器，病向服务器发送、读取、写入请求。由于observers不参与投票，所以observers挂掉或者跟集群连接中断，不会影响到ZooKeeper服务。</p>
+
+<p>observer可用于：</p>
+
+<ul>
+  <li>跨数据中心部署，由于observer可以的部署对网络要求不高，可以跟client部署在一个数据中心，从而提高读取速度。observer不参与投票，降低了写入的网络开销</li>
+  <li>对读进行扩展，同时不影响写入性能。但observer的使用不能消除数据中心之间的网络延时，因为observer需要把更新请求转发到另一个数据中心的leader，处理inform消息，当网络速度极慢的话也会影响数据的同步。</li>
+</ul>
+
+<p>设置observer</p>
+
+<p>在要充当observer节点的机器配置中添加：peerType=observer。然后，在每一个服务器配置文件中，添加observer，如：server.1:localhost:2181:3181:observer。这样用来告知ZooKeeper集群，这台server1是observer。</p>
+
+<h2 id="zookeeper的watcher机制">ZooKeeper的watcher机制</h2>
+
+<p>ZooKeeper通过事件机制来管理各个服务器和客户端的连接，每一个ZooKeeper实例都会有一个watchermanager，用来管理当前已被注册的watcher列表，并负责触发它们。DataTree 中有一个WatchManager对象来维护所有类型的watch。</p>
+
+<p>当处理一个事务时，DataTree这个类会查明是否需要触发相应的Watch，如果发现有Watch需要触发，这个类就调用manager的触发方法。</p>
+
+<p>ServerCnxn用来管理server和client之间的连接。在server端触发的Watch，这个类中的process方法会将这个Watch序列化并传播到client。</p>
+
+<p>client实现监控需要的四个条件</p>
+
+<ul>
+  <li>传入参数</li>
+  <li>获取跟节点关联的数据，并开始处理</li>
+  <li>如果节点发生变化，client获取变化内容并处理</li>
+  <li>如果节点消失，client终止处理过程</li>
+</ul>
+
+<p>ZooKeeper应用划分为两部分，一个维持连接，一个监控数据。</p>
+
+<p>Watcher接口用来和container进行交流，只包含一个process方法，ZooKeeper用watcher告诉主线程关心的事件，如ZooKeeper 连接的状态的变化，或者session变化。Executor将事件交给dataMonitor来决定怎么处理。</p>
+
+<h2 id="zookeeper做数据管理">ZooKeeper做数据管理</h2>
+
+<p>每个节点上保存了我们要进行管理和同步的数据，添加节点时写入数据，读取的时候可以从不同的server中读取出保存的数据。（zk通过监听节点变化的事件来做节点数据的管理和同步），（实现服务管理的基本原理）</p>
+
+<p>数据一致性</p>
+
+<p>对节点的操作都会添加版本号，如果版本号和服务器的版本号不一致，会导致操作失败，所以每次在对节点做操作之前需要先从zookeeper server读取节点版本号，由此保证对同一个节点做更新操作时，不会被覆盖。</p>
+
+<p>每个客户端同一时刻只和一个zookeeperserver保持一个会话信息，并通过定时发送心跳消息保持会话，通过这中方式保证事件处理的有序性。</p>
+
+<h2 id="获得一个zookeeper连接的过程">获得一个ZooKeeper连接的过程：</h2>
+
+<p>解析server地址，并保存在server端。创建ClientCnxn实例（），并触发两个线程的开启：SendThread，EventThread。根据这两个线程的名字，一个是处理读写数据，一个处理watch事件。</p>
+
+<p>EventThread：触发之后，遍历clientCnxn中管理的waitingevents列表，依次处理（触发watchEvent的process方法）。
+SendEvent：负责发送请求队列，并生成心跳；可以生成ReadThread。</p>
+
+<h2 id="zookeeper运行模式">ZooKeeper运行模式</h2>
+
+<p>ZooKeeper的standalone模式和quorum模式。standalone模式：只有一台机器来运行server进程；quorum模式：使用多台机器，每台机器运行一个server进程，或使用一台机器，在该机器上运行多个server进程</p>
+
+<h2 id="sessionid">sessionId</h2>
+
+<p>当新建一个client连接时，clientCnxn会生成一个sessionId，同时更新【最近一次发送心跳时间】。session由server端维护，如果standalone模式，由单个服务器维护，quorum模式下则是由leader来维护，follower会将client提交的sessionId信息转发给leader。</p>
+
+<p>client端的SendThread会向server发送心跳消息，leader每隔半个tick时间向leader发送一个ping消息，learner返回自从上一个ping之后的session列表。leader中维护一个成为ExpiryQueue的数据结构来处理过期的session。
+（SessionTrackerImpl）生成一个sessionId来关联session。通过session来判断当前client跟server的连接状态。管理过期session通过bucket，每个bucket中包含在指定expirationInterval要过期的session</p>
+
+<h1 id="配置与使用">配置与使用</h1>
+
+<ul>
+  <li>下载ZooKeeper源码</li>
+  <li>在conf文件夹下添加配置文件，文件内容如下:</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tickTime=2000
+dataDir=/var/lib/zookeeper
+clientPort=2181
+</code></pre></div></div>
+
+<p>其中，tickTime：心跳时间，时间单位为ms，最小的session超时时间为2倍的tickTime
+dataDir：内存数据保存位置
+clientPort：监听client连接的端口</p>
+
+<ul>
+  <li>启动server端
+<code class="highlighter-rouge">bin/zkServer.sh start</code></li>
+  <li>将client连接到server
+<code class="highlighter-rouge">bin/zkCli.sh -server 127.0.0.1:2181</code></li>
+  <li>client成功连接之后，就可以通过控制台输入一些命令完成相关操作：
+创建节点：<code class="highlighter-rouge">create /zk_node my_data</code>
+其中，zk_node是节点名称，my_data是该节点关联的数据
+其他操作命令可以通过键入help来进行了解</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>jinyan@jinyan-latitude-e7470:~/Documents/applications/zookeeper/bin$ ./zkCli.sh  -server 127.0.0.1:2181
+Connecting to 127.0.0.1:2181
+Welcome to ZooKeeper!
+[zk: 127.0.0.1:2181(CONNECTED) 0] ls /
+[zookeeper, zk_node]
+[zk: 127.0.0.1:2181(CONNECTED) 1] create /zk_node1 data
+Created /zk_node1
+[zk: 127.0.0.1:2181(CONNECTED) 2] ls /
+[zk_node1, zookeeper, zk_node]
+[zk: 127.0.0.1:2181(CONNECTED) 4] get /zk_node1
+data
+cZxid = 0x9
+ctime = Sat Jun 17 16:19:34 CST 2017
+mZxid = 0x9
+mtime = Sat Jun 17 16:19:34 CST 2017
+pZxid = 0x9
+cversion = 0
+dataVersion = 0
+aclVersion = 0
+ephemeralOwner = 0x0
+dataLength = 4
+numChildren = 0
+[zk: 127.0.0.1:2181(CONNECTED) 5] delete /zk_node
+zk_node1   zk_node
+[zk: 127.0.0.1:2181(CONNECTED) 5] delete /zk_node
+[zk: 127.0.0.1:2181(CONNECTED) 6] ls /
+[zk_node1, zookeeper]
+</code></pre></div></div>
+
+<p>在开发测试时可以以单机模式使用ZooKeeper，但是在线上环境，需要以复制模式来运行
+复制模式下的配置文件</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tickTime=2000
+dataDir=/var/lib/zookeeper
+clientPort=2181
+#监听Client端请求的端口号
+initLimit=5
+syncLimit=2
+server.1=zoo1:2888:3888
+server.2=zoo2:2888:3888
+server.3=zoo3:2888:3888
+#2888：监听同ZooKeeper集群内其他ZooKeeper Server进程通信请求的端口号
+#3888：监听ZooKeeper集群内“leader”选举请求的端口号
+</code></pre></div></div>
+
+<p>建立一个client连接时，需要同时向这多个服务器地址做注册。</p>
+
+<h1 id="使用zookeeper开发">使用ZooKeeper开发</h1>
+
+<h2 id="创建节点">创建节点</h2>
+
+<p>ZooKeeper创建节点时，有四种类型可以选择：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>CreateMode:
+PERSISTENT (0, false, false),//当client失去连接时，该节点不会自动删除
+PERSISTENT_SEQUENTIAL (2, false, true),//当client失去连接时，该节点不会被自动删除，并且创建节点时的名字后会添加一个自增的数字
+EPHEMERAL (1, true, false),//当client失去连接时，该节点会自动删除
+EPHEMERAL_SEQUENTIAL (3, true, true);//当client失去连接时，该节点会被自动删除，并且创建节点时的名字后会添加一个自增的数字
+</code></pre></div></div>
+
+<h2 id="对节点做监听">对节点做监听</h2>
+
+<p>ZooKeeper通过事件机制来对节点的变化做管理，当调用ZooKeeper 的exist接口检查节点是否存在的时候，可以设置在检查的节点上添加一个watcher。
+源码如下：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/**
+ * Return the stat of the node of the given path. Return null if no such a
+ * node exists.
+ * &lt;p&gt;
+ * If the watch is non-null and the call is successful (no exception is thrown),
+ * a watch will be left on the node with the given path. The watch will be
+ * triggered by a successful operation that creates/delete the node or sets
+ * the data on the node.
+ *
+ * @param path the node path
+ * @param watcher explicit watcher
+ * @return the stat of the node of the given path; return null if no such a
+ *         node exists.
+ * @throws KeeperException If the server signals an error
+ * @throws InterruptedException If the server transaction is interrupted.
+ * @throws IllegalArgumentException if an invalid path is specified
+ */
+public Stat exists(final String path, Watcher watcher)
+    throws KeeperException, InterruptedException
+{
+    final String clientPath = path;
+    PathUtils.validatePath(clientPath);
+
+    // the watch contains the un-chroot path
+    WatchRegistration wcb = null;
+    if (watcher != null) {
+        wcb = new ExistsWatchRegistration(watcher, clientPath);
+    }
+
+    final String serverPath = prependChroot(clientPath);
+
+    RequestHeader h = new RequestHeader();
+    h.setType(ZooDefs.OpCode.exists);
+    ExistsRequest request = new ExistsRequest();
+    request.setPath(serverPath);
+    request.setWatch(watcher != null);
+    SetDataResponse response = new SetDataResponse();
+    ReplyHeader r = cnxn.submitRequest(h, request, response, wcb);
+    if (r.getErr() != 0) {
+        if (r.getErr() == KeeperException.Code.NONODE.intValue()) {
+            return null;
+        }
+        throw KeeperException.create(KeeperException.Code.get(r.getErr()),
+                clientPath);
+    }
+
+    return response.getStat().getCzxid() == -1 ? null : response.getStat();
+}
+</code></pre></div></div>
+
+<p>节点注册watcher：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> zk.exists("/registry", this);
+            List&lt;String&gt; nodeList = zk.getChildren("/registry", this);
+            for (String node : nodeList) {
+                zk.exists("/registry"+ '/' + node, this);
+            }
+</code></pre></div></div>
+
+<p>在/registry下创建节点，触发的eventType为：NodeChildrenChanged，path为：/registry
+删除/reigistry下的节点/app10000000015，触发的eventType为：NodeDeleted，path为：/registry/app10000000015</p>
+
+<h1 id="其他">其他</h1>
+
+<p>项目<a href="https://github.com/swa19/hot-deploy">hot-deploy</a>中使用了ZooKeeper做分布式管理</p>
+
+<h1 id="参考">参考：</h1>
+
+<p><a href="http://www.cnblogs.com/zhangs1986/p/6564839.html">一步到位分布式开发Zookeeper实现集群管理</a></p>
+
+<p><a href="http://blog.csdn.net/dslztx/article/details/51079457">ZooKeeper安装与运行</a></p>
+
+                </article>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<footer class="footer" role="contentinfo">
+	<div class="container">
+		<div class="footer-col-wrapper">
+			<div class="footer-col footer-col-2">
+				<ul class="social-media-list">
+					
+					<li>
+						<a href="https://github.com/swa19"><span class="icon icon--github"><svg viewBox="0 0 16 16"><path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/></svg>
+</span><span class="username">swa19</span></a>
+
+					</li>
+					
+				</ul>
+			</div>
+			<div class="footer-col footer-col-3">
+				<p>我不是个伟大的程序员，我只是个有着一些优秀习惯的好程序员--by Kent Beck</p>
+			</div>
+		</div>
+	</div>
+</footer>
+
+
+</body>
+</html>

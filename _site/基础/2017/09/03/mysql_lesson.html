@@ -1,0 +1,1072 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>开发遇到过的MYSQL坑 - </title>
+	<link rel="stylesheet" href="/css/main.css">
+	<link rel="stylesheet" href="/css/index.css">
+	<link rel="stylesheet" href="/css/fontawesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="/css/syntax.css">
+	<link rel="canonical" href="/%E5%9F%BA%E7%A1%80/2017/09/03/mysql_lesson.html">
+	<link rel="alternate" type="application/rss+xml" title="" href="/feed.xml">
+	<meta name="keywords" content="开发遇到过的MYSQL坑, , ">
+	<meta name="description" content="">
+	<script src="/js/jquery.min.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+	<script src="/js/html5shiv.js"></script>
+	<script src="/js/holder.min.js"></script>
+	<script src="/js/respond.js"></script>
+	<script src="/js/application.js"></script>
+	<script src="/js/lessismore.js"></script>
+  	<style type="text/css">
+	  	.docs-content{
+	  		margin-bottom: 10px;
+	  	}
+  	</style>
+</head>
+
+<body class="index">
+
+<header class="navbar navbar-inverse navbar-fixed-top docs-nav" role="banner">
+  <div class="container">
+    <div class="navbar-header">
+      <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+      <ul class="nav navbar-nav">    
+        <li>
+          <a href="/">主页</a>
+        </li>
+        <li>
+          <a href="/categories/">类别</a>
+        </li>
+        <li>
+          <a href="/tags">标签</a>
+        </li>
+      </ul>
+
+    </nav>
+  </div>
+
+</header>
+<div class="docs-header" id="content">
+  <div class="container">
+  	
+		    <h1></h1>
+      <p>不积跬步，无以至千里</p>
+      
+  </div>
+</div>
+<!---->
+<!--<div class="banner">
+    <div class="container">
+        
+        <a href="/categories/#基础-ref">基础</a>
+        /
+        <a href="/tags/#mysql-ref">mysql</a>
+        
+    </div>
+</div>
+-->
+<!---->
+
+<div class="container docs-container">
+    <div class="row">
+        <div class="col-md-3">
+        <div class="sidebar hidden-print" role="complementary">
+        <div id="navigation">
+    <h1>目录</h1>
+    <ul class="nav sidenav">
+        
+        
+        
+        
+        
+        
+        <li><a href="#year_2019">2019</a>
+            <ul class="nav">
+                <li><a href="#month_2019_02">02</a></li>
+                
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+    </ul>
+    </li>
+    <li><a href="#year_2018">2018</a>
+        <ul class="nav">
+            <li><a href="#month_2018_11">11</a></li>
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_10">10</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_09">09</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_08">08</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_07">07</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_06">06</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_05">05</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_04">04</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_03">03</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_02">02</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_01">01</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+    </ul>
+    </li>
+    <li><a href="#year_2017">2017</a>
+        <ul class="nav">
+            <li><a href="#month_2017_12">12</a></li>
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2017_11">11</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2017_09">09</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2017_08">08</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+            </ul>
+        </li>
+        
+            
+        </ul>
+</div>
+
+
+
+        </div>
+        </div>
+        <div class="col-md-9" role="main">
+            <div class="panel docs-content">
+            <div class="wrapper">
+                <header class="post-header">
+                    <h1 class="post-title">开发遇到过的MYSQL坑</h1>
+                    <div class="meta"><span class="postdate">2017-09-03 22:49:03</span></div>
+                    <br/>
+                </header>
+                <article class="post-content">
+                    <ul id="markdown-toc">
+  <li><a href="#金额表示" id="markdown-toc-金额表示">金额表示</a></li>
+  <li><a href="#null" id="markdown-toc-null">NULL</a></li>
+  <li><a href="#case-when-then" id="markdown-toc-case-when-then">CASE-WHEN-THEN</a></li>
+  <li><a href="#join-on" id="markdown-toc-join-on">join on</a></li>
+  <li><a href="#in" id="markdown-toc-in">in</a></li>
+  <li><a href="#unionunion-all" id="markdown-toc-unionunion-all">union，union all</a></li>
+  <li><a href="#charset" id="markdown-toc-charset">charset</a></li>
+  <li><a href="#alias" id="markdown-toc-alias">alias</a></li>
+</ul>
+
+<p>在Java开发中，数据存储大多使用的是MySQL，这里记录下开发过程中使用MySQL出现的问题，总结教训，避免再次出现问题。</p>
+
+<h1 id="金额表示">金额表示</h1>
+
+<p>今天又掉了个坑，是个小坑，从数据库中取出的金额跟实际不符，查看数据表的字段类型的时候发现问题：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>`pay_once` float(10,3) NOT NULL DEFAULT '0.000' COMMENT '接口花费'
+</code></pre></div></div>
+
+<p>但是在java中，float是不能表示精确的小数的，所以在表示金额的时候应该使用<code class="highlighter-rouge">DECIMAL</code>，对应到Java中的类型就是<code class="highlighter-rouge">BigDecimal</code>。</p>
+
+<p>依旧是一个应该形成规范的问题</p>
+
+<h1 id="null">NULL</h1>
+
+<p>今天发布遇到的问题，在取数据的时候，判断值是否为0来进行筛选。上线之后发现筛选得到的数据数量不对。仔细检查sql没有问题，查看筛选数据的时候才发现这个字段绝大部分都是NULL。在建表语句中，这个字段定义为：<code class="highlighter-rouge">tinyint(4) default 0 comment '..'</code>，但实际在插入数据的时候直接插入了NULL。而NULL只能通过is来做判断，于是导致了数据漏掉的情况。这个问题其实是Mysql使用不规范，但作为开发，还是要考虑到其他人的各种操作不规范的情况，永远不要指望别人照着自己的标准去做，只有这样才能避免频繁踩到别人的坑。</p>
+
+<h1 id="case-when-then">CASE-WHEN-THEN</h1>
+
+<p>在使用CASE-WHEN做字段的值转换的时候，如果没有else做最后赋值，在条件均不满足的情况下，mysql会以null赋值给选定的字段。如果不希望字段被赋值为null的话，最好加上在最后加上else做一个对未列出条件的补充。</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>SELECT CASE WHEN T.column_name='3'  THEN '3' WHEN T.column_name='4' THEN '4' ELSE '2' END AS columnName FROM table T
+</code></pre></div></div>
+
+<h1 id="join-on">join on</h1>
+
+<p>首先看两个sql</p>
+
+<p><code class="highlighter-rouge">select * from table1 left join table2 on table1.column1=table2.column2 and table2.column3=#{value1} where table1.column1=#{value2}</code>
+<code class="highlighter-rouge">select * from table1 left join table2 on table1.column1=table2.column2 where table1.column1=#{value2} and table2.column3=#{value1}</code></p>
+
+<p>在使用外联结时，以左联结为例，在查询时，会依次拿左表中的数据，根据关联字段column1，去table2中找符合条件的数据，即table2.column2和column1相等，并且table2.column3=value1，然后再执行where条件
+所以在查询的时候一定要清楚各个关键词的优先级，查询的先后顺序不同，最终查的的结果也不同。</p>
+
+<h1 id="in">in</h1>
+
+<p>看一个MySQL的查询</p>
+
+<p><code class="highlighter-rouge">select id from table1 where column1='value'</code>
+<code class="highlighter-rouge">select * from table where id in ();</code></p>
+
+<p>对应的java代码就是</p>
+
+<p><code class="highlighter-rouge">List&lt;Long&gt;ids=queryIdsByCondition();</code>
+<code class="highlighter-rouge">List&lt;Object&gt;items=queryByIds(ids);</code></p>
+
+<p>问题就在于当ids为空的时候，在做第二个查询前未判断是否为空，而是直接做查询的时候就会出现sql异常。这个问题排查起来很简单，只是容易疏忽造成问题，所以需要养成习惯，在需要传递一个List到一个MySQL的查询语句的时候，必须加上判断逻辑。</p>
+
+<h1 id="unionunion-all">union，union all</h1>
+
+<p>最近做的一个需求，需要根据查询条件的不同查询不同的表，然后把各个表查的的结果组合在一起后分页返回。看了下现有的代码，是写了三个sql语句做分别查询，查询完成之后放在一个List中，然后subList返回查的的结果数据。其实这里完全可以用MySQL自带的union关键字</p>
+
+<p>首先区分下union和union all的区别</p>
+
+<p>这两个都是把查的的结果组合在一起，但区别在于union会合并重复的数据，而union all不会做合并操作</p>
+
+<p>具体用法很简单，并且可以对一个单独的select添加order by和limit，也可以对组合后的所有数据做order by和limit</p>
+
+<h1 id="charset">charset</h1>
+
+<p>今天出现的一个奇怪的问题，MySQL按照一个类型是varchar的字段排序，这个字段有’10001002710030005245’这种纯数字的，也有’ANS201603020283’这种以字母开头的，那么通过orderby正序排列的时候，我期待的是所有纯数字的排在最前边，但是事实是：</p>
+
+<p><img src="/_pic/201709/Screenshot from 2017-09-07 10-38-20.png" alt="" /></p>
+
+<p><img src="/_pic/201709/Screenshot from 2017-09-07 10-38-59.png" alt="" /></p>
+
+<p>把最后那条诡异的数据的LOAN_NO手工输入，更新后，再次正序排列，这条数据就成为了</p>
+
+<p><img src="/_pic/201709/Screenshot from 2017-09-07 10-52-53.png" alt="" /></p>
+
+<p>百度后，发现了一个解决方案：<code class="highlighter-rouge">SELECT * FROM {$tableName} order by  CONVERT(${columnName} USING gbk);</code></p>
+
+<p>如此排序问题解决。</p>
+
+<p>在我的建表语句中已经设定了charset=utf8，不太明白为什么数据库中会存在其他编码的字符。请教了下DBA同学，有一个可能是输入时强制指定了字符编码，且指定的字符编码不为UTF8.</p>
+
+<p>不管这个问题是怎样产生的，一个通用的解决方案是，所有的数据库使用统一的编码格式，即目前通用的UTF8，或者UTF8MB4就可以避免这些诡异的编码问题</p>
+
+<p>另外需要注意的是，这种转换字符之后做排序的做法不适用于BigDecimal和Int等类型。</p>
+
+<h1 id="alias">alias</h1>
+
+<p>今天线上sql查询数据时sql报错，看下报错的sql：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;select id="queryData"&gt;
+    SELECT &lt;include refid="columns"&gt;&lt;/include&gt;
+    FROM table1 t1
+    &lt;if test="condition1"&gt;
+        INNER JOIN table2 t2 ON t1.column1 = t2.column1
+    &lt;/if&gt;
+    &lt;if test="condition2"&gt;
+        INNER JOIN table3 t2 ON t1.column1 = t2.column1
+    &lt;/if&gt;  
+    LEFT JOIN table4 t4 ON t1.column1 = t4.column1   
+&lt;/select&gt;
+</code></pre></div></div>
+
+<p>错误日志：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>### Error querying database.  Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Not unique table/alias: 'kr'
+### The error may exist in dao.xml
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Not unique table/alias: 'kr'
+</code></pre></div></div>
+
+<p>在MySQL中，对数据表的别名是不能够重复的，否则就会出现上边的问题，所以在mybatis中使用判断条件的时候，要注意判断条件的情况</p>
+
+                </article>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<footer class="footer" role="contentinfo">
+	<div class="container">
+		<div class="footer-col-wrapper">
+			<div class="footer-col footer-col-2">
+				<ul class="social-media-list">
+					
+					<li>
+						<a href="https://github.com/swa19"><span class="icon icon--github"><svg viewBox="0 0 16 16"><path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/></svg>
+</span><span class="username">swa19</span></a>
+
+					</li>
+					
+				</ul>
+			</div>
+			<div class="footer-col footer-col-3">
+				<p>我不是个伟大的程序员，我只是个有着一些优秀习惯的好程序员--by Kent Beck</p>
+			</div>
+		</div>
+	</div>
+</footer>
+
+
+</body>
+</html>

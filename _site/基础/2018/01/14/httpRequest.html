@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Http请求和响应 - </title>
+	<link rel="stylesheet" href="/css/main.css">
+	<link rel="stylesheet" href="/css/index.css">
+	<link rel="stylesheet" href="/css/fontawesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="/css/syntax.css">
+	<link rel="canonical" href="/%E5%9F%BA%E7%A1%80/2018/01/14/httpRequest.html">
+	<link rel="alternate" type="application/rss+xml" title="" href="/feed.xml">
+	<meta name="keywords" content="Http请求和响应, , ">
+	<meta name="description" content="">
+	<script src="/js/jquery.min.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+	<script src="/js/html5shiv.js"></script>
+	<script src="/js/holder.min.js"></script>
+	<script src="/js/respond.js"></script>
+	<script src="/js/application.js"></script>
+	<script src="/js/lessismore.js"></script>
+  	<style type="text/css">
+	  	.docs-content{
+	  		margin-bottom: 10px;
+	  	}
+  	</style>
+</head>
+
+<body class="index">
+
+<header class="navbar navbar-inverse navbar-fixed-top docs-nav" role="banner">
+  <div class="container">
+    <div class="navbar-header">
+      <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+      <ul class="nav navbar-nav">    
+        <li>
+          <a href="/">主页</a>
+        </li>
+        <li>
+          <a href="/categories/">类别</a>
+        </li>
+        <li>
+          <a href="/tags">标签</a>
+        </li>
+      </ul>
+
+    </nav>
+  </div>
+
+</header>
+<div class="docs-header" id="content">
+  <div class="container">
+  	
+		    <h1></h1>
+      <p>不积跬步，无以至千里</p>
+      
+  </div>
+</div>
+<!---->
+<!--<div class="banner">
+    <div class="container">
+        
+        <a href="/categories/#基础-ref">基础</a>
+        /
+        <a href="/tags/#java-ref">java</a>
+        
+    </div>
+</div>
+-->
+<!---->
+
+<div class="container docs-container">
+    <div class="row">
+        <div class="col-md-3">
+        <div class="sidebar hidden-print" role="complementary">
+        <div id="navigation">
+    <h1>目录</h1>
+    <ul class="nav sidenav">
+        
+        
+        
+        
+        
+        
+        <li><a href="#year_2019">2019</a>
+            <ul class="nav">
+                <li><a href="#month_2019_02">02</a></li>
+                
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+    </ul>
+    </li>
+    <li><a href="#year_2018">2018</a>
+        <ul class="nav">
+            <li><a href="#month_2018_11">11</a></li>
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_10">10</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_09">09</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_08">08</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_07">07</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_06">06</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_05">05</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_04">04</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_03">03</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_02">02</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_01">01</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+    </ul>
+    </li>
+    <li><a href="#year_2017">2017</a>
+        <ul class="nav">
+            <li><a href="#month_2017_12">12</a></li>
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2017_11">11</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2017_09">09</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2017_08">08</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+            </ul>
+        </li>
+        
+            
+        </ul>
+</div>
+
+
+
+        </div>
+        </div>
+        <div class="col-md-9" role="main">
+            <div class="panel docs-content">
+            <div class="wrapper">
+                <header class="post-header">
+                    <h1 class="post-title">Http请求和响应</h1>
+                    <div class="meta"><span class="postdate">2018-01-14 17:28:11</span></div>
+                    <br/>
+                </header>
+                <article class="post-content">
+                    <ul id="markdown-toc">
+  <li><a href="#参考" id="markdown-toc-参考">参考</a></li>
+</ul>
+
+<p>前几天遇到个问题,在一个需求中,需要通过Http调用第三方的接口,这个接口指定了请求类型为POST请求,请求接口为
+<img src="/_pic/201801/httpReq.png" alt="" /></p>
+
+<p>由于之前已经写过类似的Http请求,这次可以直接服用原有的HttpClient的配置,代码如下:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@PostConstruct
+public void setUp() {
+   AsyncHttpClientConfig.Builder builder = new AsyncHttpClientConfig.Builder();
+   builder.setConnectTimeout(50000);
+   builder.setRequestTimeout(50000);
+   builder.setAllowPoolingConnections(true);
+   builder.setCompressionEnforced(true);
+   builder.setPooledConnectionIdleTimeout(3 * 60 * 1000);
+   client = new AsyncHttpClient(builder.build());
+
+}
+@Override
+public RespDto request(ReqDto reqDto) {
+   RespDto respDto = new RespDto();
+   try {
+       String url = postLoanAddress + CASE_SYNC_API;
+       AsyncHttpClient.BoundRequestBuilder requestBuilder = client.preparePost(url);
+       requestBuilder.addQueryParam("time", DateUtil.date2Str(reqDto.getSyncTime(), "yyyy-MM-dd HH:mm:ss"));
+       requestBuilder.addQueryParam("total", reqDto.getSyncCount().toString());
+       requestBuilder.addQueryParam("data", JSON.toJSONString(reqDto.getSyncData()));
+       requestBuilder.setMethod("POST");
+       Request request = requestBuilder.build();
+       ListenableFuture&lt;Response&gt; responseFuture = client.executeRequest(request);
+       Response response = responseFuture.get();
+       if (!Strings.isNullOrEmpty(response.getResponseBody())) {
+           caseSyncRespDto = JSON.parseObject(response.getResponseBody(), RespDto.class);
+       }
+   } catch (Exception e) {
+       logger.error("request:", e);
+       throw new Exception("处理失败,请稍后再试");
+   }
+   return respDto;
+}
+</code></pre></div></div>
+
+<p>这里就出现了个问题,当data的长度比较短的时候,请求可以发送,且接收者能接收到请求;但长度再长(数组长度为100)的话,接收者无法接收到请求:
+<img src="/_pic/201801/untitled.png" alt="" /></p>
+
+<p>如图,返回错误码为400.
+首先怀疑是发送的请求参数的问题,然后查看BoundRequestBuilder的API,发现有个方法<code class="highlighter-rouge">setBody()</code>,抱着试试的想法,把200条数据放在了body里并发送,得到了正确的响应结果:200.网上查这两个API有什么区别,没查想要的结果,结果在翻看搜索结果的时候看到GET和POST请求的区别,突然想到,GET请求是把请求参数直接拼在请求路径后,而POST则是把数据放入body中,而且这个body的大小不受限制.这样看来,这个QueryParam就是拼接在路径后的参数,而body就是放在请求体的数据了.</p>
+
+<p>正常来说,在SpringMVC中,可以通过@RequestParam注解,直接获取路径后的key-value参数,那么POST请求的请求数据如何获取呢?
+我做了几个测试方法</p>
+
+<ol>
+  <li>key-value形式的请求可通过springmvc直接映射到实体类中:
+通过浏览器访问:<code class="highlighter-rouge">http://127.0.0.1:8082/test?syncTime=20170101120000&amp;syncCount=1&amp;syncData=3</code>
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@RequestMapping("/test")
+ @ResponseBody
+ public String index(CaseSyncReqDto body) {
+     logger.info("body:{}", body);
+     Map&lt;String, Object&gt; result = Maps.newHashMap();
+     result.put("code", 1);
+     result.put("msg", "c成功");
+     return JSON.toJSONString(result);
+ }
+</code></pre></div>    </div>
+    <p>日志显示:<code class="highlighter-rouge">19:40:34.254 [http-nio-8082-exec-1] INFO swa.controller.Index - body:CaseSyncReqDto{syncTime='20170101120000', syncCount=1, syncData='3'}</code>
+也就是说,对于key-value的格式,spring可以自转成对象,但是这里的syncTime是String类型的,通过Spring注解<code class="highlighter-rouge">@DateTimeFormat</code>可以将String类型自动转化为Date类型</p>
+  </li>
+  <li>如果通过POST请求发送的数据并不是key-value形式的,此时Spring将无法完成自动转换.</li>
+</ol>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@RequestMapping("/../syncCollector")
+@ResponseBody
+public String index(@RequestBody CaseSyncReqDto body) {
+    logger.info("param:{},{},{}", time, total, data);
+    logger.info("body:{}", body);
+    Map&lt;String, Object&gt; result = Maps.newHashMap();
+    result.put("code", 1);
+    result.put("msg", "c成功");
+    return JSON.toJSONString(result);
+}
+</code></pre></div></div>
+<p>此时发送方收到错误响应码415,将doby的类型改为String类型,此时发送方可得到正确的响应码200.
+也就是说,对于非key-value的请求,SpringMVC无法对接收到的请求做自动转换.</p>
+
+<p>网上找到的一个POST请求的content-type:</p>
+<ol>
+  <li>
+    <p>application/x-www-form-urlencoded
+POST最常见的提交数据的方式,浏览器的原生 form 表单，如果不设置 enctype 属性，那么最终就会以 application/x-www-form-urlencoded 方式提交数据.提交的数据按照 key1=val1&amp;key2=val2 的方式进行编码，key 和 val 都进行了 URL 转码.用 Ajax 提交数据时，也是使用这种方式。例如 JQuery 和 QWrap 的 Ajax，Content-Type 默认值都是「application/x-www-form-urlencoded;charset=utf-8」</p>
+  </li>
+  <li>
+    <p>multipart/form-data
+一般用来上传文件</p>
+  </li>
+  <li>application/json</li>
+  <li>text/xml</li>
+</ol>
+
+<h1 id="参考">参考</h1>
+<p><a href="http://blog.csdn.net/muier/article/details/50946848">post接口提交参数方式</a></p>
+
+                </article>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<footer class="footer" role="contentinfo">
+	<div class="container">
+		<div class="footer-col-wrapper">
+			<div class="footer-col footer-col-2">
+				<ul class="social-media-list">
+					
+					<li>
+						<a href="https://github.com/swa19"><span class="icon icon--github"><svg viewBox="0 0 16 16"><path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/></svg>
+</span><span class="username">swa19</span></a>
+
+					</li>
+					
+				</ul>
+			</div>
+			<div class="footer-col footer-col-3">
+				<p>我不是个伟大的程序员，我只是个有着一些优秀习惯的好程序员--by Kent Beck</p>
+			</div>
+		</div>
+	</div>
+</footer>
+
+
+</body>
+</html>

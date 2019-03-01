@@ -31,12 +31,4 @@ plugins:
   
 include: ['/_pic']
 
-
-
-
-
-
-
-
-
-theme: jekyll-theme-slate
+# theme: jekyll-theme-slate

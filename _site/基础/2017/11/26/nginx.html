@@ -1,0 +1,1209 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Nginx学习总结 - </title>
+	<link rel="stylesheet" href="/css/main.css">
+	<link rel="stylesheet" href="/css/index.css">
+	<link rel="stylesheet" href="/css/fontawesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="/css/syntax.css">
+	<link rel="canonical" href="/%E5%9F%BA%E7%A1%80/2017/11/26/nginx.html">
+	<link rel="alternate" type="application/rss+xml" title="" href="/feed.xml">
+	<meta name="keywords" content="Nginx学习总结, , ">
+	<meta name="description" content="">
+	<script src="/js/jquery.min.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+	<script src="/js/html5shiv.js"></script>
+	<script src="/js/holder.min.js"></script>
+	<script src="/js/respond.js"></script>
+	<script src="/js/application.js"></script>
+	<script src="/js/lessismore.js"></script>
+  	<style type="text/css">
+	  	.docs-content{
+	  		margin-bottom: 10px;
+	  	}
+  	</style>
+</head>
+
+<body class="index">
+
+<header class="navbar navbar-inverse navbar-fixed-top docs-nav" role="banner">
+  <div class="container">
+    <div class="navbar-header">
+      <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+      <ul class="nav navbar-nav">    
+        <li>
+          <a href="/">主页</a>
+        </li>
+        <li>
+          <a href="/categories/">类别</a>
+        </li>
+        <li>
+          <a href="/tags">标签</a>
+        </li>
+      </ul>
+
+    </nav>
+  </div>
+
+</header>
+<div class="docs-header" id="content">
+  <div class="container">
+  	
+		    <h1></h1>
+      <p>不积跬步，无以至千里</p>
+      
+  </div>
+</div>
+<!---->
+<!--<div class="banner">
+    <div class="container">
+        
+        <a href="/categories/#基础-ref">基础</a>
+        /
+        <a href="/tags/#ops-ref">ops</a>
+        
+    </div>
+</div>
+-->
+<!---->
+
+<div class="container docs-container">
+    <div class="row">
+        <div class="col-md-3">
+        <div class="sidebar hidden-print" role="complementary">
+        <div id="navigation">
+    <h1>目录</h1>
+    <ul class="nav sidenav">
+        
+        
+        
+        
+        
+        
+        <li><a href="#year_2019">2019</a>
+            <ul class="nav">
+                <li><a href="#month_2019_02">02</a></li>
+                
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+    </ul>
+    </li>
+    <li><a href="#year_2018">2018</a>
+        <ul class="nav">
+            <li><a href="#month_2018_11">11</a></li>
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_10">10</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_09">09</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_08">08</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_07">07</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_06">06</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_05">05</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_04">04</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_03">03</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_02">02</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_01">01</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+    </ul>
+    </li>
+    <li><a href="#year_2017">2017</a>
+        <ul class="nav">
+            <li><a href="#month_2017_12">12</a></li>
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2017_11">11</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2017_09">09</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2017_08">08</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+            </ul>
+        </li>
+        
+            
+        </ul>
+</div>
+
+
+
+        </div>
+        </div>
+        <div class="col-md-9" role="main">
+            <div class="panel docs-content">
+            <div class="wrapper">
+                <header class="post-header">
+                    <h1 class="post-title">Nginx学习总结</h1>
+                    <div class="meta"><span class="postdate">2017-11-26 16:45:03</span></div>
+                    <br/>
+                </header>
+                <article class="post-content">
+                    <ul id="markdown-toc">
+  <li><a href="#基本概念" id="markdown-toc-基本概念">基本概念</a></li>
+  <li><a href="#nginx" id="markdown-toc-nginx">Nginx</a></li>
+  <li><a href="#nginx负载均衡" id="markdown-toc-nginx负载均衡">Nginx负载均衡</a></li>
+  <li><a href="#sticky模块" id="markdown-toc-sticky模块">sticky模块</a></li>
+  <li><a href="#nginx-安装" id="markdown-toc-nginx-安装">nginx 安装</a></li>
+  <li><a href="#实际遇到的问题" id="markdown-toc-实际遇到的问题">实际遇到的问题</a></li>
+</ul>
+
+<p>最近要做一个服务反向代理，涉及运维层面的东西之前了解的不多，先了解下基本概念。</p>
+
+<h1 id="基本概念">基本概念</h1>
+<p>代理服务器：一般指通过局域网内部的机器通过代理服务器发送请求到互联网上的服务器，代理服务器一般作用在客户端，通过客户端的软件，将HTTP请求转发到其他不同的服务器端，实现请求的分发。</p>
+
+<p>反向代理服务器：反向代理服务器作用在服务器端，在服务器端接收客户端的请求，然后将请求分发给具体的服务器进行处理，然后再将服务器的相应结果反馈给客户端。</p>
+
+<p>Web服务器：提供HTTP的访问，有Nginx，Apache，IIS等。Web服务器的工作原理包括四个步骤：连接过程，请求过程，应答过程和关闭连接。</p>
+
+<p>CDN缓存服务器：属于缓存服务器的角色，而且属于反向代理，将这些服务器分布在用户访问相对集中的地区或网络中，在用户访问网站时，利用全局负载技术把用户的访问指向距离最近的工作征程的缓存服务器上，由缓存服务器直接响应用户请求，从而使得用户就近获取所需内容，降低网络拥塞，提高用户访问响应速度和命中率。CDN的关键技术主要有内容存储和分发技术。</p>
+
+<h1 id="nginx">Nginx</h1>
+<p>Nginx的特性我理解有两个：高并发，负载均衡</p>
+
+<p>Nginx是如何实现高并发的</p>
+
+<p>Nginx在处理连接请求时，采用了异步非阻塞的方式。为什么Nginx的性能要比Apache高得多？这得益于Nginx使用了最新的epoll（Linux 2.6内核）和kqueue（freebsd）网络I/O模型</p>
+
+<h1 id="nginx负载均衡">Nginx负载均衡</h1>
+<p>Nginx的负载均衡策略可以划分为两大类,即内置策略和扩展策略.其中内置策略主要包含轮询,加权轮询和IPHash三种.使用的配置主要是proxy_pass指令和upstream指令.</p>
+
+<p>以下为一个示例配置:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>upstream backend_collection {
+        server 167.140.3.107:80 max_fails=3 fail_timeout=10s;
+        server 167.140.3.111:80 max_fails=3 fail_timeout=10s;
+        server 167.140.3.112:80 max_fails=3 fail_timeout=10s;
+    }
+
+server {
+        listen       80;
+        server_name  host.com;
+
+        location / {
+                             proxy_pass http://backend_collection;  #配置被代理服务器的地址,可以是主机名称,也可以是IP地址加端口号的形式.如果被代理服务器是一组服务器的话,可以使用upstream指令.
+                             #proxy_read_timeout      90s;
+                             proxy_connect_timeout   1800s;
+                             proxy_read_timeout      1800s;
+                             proxy_send_timeout 1800s;
+                             proxy_buffer_size  16k;
+                             proxy_buffers      16 128k;
+                             proxy_busy_buffers_size 256k;
+                             proxy_temp_file_write_size 256k;
+                             proxy_next_upstream     error;
+                             proxy_set_header  X-Real-IP  $remote_addr;
+                             proxy_set_header        Host $http_host;
+                             client_max_body_size       30m;
+                             client_body_buffer_size    256k;
+                         }
+        }
+</code></pre></div></div>
+
+<p>nginx默认使用轮询策略,加权轮询的概念很好理解,就是对配置的server地址增加权重的配置</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>upstream backend_collection {
+        server 167.140.3.107:80 max_fails=3 fail_timeout=10s weight=3;
+        server 167.140.3.111:80 max_fails=3 fail_timeout=10s weight=2;
+        server 167.140.3.112:80 max_fails=3 fail_timeout=10s;
+    }
+</code></pre></div></div>
+
+<p>默认情况下,权重为1,第一个server地址权重最高,为1/2</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>upstream backend_collection {
+        server 167.140.3.107:80 max_fails=3 fail_timeout=10s;
+        server 167.140.3.111:80 max_fails=3 fail_timeout=10s;
+        server 167.140.3.112:80 max_fails=3 fail_timeout=10s;
+        ip_hash;
+    }
+</code></pre></div></div>
+
+<p>根据客户端的IP,将请求分发到不同的服务器上,实现按照ip做负载均衡</p>
+
+<h1 id="sticky模块">sticky模块</h1>
+
+<p>除了以上负载均衡策略之外,nginx还提供了一个模块,使得可以基于cookie的负载均衡解决方案:sticky模块.安装配置好之后,请求到达nginx上后,从cookie中取出指定的cookie,并根据cookie中的值,按照一定的策略请求服务器.如果到来的请求中不包含指定的cookie,nginx会在请求中添加一个cookie值.</p>
+
+<p>当然,这种方式要求浏览器不能禁用cookie.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wget https://bitbucket.org/nginx-goodies/nginx-sticky-module-ng/get/master.tar.gz   #下载nginx-sticky模块
+wget http://nginx.org/download/nginx-1.12.2.tar.gz  #下载nginx
+tar -xzvf nginx-1.12.2.tar.gz
+tar -xzvf master.tar.gz
+groupadd nginx
+useradd -g nginx -s /sbin/nologin nginx
+mkdir -p /usr/local/nginx
+cd nginx-1.12.2
+./configure --prefix=/usr/local/nginx --with-http_stub_status_module --with-http_ssl_module  --with-http_realip_module --add-module=/root/nginx-goodies-nginx-sticky-module-ng-08a395c66e42  --user=nginx --group=nginx
+make
+sudo make install
+/usr/local/nginx/sbin/nginx  #启动nginx
+</code></pre></div></div>
+
+<p>安装sticky模块需要openssl支持,安装步骤如下:</p>
+
+<ul>
+  <li>1.OpenSSL安装</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wget https://www.openssl.org/source/openssl-1.1.0g.tar.gz
+tar -xzvf openssl-1.1.0g.tar.gz
+cd openssl-1.1.0g
+./config  shared zlib-dynamic enable-camellia
+make depend
+make
+make test
+sudo make install
+</code></pre></div></div>
+
+<ul>
+  <li>2.配置nginx sticky</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>upstream backend_collection {
+        sticky;
+        server 167.140.3.107:80 max_fails=3 fail_timeout=10s weight=3;
+        server 167.140.3.111:80 max_fails=3 fail_timeout=10s weight=2;
+        server 167.140.3.112:80 max_fails=3 fail_timeout=10s;
+    }
+</code></pre></div></div>
+
+<p>默认情况下,添加的cookie的key为route,当然,也可以通过<code class="highlighter-rouge">sticky name=${key}</code>的方式指定key.</p>
+
+<p>另外nginx plus提供了三种会话保持方法,需要注意的是nginx plus是收费版本.</p>
+
+<ul>
+  <li>1.sticky cookie方法</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>upstream backend {  
+    sticky cookie srv_id expires=1h domain=.example.com path=/;  
+    server backend1.example.com;  
+    server backend2.example.com;    
+}
+</code></pre></div></div>
+
+<p>本例中，srv_id 参数设置用来设置或者检测的cookie名称。可选参数expires指定浏览器保存这个cookie的时长。可选参数domain定义cookie设置到的域名。可选参数path定义cookie的保存路径。这是最简单的会话持久方法。</p>
+
+<ul>
+  <li>2.sticky route方法</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    upstream backend {  
+        sticky route $route_cookie $route_uri;
+        server backend1.example.com route=a;  
+        server backend2.example.com route=b;  
+
+    }  
+</code></pre></div></div>
+
+<p>通过这个方法，Nginx在第一次接收到请求的时候给这个客户端分配一个“路由”。所有接下来的请求都会和server指令的route参数对比找出请求将被代理到的服务器。路由信息可以从cookie或URI中获取。</p>
+
+<ul>
+  <li>3.cookie learn 方法</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>upstream backend {  
+  server backend1.example.com;  
+  server backend2.example.com;  
+
+  sticky learn create=$upstream_cookie_sessionid  
+      lookup=$cookie_sessionid  
+      zone=client_sessions:1m  
+      timeout=1h;  
+}
+</code></pre></div></div>
+
+<p>Nginx首先通过检查请求和响应来查找会话ID。接着Nginx就知道哪个上游服务器对应哪个会话ID。通常，这些ID是通过HTTP cookie传递的。如果一个请求包含一个已经识别过的会话ID，Nginx直接发送这个请求给相应的服务器.
+本例中，其中一个上游服务器通过在响应中设置cookie “SESSIONID” 来创建一个会话。必填参数create指定一个变量表示一个新的会话是如何创建的。</p>
+
+<p>在我们的示例中，新的会话是通过上游服务器发送的cookie “SESSIONID”创建的。必填参数lookup指定如何搜索存在的会话。示例中，存在的会话在客户端发送的cookie “SESSIONID”中搜索。必填参数zone指定所有会话信息保存的共享内存空间。我们这个例子中，空间名为client_sessions，大小为1M。</p>
+
+<p>这是一个更复杂的会话持久方法，因为他不需要在客户端保存任何cookie：所有信息保存在服务端的共享内存空间里。</p>
+
+<h1 id="nginx-安装">nginx 安装</h1>
+<ol>
+  <li>安装wget:yum -y install wget</li>
+  <li>安装依赖库:yum -y install zlib zlib-devel openssl openssl–devel pcre pcre-devel</li>
+  <li>下载安装包:wget http://nginx.org/download/nginx-1.12.2.tar.gz</li>
+  <li>解压tar -xzvf nginx-1.12.2.tar.gz</li>
+  <li>groupadd nginx</li>
+  <li>useradd -g nginx -s /sbin/nologin nginx</li>
+  <li>mkdir -p /usr/local/nginx</li>
+  <li>编译安装:cd nginx-1.12.2 &amp;&amp; ./configure –prefix=/usr/local/nginx –user=nginx –group=nginx &amp;&amp;  make &amp;&amp; make install</li>
+  <li>启动: /usr/local/nginx/sbin/nginx</li>
+</ol>
+
+<h1 id="实际遇到的问题">实际遇到的问题</h1>
+
+<p>实际系统部署如下:
+<img src="_pic/201711/nginx-struct.jpg" alt="" /></p>
+
+<p>用户在成都访问位于北京的机房.机房入口统一由F5接收web请求,F5通过cookie中的sessionid做负载均衡.当用户第一次访问时,cookie中不包含sessionid,此时重定向到登录页面,用户登录后再次访问后cookie中讲携带sessionid,此时,F5根据sessionid做负载均衡,从而保证同一个会话只请求同一个服务器.
+nginx4使用nginx的nginx-sticky-module做负载均衡,配置为:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>upstream backend_server {
+        sticky expires=1h domain=...com path=/;
+        server 144.144.144.1:80 max_fails=3 fail_timeout=10s;  #ng1
+        server 144.144.144.2:80 max_fails=3 fail_timeout=10s;  #ng2
+        server 144.144.144.3:80 max_fails=3 fail_timeout=10s;  #ng3
+    }
+
+server {
+        listen       80;
+        server_name  server.com;
+
+        location / {
+                             proxy_pass              http://backend_server;
+                             #proxy_read_timeout      90s;
+                             proxy_connect_timeout   1800s;
+                             proxy_read_timeout      1800s;
+                             proxy_send_timeout 1800s;
+                             proxy_buffer_size  16k;
+                             proxy_buffers      16 128k;
+                             proxy_busy_buffers_size 256k;
+                             proxy_temp_file_write_size 256k;
+                             proxy_next_upstream     error;
+                             proxy_set_header  X-Real-IP  $remote_addr;
+                             proxy_set_header        Host $http_host;
+                         #    proxy_set_header X-Forwarded-Host $host;
+                         #    proxy_set_header X-Forwarded-Server $host;
+                         #    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+                             client_max_body_size       30m;
+                             client_body_buffer_size    256k;
+                         }
+
+        }
+</code></pre></div></div>
+
+<p>当用户访问时,ng4从请求头中查找route的key,如果找不到的话自动生成一个,并根据这个生成的值做负载均衡,然后将请求转发到配置的其中一台服务器.</p>
+
+<p>造成问题的原因是有两个因素:</p>
+
+<ol>
+  <li>sessionid存储在服务器上,而不是集中存储.</li>
+  <li>测试阶段,cdn按照流量切换.也就是一个用户可能第一次通过F5访问,第二次通过ng4访问北京机房
+由此造成用户重复登录.</li>
+</ol>
+
+<p>参考:</p>
+
+<p><a href="https://www.nginx.com/resources/admin-guide/load-balancer/">官方文档</a></p>
+
+<p><a href="http://blog.csdn.net/agangdi/article/details/41087921">Nginx 负载均衡</a></p>
+
+<p><a href="http://blog.csdn.net/xyang81/article/details/51702900">Nginx负载均衡配置</a></p>
+
+                </article>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<footer class="footer" role="contentinfo">
+	<div class="container">
+		<div class="footer-col-wrapper">
+			<div class="footer-col footer-col-2">
+				<ul class="social-media-list">
+					
+					<li>
+						<a href="https://github.com/swa19"><span class="icon icon--github"><svg viewBox="0 0 16 16"><path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/></svg>
+</span><span class="username">swa19</span></a>
+
+					</li>
+					
+				</ul>
+			</div>
+			<div class="footer-col footer-col-3">
+				<p>我不是个伟大的程序员，我只是个有着一些优秀习惯的好程序员--by Kent Beck</p>
+			</div>
+		</div>
+	</div>
+</footer>
+
+
+</body>
+</html>

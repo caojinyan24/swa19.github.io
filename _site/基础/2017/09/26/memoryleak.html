@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>JAVA之内存溢出的排查和解决 - </title>
+	<link rel="stylesheet" href="/css/main.css">
+	<link rel="stylesheet" href="/css/index.css">
+	<link rel="stylesheet" href="/css/fontawesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="/css/syntax.css">
+	<link rel="canonical" href="/%E5%9F%BA%E7%A1%80/2017/09/26/memoryleak.html">
+	<link rel="alternate" type="application/rss+xml" title="" href="/feed.xml">
+	<meta name="keywords" content="JAVA之内存溢出的排查和解决, , ">
+	<meta name="description" content="">
+	<script src="/js/jquery.min.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+	<script src="/js/html5shiv.js"></script>
+	<script src="/js/holder.min.js"></script>
+	<script src="/js/respond.js"></script>
+	<script src="/js/application.js"></script>
+	<script src="/js/lessismore.js"></script>
+  	<style type="text/css">
+	  	.docs-content{
+	  		margin-bottom: 10px;
+	  	}
+  	</style>
+</head>
+
+<body class="index">
+
+<header class="navbar navbar-inverse navbar-fixed-top docs-nav" role="banner">
+  <div class="container">
+    <div class="navbar-header">
+      <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+      <ul class="nav navbar-nav">    
+        <li>
+          <a href="/">主页</a>
+        </li>
+        <li>
+          <a href="/categories/">类别</a>
+        </li>
+        <li>
+          <a href="/tags">标签</a>
+        </li>
+      </ul>
+
+    </nav>
+  </div>
+
+</header>
+<div class="docs-header" id="content">
+  <div class="container">
+  	
+		    <h1></h1>
+      <p>不积跬步，无以至千里</p>
+      
+  </div>
+</div>
+<!---->
+<!--<div class="banner">
+    <div class="container">
+        
+        <a href="/categories/#基础-ref">基础</a>
+        /
+        <a href="/tags/#java-ref">java</a>
+        
+    </div>
+</div>
+-->
+<!---->
+
+<div class="container docs-container">
+    <div class="row">
+        <div class="col-md-3">
+        <div class="sidebar hidden-print" role="complementary">
+        <div id="navigation">
+    <h1>目录</h1>
+    <ul class="nav sidenav">
+        
+        
+        
+        
+        
+        
+        <li><a href="#year_2019">2019</a>
+            <ul class="nav">
+                <li><a href="#month_2019_02">02</a></li>
+                
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+    </ul>
+    </li>
+    <li><a href="#year_2018">2018</a>
+        <ul class="nav">
+            <li><a href="#month_2018_11">11</a></li>
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_10">10</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_09">09</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_08">08</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_07">07</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_06">06</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_05">05</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_04">04</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_03">03</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_02">02</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_01">01</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+    </ul>
+    </li>
+    <li><a href="#year_2017">2017</a>
+        <ul class="nav">
+            <li><a href="#month_2017_12">12</a></li>
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2017_11">11</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2017_09">09</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2017_08">08</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+            </ul>
+        </li>
+        
+            
+        </ul>
+</div>
+
+
+
+        </div>
+        </div>
+        <div class="col-md-9" role="main">
+            <div class="panel docs-content">
+            <div class="wrapper">
+                <header class="post-header">
+                    <h1 class="post-title">JAVA之内存溢出的排查和解决</h1>
+                    <div class="meta"><span class="postdate">2017-09-26 09:07:03</span></div>
+                    <br/>
+                </header>
+                <article class="post-content">
+                    <ul id="markdown-toc">
+  <li><a href="#问题介绍" id="markdown-toc-问题介绍">问题介绍</a>    <ul>
+      <li><a href="#outofmemoryerror问题排查" id="markdown-toc-outofmemoryerror问题排查">OutOfMemoryError问题排查</a></li>
+      <li><a href="#permgen-space-相关" id="markdown-toc-permgen-space-相关">PermGen Space 相关</a></li>
+      <li><a href="#问题解决过程" id="markdown-toc-问题解决过程">问题解决过程</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="问题介绍">问题介绍</h1>
+<p>最近做项目，遇到了内存溢出的问题：<code class="highlighter-rouge">java.lang.OutOfMemoryError: PermGen space</code>，第一次遇到这种问题，总结下问题排查方法。</p>
+
+<h2 id="outofmemoryerror问题排查">OutOfMemoryError问题排查</h2>
+
+<p>内存泄露的产生是因为申请的内存空间一直得不到释放，最终导致无法分配更多的内存空间。jvm有自己的内存回收的机制，当一个对象不存在指向它的引用时，这个对象所在的内存空间会被标记，在某种条件下，对这个对象的内存进行回收。<br />
+那么当一个对象已经不再使用，但它的引用依旧被其他对象持有的时候就容易发生内存泄露。<br />
+jdk提供了一个很好的可视化工具，在jkd的bin目录下有一个可执行程序：jvisualvm（windows系统双击打开，ubuntu系统在控制台中执行:<code class="highlighter-rouge">./jvisualvm</code>）<br />
+打开后左侧显示目前运行的java程序，双击打开一个java应用，在Monitor中显示了各个系统参数，观察对应的内存区域所占用的空间是否在不断上升。如果目前占用的内存空间和已经达到最大内存空间，首先尝试提高最大内存配置，根据开发环境的不同，配置方式会存在区别。
+<img src="/_pic/201710/visualvm.png" alt="" />
+如果已经提高了最大内存配置，而应用所占用的空间依旧在上升，这时候要排查下是否存在内存泄露的情况。<br />
+查找内存泄露有很多方法，目前也存在一些成熟的商业软件。我简单总结下使用jdk自带的几个工具排查。</p>
+
+<ul>
+  <li>通过java命令行查看</li>
+</ul>
+
+<p>看永久代的内存使用情况</p>
+
+<p><code class="highlighter-rouge">jstat -gcpermcapactity &lt;pid&gt; </code></p>
+
+<blockquote>
+  <p>当使用jdk6启动项目时，报的异常信息为PermGen space不足。但是在jdk8中，原有的PermGen space已经被metaspace内存空间所取代，相应的jstat命令也不再存在<code class="highlighter-rouge">-gcpermcapactity</code>的选项,取而代之的是<code class="highlighter-rouge">-gcmetacapacity</code>,这个不再详细写了，具体参考：<img src="http://www.cnblogs.com/paddix/p/5309550.html" alt="永久代(PermGen)和元空间(Metaspace)" />
+jstat是一个很强大的用来查看jvm参数的工具，它利用JVM内建的指令对Java应用程序的资源和性能进行实时的命令行的监控。其他jdk自带的工具还有 jstack, jconsole, jinfo, jmap, jdb，后边可以再详细写一个总结。</p>
+</blockquote>
+
+<p>查看内存空间的分配情况</p>
+
+<p><code class="highlighter-rouge">jmap -histo &lt;pid&gt;</code></p>
+
+<ul>
+  <li>通过jvisualvm可视化工具查看</li>
+</ul>
+
+<p>在jvisualvm的Profile标签页中，展示了内存的动态分配情况，如果发生了内存泄露，那么泄露的对象所占用的内存空间会不断提高的，通过这个工具可以很方便地看到内存的分配情况。</p>
+
+<h2 id="permgen-space-相关">PermGen Space 相关</h2>
+
+<p>首先明确下PermGen space用来存放什么信息，PermGen space其实指的就是方法区。不过方法区和“PermGen space”又有着本质的区别。前者是 JVM 的规范，而后者则是 JVM 规范的一种实现，并且只有 HotSpot 才有 “PermGen space”，而对于其他类型的虚拟机，如 JRockit（Oracle）、J9（IBM） 并没有“PermGen space”。由于方法区主要存储类的相关信息，所以对于动态生成类的情况比较容易出现永久代的内存溢出用来存放类相关的信息。在编译时，类加载器从class文件中，提取出类的相关信息，并存储在方法区中。</p>
+
+<p>在实例化一个类的对象时，jvm将会从方法区中获取这个类的相关信息，并完成初始化工作。方法区的内存也是可以进行回收的，当某个类不再被使用时，jvm将卸载这个类，进行垃圾回收<br />
+和方法区相关的jvm参数有两个，-XX:PermSize和-XX:MaxPermSize
+如果使用tomcat启动服务，可以修改Tomcat的配置文件catalina.sh文件，添加配置：<code class="highlighter-rouge">JAVA_OPTS="$JAVA_OPTS -Xms512m -Xmx1024m -XX:PermSize=256M -XX:MaxPermSize=512m"</code></p>
+
+<h2 id="问题解决过程">问题解决过程</h2>
+
+<p>出现“java.lang.OutOfMemoryError: PermGen space”的问题时，启动jvisualvm，查看PemGen的内存展示显示最大80M，已使用80M，于是首先尝试修改最大PermSpace的大小。我的开发环境是IDEA+Tomcat，首先按照网上的资料修改Tomcat安装目录下的bin/catalina.sh文件，添加配置：<code class="highlighter-rouge">JAVA_OPTS="$JAVA_OPTS -Xms512m -Xmx1024m -XX:PermSize=256M -XX:MaxPermSize=512m"</code>，但是配置并未生效，在visualvm中显示最大内存依旧是80M。<br />
+其实可以理解，因为IDEA在运行Web应用时，每个应用会新建一个Tomcat实例（实例配置在IDEA的安装目录下），所以修改Tomcat的配置，对启动的Web服务是不会生效的。这点通过IDEA启动Web服务的日志中也可以看到，</p>
+
+<p><img src="/_pic/201710/log.PNG" alt="" /></p>
+
+<p>其中显示的CATALINA_BASE目录在IDEA的配置路径下，我在对应的目录下并没有找到catalina.sh文件，好在IDEA的应用配置中有一个“VM options”，配置后，visualvm中显示的最大内存得到了更新。重启应用后，内存不足的问题消失。</p>
+
+<p><img src="/_pic/201710/vm.PNG" alt="" /></p>
+
+<p>这个内存不足问题不是由于内存泄露引起的，没有机会能够做进一步的实际排查。</p>
+
+                </article>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<footer class="footer" role="contentinfo">
+	<div class="container">
+		<div class="footer-col-wrapper">
+			<div class="footer-col footer-col-2">
+				<ul class="social-media-list">
+					
+					<li>
+						<a href="https://github.com/swa19"><span class="icon icon--github"><svg viewBox="0 0 16 16"><path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/></svg>
+</span><span class="username">swa19</span></a>
+
+					</li>
+					
+				</ul>
+			</div>
+			<div class="footer-col footer-col-3">
+				<p>我不是个伟大的程序员，我只是个有着一些优秀习惯的好程序员--by Kent Beck</p>
+			</div>
+		</div>
+	</div>
+</footer>
+
+
+</body>
+</html>

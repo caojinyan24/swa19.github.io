@@ -1,0 +1,704 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>烂笔头</title>
+    <description>我不是个伟大的程序员，我只是个有着一些优秀习惯的好程序员--by Kent Beck</description>
+    <link>http://localhost:4000/</link>
+    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Sat, 02 Mar 2019 01:00:45 +0800</pubDate>
+    <lastBuildDate>Sat, 02 Mar 2019 01:00:45 +0800</lastBuildDate>
+    <generator>Jekyll v3.8.5</generator>
+    
+      <item>
+        <title>数据库事务导致的更新失败</title>
+        <description>
+&lt;p&gt;今天遇到一个获取数据库连接失败的问题,简化后的示例代码如下:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;package&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;basic&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+	&lt;span class=&quot;s2&quot;&gt;&quot;fmt&quot;&lt;/span&gt;
+	&lt;span class=&quot;s2&quot;&gt;&quot;github.com/jinzhu/gorm&quot;&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;_&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;github.com/go-sql-driver/mysql&quot;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Product&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;gorm&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;Model&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;Code&lt;/span&gt;  &lt;span class=&quot;k&quot;&gt;string&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;Price&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;uint&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;db&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;gorm&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;DB&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;initDb&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;dbGorm&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;err&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gorm&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Open&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;mysql&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;appclouddev:password@tcp(10.8.121.175:3306)/appcloud_test?charset=utf8&amp;amp;parseTime=True&amp;amp;loc=Local&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;err&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;!= nil {
+&lt;/span&gt;		&lt;span class=&quot;n&quot;&gt;fmt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Printf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;init db error:%v&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;err&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+		&lt;span class=&quot;n&quot;&gt;panic&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fmt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Sprintf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Init db: connect db error, %v&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;err&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+	&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;db&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dbGorm&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;TestGormConnect&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;initDb&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;defer&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;db&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Close&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;tx&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;db&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Begin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+	&lt;span class=&quot;p&quot;&gt;//&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;err&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Db&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Table&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;products&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;CreateTable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&amp;amp;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Product&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Code&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;L1212&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Price&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Error&lt;/span&gt;  &lt;span class=&quot;p&quot;&gt;//&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;第一次执行创建测试数据表&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;err&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Table&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;products&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Where&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;code='1'&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Update&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;code&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;abc1&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Error&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;fmt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Println&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;tx update  err,err=&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;err&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;err&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;db&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Table&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;products&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Create&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&amp;amp;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Product&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Code&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;L1211&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Price&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Error&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;fmt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Println&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;normal create data err,err=&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;err&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;tx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Commit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;在执行的数据库操作中,首先开启一个事务,然后在事务中再次获取数据库连接更新/创建数据库记录,最后提交事务.执行测试代码会发现在执行第二个创建语句的时候获取数据库连接超时.&lt;/p&gt;
+
+&lt;p&gt;由于对gorm不熟悉,一开始怀疑是不是由于连接获取不到的问题.但是看了下源码,写了下测试代码验证,发现并不是.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;func Open(driverName, dataSourceName string) (*DB, error) {
+	driversMu.RLock()
+	driveri, ok := drivers[driverName]
+	driversMu.RUnlock()
+	if !ok {
+		return nil, fmt.Errorf(&quot;sql: unknown driver %q (forgotten import?)&quot;, driverName)
+	}
+
+	if driverCtx, ok := driveri.(driver.DriverContext); ok {
+		connector, err := driverCtx.OpenConnector(dataSourceName)
+		if err != nil {
+			return nil, err
+		}
+		return OpenDB(connector), nil
+	}
+
+	return OpenDB(dsnConnector{dsn: dataSourceName, driver: driveri}), nil
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;可以看到gorm把线程池维护在了&lt;code class=&quot;highlighter-rouge&quot;&gt;*DB&lt;/code&gt; 中&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;func (s *DB) Table(name string) *DB {
+	clone := s.clone()
+	clone.search.Table(name)
+	clone.Value = nil
+	return clone
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;每次使用之前的&lt;code class=&quot;highlighter-rouge&quot;&gt;s.clone()&lt;/code&gt;的操作,也只是拷贝的跟单次数据库操作相关的内容,对数据库连接通过指针拷贝的方式保证了同时只有一个DB对象.所以不是数据库连接的问题.&lt;/p&gt;
+
+&lt;p&gt;排除掉gorm使用的问题之后,就需要考虑mysql事务的问题了,现在问题就简单了,首先考虑事务导致数据被锁定,gap锁导致无法对临近的数据做操作.针对当时操作的具体数据,在操作的插入数据之前,通过事务做了数据更新操作,而检查数据表发现,更新时使用的查询条件并没有添加索引.在使用事务的时候,会对涉及到的数据做锁定,而没有索引的事务带来的灾难性问题就是整张表被锁.&lt;/p&gt;
+
+&lt;p&gt;定位到问题之后,解决方案就好办了,既然是因为整张表被锁导致无法对数据表做更新操作,最好的解决方案就是添加索引,减少被锁定的数据记录,由此,问题解决.&lt;/p&gt;
+
+&lt;p&gt;再次复习下mysql innodb引擎的锁机制.  &lt;a href=&quot;https://swa19.github.io/%E5%9F%BA%E7%A1%80/2018/02/23/innodb.html&quot;&gt;Innodb存储引擎&lt;/a&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;在ReadCommited和RepeatableRead下,InnoDB存储引擎使用非锁定的一致性读.但在ReadCommitted事务隔离级别下,对于快照数据,非一致性读总是读取被锁定行的最新一份快照数据.在Repeatable事务隔离级别下和RepeatableRead事务隔离级别下,对于快照数据,非一致性读总是读取事务开始时的行数据版本.
+InnoDB存储引擎中,通过NextKeyLock算法来避免不可重复读的问题,在这个算法下,对于索引的扫描,不仅仅锁住扫描到的索引,而且还锁住这些索引覆盖的范围,避免了另外的事务在这个范围内插入数据导致不可重复读的问题.因此InnoDB存储引擎默认的事务隔离级别是ReadRepeatable&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+        <pubDate>Tue, 26 Feb 2019 22:21:43 +0800</pubDate>
+        <link>http://localhost:4000/%E5%9F%BA%E7%A1%80/2019/02/26/db.html</link>
+        <guid isPermaLink="true">http://localhost:4000/%E5%9F%BA%E7%A1%80/2019/02/26/db.html</guid>
+        
+        <category>mysql</category>
+        
+        
+        <category>基础</category>
+        
+      </item>
+    
+      <item>
+        <title>《架构风格与基于网络的软件架构设计》</title>
+        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#软件架构的元素&quot; id=&quot;markdown-toc-软件架构的元素&quot;&gt;软件架构的元素&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Roy Thomas Fielding的博士论文,对Restful的架构风格做了更加详细深入的说明,只看了第一章就觉得很有启发,做下读书笔记&lt;/p&gt;
+
+&lt;h2 id=&quot;软件架构的元素&quot;&gt;软件架构的元素&lt;/h2&gt;
+&lt;ol&gt;
+  &lt;li&gt;组件
+组件提供对数据的转换的接口&lt;/li&gt;
+  &lt;li&gt;连接器
+连接器作为组件之间的连接,在架构层面认为对数据不做转换操作,连接器定义了组件之间的交互&lt;/li&gt;
+  &lt;li&gt;数据
+软件提供了对数据的处理功能,数据就是软件处理的对象&lt;/li&gt;
+&lt;/ol&gt;
+
+</description>
+        <pubDate>Mon, 25 Feb 2019 13:23:41 +0800</pubDate>
+        <link>http://localhost:4000/%E5%85%B6%E4%BB%96/2019/02/25/rest.html</link>
+        <guid isPermaLink="true">http://localhost:4000/%E5%85%B6%E4%BB%96/2019/02/25/rest.html</guid>
+        
+        <category>others</category>
+        
+        
+        <category>其他</category>
+        
+      </item>
+    
+      <item>
+        <title>大数据相关的名词</title>
+        <description>
+&lt;p&gt;上午查询hive表,同样的sql,一定几率出现执行失败的情况.看执行记录,发现搜索引擎标记Hive的都失败了,SparkCli和Spark都成功了.对这些相关名词比较陌生,理下相关概念和关系&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-mermaid&quot;&gt;graph LR
+    A[Hive] --&amp;gt;|类sql查询| B[Hadoop]
+    B[Hadoop] --&amp;gt; |取数据|C[Hbase]
+    B[Hadoop] --&amp;gt; |取数据|D[Hdfs]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Hive:一个类sql的搜索引擎
+Hadoop:一个处理大文件的分布式系统
+Hbase:存储系统
+Hdfs:存储系统&lt;/p&gt;
+
+&lt;p&gt;Spark
+MapReduce&lt;/p&gt;
+</description>
+        <pubDate>Wed, 20 Feb 2019 12:47:29 +0800</pubDate>
+        <link>http://localhost:4000/%E5%85%B6%E4%BB%96/2019/02/20/spark.html</link>
+        <guid isPermaLink="true">http://localhost:4000/%E5%85%B6%E4%BB%96/2019/02/20/spark.html</guid>
+        
+        <category>others</category>
+        
+        
+        <category>其他</category>
+        
+      </item>
+    
+      <item>
+        <title>《聊聊架构》</title>
+        <description>&lt;p&gt;聊聊架构读书摘要&lt;/p&gt;
+
+&lt;p&gt;#架构&lt;/p&gt;
+&lt;h2 id=&quot;生命周期&quot;&gt;生命周期&lt;/h2&gt;
+&lt;ol&gt;
+  &lt;li&gt;生命周期的拆分
+可以理解为建模的一个过程,和ddd领域驱动设计中的对象拆分一样的道理,把作用的对象拆解好,自然可以整理出对应对象的一个完整的一个生命周期.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;概念&quot;&gt;概念&lt;/h2&gt;
+&lt;p&gt;概念描述了对一个事物的理解,在架构过程中,首先要定义好各个概念的含义,保证大家理解一致.&lt;/p&gt;
+
+&lt;p&gt;接触到一个新概念,首先需要理解这个概念的出现是为了解决什么问题&lt;/p&gt;
+
+&lt;h2 id=&quot;识别问题&quot;&gt;识别问题&lt;/h2&gt;
+&lt;p&gt;沟通过程中,先想清楚要解决的问题是什么,区分开问题和解决方案.&lt;/p&gt;
+
+&lt;h2 id=&quot;切分原则&quot;&gt;切分原则&lt;/h2&gt;
+&lt;p&gt;职权对等  &lt;br /&gt;
+切分应该是内部活动,不影响外部系统,应该设定好系统边界&lt;/p&gt;
+
+&lt;p&gt;拆分的核心是识别核心生命周期和非核心生命周期,切分出来的不同生命周期形成一个模型&lt;/p&gt;
+
+&lt;p&gt;#软件架构&lt;/p&gt;
+&lt;h2 id=&quot;软件的生命周期&quot;&gt;软件的生命周期&lt;/h2&gt;
+
+</description>
+        <pubDate>Tue, 13 Nov 2018 13:10:39 +0800</pubDate>
+        <link>http://localhost:4000/%E5%85%B6%E4%BB%96/2018/11/13/book.html</link>
+        <guid isPermaLink="true">http://localhost:4000/%E5%85%B6%E4%BB%96/2018/11/13/book.html</guid>
+        
+        <category>others</category>
+        
+        
+        <category>其他</category>
+        
+      </item>
+    
+      <item>
+        <title>正则表达式</title>
+        <description>&lt;p&gt;今天写了个bug,原因是正则表达式配错了,测试的时候又漏掉了这个case.&lt;/p&gt;
+
+&lt;p&gt;简化的代码如上&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    var password=&quot;12345a6789&quot;
+	if len(password)&amp;lt;8||len(password)&amp;gt;16{
+		fmt.Println(1)
+	}
+	// 判断是否为纯数字
+	if regexp.MustCompile(`[0-9]*`).MatchString(password){
+		fmt.Println(2)
+	}
+	// 判断是否包含空格
+	if strings.Contains(password,&quot; &quot;){
+		fmt.Println(3)
+	}
+	//仅支持数字,字母和字符
+	if !regexp.MustCompile(`^[\w~!@#$%^&amp;amp;*()+,.:;=&amp;lt;&amp;gt;?/|\-[\]\\]{8,16}$`).MatchString(password) {
+		fmt.Println(4)
+	}
+	fmt.Println(5)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;出问题的是’判断是否为纯数字的校验’,正确的方式应该是&lt;code class=&quot;highlighter-rouge&quot;&gt;^[0-9]*$&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;总结下正则表达式的常见用法和常用的正则表达式:&lt;/p&gt;
+
+</description>
+        <pubDate>Mon, 12 Nov 2018 21:59:06 +0800</pubDate>
+        <link>http://localhost:4000/%E5%85%B6%E4%BB%96/2018/11/12/regex.html</link>
+        <guid isPermaLink="true">http://localhost:4000/%E5%85%B6%E4%BB%96/2018/11/12/regex.html</guid>
+        
+        <category>regex</category>
+        
+        
+        <category>其他</category>
+        
+      </item>
+    
+      <item>
+        <title>并发安全Map实现</title>
+        <description>&lt;p&gt;不同语言下都会有Map的实现,Map的存在使得查找的复杂度降低到O(1),但Map并不是并发安全的,使用原生的Map做并发操作时,需要添加同步锁才能保证多线程读写的安全性,但加锁的机制同时会造成读阻塞.&lt;/p&gt;
+
+&lt;p&gt;java中的ConcurrentHashMap通过分段锁降低了读阻塞的概率,但是当对某一个段做频繁的读写操作的话,依旧会对性能造成较大的影响.而HashTable通过sychronized关键字实现的同步机制更不必说.&lt;/p&gt;
+
+&lt;p&gt;在golang中,sync包下同样实现了Map来应对并发.&lt;/p&gt;
+
+&lt;p&gt;首先看结构体定义:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;type Map struct {
+	mu Mutex
+	read atomic.Value // readOnly
+	dirty map[interface{}]*entry
+	misses int
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;mu  &lt;br /&gt;
+mu是一个同步锁&lt;/li&gt;
+  &lt;li&gt;read  &lt;br /&gt;
+read可以看做是dirty的一份拷贝,对读操作和更新操作线程安全,但不能新增key&lt;/li&gt;
+  &lt;li&gt;dirty  &lt;br /&gt;
+对dirty做操作时,需要通过mu做同步&lt;/li&gt;
+  &lt;li&gt;misses  &lt;br /&gt;
+misses记录了读操作时无法获取到指定key的次数&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;可以看到Map中维护两份数据,一个用来读,一个用来写.对应的两个主要的方法有Load,Store&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;type entry struct {
+	// p points to the interface{} value stored for the entry.
+	//
+	// If p == nil, the entry has been deleted and m.dirty == nil.
+	//
+	// If p == expunged, the entry has been deleted, m.dirty != nil, and the entry
+	// is missing from m.dirty.
+	//
+	// Otherwise, the entry is valid and recorded in m.read.m[key] and, if m.dirty
+	// != nil, in m.dirty[key].
+	//
+	// An entry can be deleted by atomic replacement with nil: when m.dirty is
+	// next created, it will atomically replace nil with expunged and leave
+	// m.dirty[key] unset.
+	//
+	// An entry's associated value can be updated by atomic replacement, provided
+	// p != expunged. If p == expunged, an entry's associated value can be updated
+	// only after first setting m.dirty[key] = e so that lookups using the dirty
+	// map find the entry.
+	p unsafe.Pointer // *interface{}
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;read和dirty的底层数据都指向一个entry&lt;/p&gt;
+
+&lt;h2 id=&quot;读取&quot;&gt;读取&lt;/h2&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;func (m *Map) Load(key interface{}) (value interface{}, ok bool) {
+	read, _ := m.read.Load().(readOnly)
+	e, ok := read.m[key]
+	if !ok &amp;amp;&amp;amp; read.amended {
+		m.mu.Lock()
+		// Avoid reporting a spurious miss if m.dirty got promoted while we were
+		// blocked on m.mu. (If further loads of the same key will not miss, it's
+		// not worth copying the dirty map for this key.)
+		read, _ = m.read.Load().(readOnly)
+		e, ok = read.m[key]
+		if !ok &amp;amp;&amp;amp; read.amended {
+			e, ok = m.dirty[key]
+			// Regardless of whether the entry was present, record a miss: this key
+			// will take the slow path until the dirty map is promoted to the read
+			// map.
+			m.missLocked()
+		}
+		m.mu.Unlock()
+	}
+	if !ok {
+		return nil, false
+	}
+	return e.load()
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;相关流程可以总结为:&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;从read取数据    
+    取到数据
+    未取到数据,并且dirty中包含read中没有的key
+        加锁
+        从dirty取数据
+        记录misses//当missed的个数和read的个数相当时,用dirty替换read
+        解锁
+返回数据
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;写入&quot;&gt;写入&lt;/h2&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;func (m *Map) Store(key, value interface{}) {
+	read, _ := m.read.Load().(readOnly)
+	if e, ok := read.m[key]; ok &amp;amp;&amp;amp; e.tryStore(&amp;amp;value) {
+		return
+	}
+
+	m.mu.Lock()
+	read, _ = m.read.Load().(readOnly)
+	if e, ok := read.m[key]; ok {
+		if e.unexpungeLocked() {
+			// The entry was previously expunged, which implies that there is a
+			// non-nil dirty map and this entry is not in it.
+			m.dirty[key] = e
+		}
+		e.storeLocked(&amp;amp;value)
+	} else if e, ok := m.dirty[key]; ok {
+		e.storeLocked(&amp;amp;value)
+	} else {
+		if !read.amended {
+			// We're adding the first new key to the dirty map.
+			// Make sure it is allocated and mark the read-only map as incomplete.
+			m.dirtyLocked()
+			m.read.Store(readOnly{m: read.m, amended: true})
+		}
+		m.dirty[key] = newEntry(value)
+	}
+	m.mu.Unlock()
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;相关流程可以总结为:&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;从read取数据    
+    取到数据,并且取到的数据和要写入的数据相等
+返回
+加锁
+再次从read取数据
+    取到数据
+        把read中的entry删除
+        成功?
+            dirty中添加entry
+    entry中的value赋值
+未取到数据,从dirty中取到数据
+    entry中的value赋值
+read和dirty的数据一致//read和dirty都没有读到指定key的数据,并且数据一样,说明这个key是新添加的key
+    read中的amended标记为true,表示dirty中包含read中没有的key
+    dirty添加元素
+解锁
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;以上可以看到golang中实现map多现成安全的策略是读写分离,read用来读,dirty用来写,从read中获取不到指定key的时候才从dirty中读取;同时misses达到一定次数之后才会用dirty替换read,达到更新read的目的.&lt;/p&gt;
+
+&lt;p&gt;由于对dirty的更新同样需要借助锁同步,所以当写入操作频繁的话,读操作获取不到指定的key,读的压力依旧会落到dirty,除非及时更新read.所以这里misses的设定需要设定一个比较合理的值,才能让读写达到更好的效率.&lt;/p&gt;
+
+&lt;p&gt;简单来说,如果写频繁,可以将misses的值设小一点,及时更新read,避免影响度读效率;而如果读操作更加频繁,misses可以设定高一点,避免频繁更新read.&lt;/p&gt;
+</description>
+        <pubDate>Mon, 12 Nov 2018 13:10:39 +0800</pubDate>
+        <link>http://localhost:4000/%E5%9F%BA%E7%A1%80/2018/11/12/go-map.html</link>
+        <guid isPermaLink="true">http://localhost:4000/%E5%9F%BA%E7%A1%80/2018/11/12/go-map.html</guid>
+        
+        <category>go</category>
+        
+        
+        <category>基础</category>
+        
+      </item>
+    
+      <item>
+        <title>Review and Summary</title>
+        <description>&lt;h1 id=&quot;开发&quot;&gt;开发&lt;/h1&gt;
+
+&lt;h2 id=&quot;考虑问题的角度&quot;&gt;考虑问题的角度&lt;/h2&gt;
+&lt;p&gt;背景:在系统中维护了一个本地缓存,在最开始的设计中,考虑到更新操作并不频繁,为了减轻系统不必要的消耗,考虑在redis中维护一个时间戳,每次更新时更新这个时间戳;每次查询时,检查本地缓存的时间戳,并跟redis中的时间戳做比对,不相同的话调rpc接口更新本地缓存;在实际运行中发现,从rpc中并不能获取到实时更新后的数据,导致本地缓存更新的时候并不能拿到最新的数据.&lt;/p&gt;
+
+&lt;p&gt;对于本地缓存的更新,有两种方案:&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;定时更新&lt;/li&gt;
+  &lt;li&gt;只有存在更新的时候更新,当有多个实例时,需要考虑多实例的同步问题,可以考虑在redis中集中保存一个缓存的时间戳&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;不同的方案各有优缺点:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;定时更新
+简单粗暴,具有容错性,但更新存在滞后性&lt;/li&gt;
+  &lt;li&gt;一次更新
+实现更复杂,可以及时把更新同步到本地缓存;但如果更新的途径未做收敛的话会导致其他途径做出的修改无法同步到本地的缓存中&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;在考虑哪种方案更好的时候,还是要结合业务特性,考究哪种方式导致的问题更易接受.很多时候限制实现的并不是性能问题,而是业务需求.&lt;/p&gt;
+
+&lt;h2 id=&quot;服务器多实例&quot;&gt;服务器多实例&lt;/h2&gt;
+
+&lt;p&gt;背景:系统页面需要展示一些列表信息,这些信息通过rpc接口调外部服务获得.同时通过系统页面可以更新这些列表信息.&lt;/p&gt;
+
+&lt;p&gt;为了避免远程调用造成的延时和系统开销,考虑增加本地缓存.在涉及到多实例服务器的情况,正常应该采用分布式缓存,但考虑到列表信息的数据比较大,所以采用了最简单的本地缓存.&lt;/p&gt;
+
+&lt;p&gt;实施方案:当更新列表信息时,更新redis中指定key的标识;每次获取列表信息时,先从redis获取标识,如果发现值不为空,则更新本地缓存,同时将标识的值置空,表示本地缓存已更新.&lt;/p&gt;
+
+&lt;p&gt;所以问题在于:是否更新的标识只有一个,但是本地缓存却有多个(对应多个服务器实例),所以本地缓存无法按照预期实现更新.&lt;/p&gt;
+
+&lt;p&gt;最终的解决方案:本地缓存同时维护一个版本号.当更新列表信息时,redis中的标识值修改为当前的时间戳.每次获取列表信息时,检查本地缓存中是否存在版本号,并且当前的这个版本号是否和redis中的版本号一致,如果不一致的话,更新本地缓存,同时更新本地版本号为redis中的版本号.&lt;/p&gt;
+
+&lt;p&gt;对于服务器多实例的情况需要做额外考虑,做分布式控制&lt;/p&gt;
+
+&lt;p&gt;其他需要考虑的:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;对于服务器触发的定时任务,需要统一调度&lt;/li&gt;
+  &lt;li&gt;通过服务器去触发一个资源几种的操作(如服务器启动时,初始化redis缓存)&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Tue, 30 Oct 2018 16:00:58 +0800</pubDate>
+        <link>http://localhost:4000/%E5%B0%8F%E7%BB%93/2018/10/30/review.html</link>
+        <guid isPermaLink="true">http://localhost:4000/%E5%B0%8F%E7%BB%93/2018/10/30/review.html</guid>
+        
+        <category>review</category>
+        
+        
+        <category>小结</category>
+        
+      </item>
+    
+      <item>
+        <title>扫码授权</title>
+        <description>&lt;h1 id=&quot;扫码授权登录&quot;&gt;扫码授权登录&lt;/h1&gt;
+&lt;p&gt;扫码授权登录涉及到两个流程,一个是扫码,一个是授权,这里的授权使用的是Oauth2.0协议.&lt;/p&gt;
+
+&lt;h2 id=&quot;扫码&quot;&gt;扫码&lt;/h2&gt;
+&lt;p&gt;这里的码就是现在常见的二维码(QR Code,QR全称Quick Response),一个二维码可以看做一个文本信息,目前常用到的是表示一个链接,通过客户端扫码二维码获得其中的链接信息,然后做相关的跳转.&lt;/p&gt;
+
+&lt;p&gt;//TODO:补充二维码记录信息的原理&lt;/p&gt;
+
+&lt;p&gt;在一个完整的扫码流程中包括两个步骤,一个是将信息存入二维码,一个是从二维码中读取信息.&lt;/p&gt;
+
+&lt;h2 id=&quot;oauth20&quot;&gt;Oauth2.0&lt;/h2&gt;
+
+&lt;p&gt;//TODO&lt;/p&gt;
+
+&lt;h2 id=&quot;交互流程&quot;&gt;交互流程&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;/_pic/201809/扫码授权时序图.jpg&quot; alt=&quot;扫码授权时序图.jpg&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;这里模拟的是pc web端通过抖音授权登录&lt;/p&gt;
+
+&lt;h3 id=&quot;1-2-12-23-2&quot;&gt;1, 2-1,2-2,3-2&lt;/h3&gt;
+&lt;p&gt;对于接入了抖音授权登录的页面,当用户点击抖音登录时,浏览器通过请求指定的地址获取二维码页面模板,并再次请求开发平台获取二维码.&lt;/p&gt;
+&lt;h3 id=&quot;3-1&quot;&gt;3-1&lt;/h3&gt;
+&lt;p&gt;在请求二维码时,将携带接入时申请的AppKey和授权成功后的跳转地址以及其他透明数据.&lt;/p&gt;
+&lt;h3 id=&quot;3-2&quot;&gt;3-2&lt;/h3&gt;
+&lt;p&gt;在3-2中,开发平台&lt;/p&gt;
+
+&lt;p&gt;a. 将客户端扫码后的跳转地址(5-1中的请求地址)打包成二维码信息,并为这个二维码生成一个全局唯一的token&lt;/p&gt;
+
+&lt;p&gt;b. 以token为key,请求中携带的AppKey,跳转地址做value保存起来.&lt;/p&gt;
+
+&lt;p&gt;c. 返回token&lt;/p&gt;
+
+&lt;h3 id=&quot;4-14-25-15-2&quot;&gt;4-1,4-2;5-1,5-2&lt;/h3&gt;
+
+&lt;p&gt;客户端通过扫描二维码,获得跳转地址,客户端通过请求这个跳转地址获得用户授权的页面信息&lt;/p&gt;
+
+&lt;h3 id=&quot;78&quot;&gt;7,8&lt;/h3&gt;
+
+&lt;p&gt;用户点击确认授权按钮,触发浏览器请求开放平台的用户确认授权地址,此时,开放平台将更改此二维码对应token的状态.&lt;/p&gt;
+
+&lt;h3 id=&quot;轮询&quot;&gt;轮询&lt;/h3&gt;
+&lt;p&gt;浏览器在接收到token之后,将不断轮询服务器,获得当前二维码的状态.若用户以确认授权,通过指定token查询状态时将会得到confirmed状态,此时开放平台通过token拿到当前接入方的跳转地址,并将授权码和透明信息拼接在跳转地址后&lt;/p&gt;
+
+&lt;p&gt;浏览器在获得授权码后,即可通过Oauth2.0协议换取access_token,并根据access_token获取用户的相关信息.&lt;/p&gt;
+
+&lt;p&gt;由此一个完整的扫码授权流程结束.以上只是一个大概的流程,在实际的流程中,还需要做安全策略和异常流程的考虑&lt;/p&gt;
+
+&lt;p&gt;通过流程的梳理,可以发现这个流程的推动主要靠跳转地址的透传来驱动,而这些跳转地址通过开放平台去下发,对于客户端和接入方来说,接入成本还是挺低的,对于开放平台来说,接口的封闭性也得到了保证,当需要做接口的变动迭代时,不需要再考虑做旧版本的兼容&lt;/p&gt;
+</description>
+        <pubDate>Fri, 28 Sep 2018 22:00:06 +0800</pubDate>
+        <link>http://localhost:4000/%E5%9F%BA%E7%A1%80/2018/09/28/scan-oauth.html</link>
+        <guid isPermaLink="true">http://localhost:4000/%E5%9F%BA%E7%A1%80/2018/09/28/scan-oauth.html</guid>
+        
+        <category>web</category>
+        
+        
+        <category>基础</category>
+        
+      </item>
+    
+      <item>
+        <title>React</title>
+        <description>
+&lt;h1 id=&quot;前端显示的实时刷新&quot;&gt;前端显示的实时刷新&lt;/h1&gt;
+
+&lt;p&gt;通过每秒调用一次setInterval实现页面显示的刷新&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;html&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;head&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;meta&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;charset=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;UTF-8&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;title&amp;gt;&lt;/span&gt;Hello React!&lt;span class=&quot;nt&quot;&gt;&amp;lt;/title&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;https://cdn.bootcss.com/react/16.4.0/umd/react.development.js&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;https://cdn.bootcss.com/react-dom/16.4.0/umd/react-dom.development.js&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;https://cdn.bootcss.com/babel-standalone/6.26.0/babel.min.js&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/head&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;body&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;example&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text/babel&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;tick&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;element&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;div&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;h1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Hello&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;world&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&amp;lt;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/h1&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;
+&lt;/span&gt;      &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;h2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;现在是&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Date&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;toLocaleTimeString&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()}.&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/h2&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;
+&lt;/span&gt;    &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/div&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;
+&lt;/span&gt;  &lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;ReactDOM&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;render&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getElementById&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'example'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;setInterval&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;tick&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/html&amp;gt;&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+</description>
+        <pubDate>Fri, 14 Sep 2018 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2018/09/14/react.html</link>
+        <guid isPermaLink="true">http://localhost:4000/2018/09/14/react.html</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>《图解HTTP》</title>
+        <description>&lt;h1 id=&quot;http报文内的http信息&quot;&gt;http报文内的http信息&lt;/h1&gt;
+
+&lt;h2 id=&quot;编码提升传输效率&quot;&gt;编码提升传输效率&lt;/h2&gt;
+
+&lt;h2 id=&quot;报文&quot;&gt;报文&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;信息传输的基本单位,由8位的字节码组成
+实体&lt;/li&gt;
+  &lt;li&gt;包括实体首部和实体主体组成,包含了请求和响应的内容
+ 压缩编码&lt;/li&gt;
+  &lt;li&gt;对实体主体进行压缩
+分块传输编码&lt;/li&gt;
+  &lt;li&gt;把实体主体分块
+    &lt;h2 id=&quot;怎么判断传输结束&quot;&gt;怎么判断传输结束?&lt;/h2&gt;
+    &lt;p&gt;实体主体的最后一块使用0来标记&lt;/p&gt;
+    &lt;h2 id=&quot;多部分对象集合传输&quot;&gt;多部分对象集合传输&lt;/h2&gt;
+    &lt;p&gt;multipart/form-data&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;web表单文件上传
+multipart/byteranges&lt;/li&gt;
+  &lt;li&gt;响应报文中包含多个返回的内容
+    &lt;h2 id=&quot;范围请求&quot;&gt;范围请求&lt;/h2&gt;
+    &lt;p&gt;请求&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Range
+响应&lt;/li&gt;
+  &lt;li&gt;206PartialContent
+    &lt;h2 id=&quot;响应码&quot;&gt;响应码&lt;/h2&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Content-Lenth&lt;/li&gt;
+  &lt;li&gt;Content-Range
+    &lt;h2 id=&quot;内容协商&quot;&gt;内容协商&lt;/h2&gt;
+    &lt;p&gt;判断依据&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;请求报文中的首部字段
+    &lt;h2 id=&quot;accept&quot;&gt;Accept&lt;/h2&gt;
+    &lt;p&gt;分类&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;服务器驱动协商
+    &lt;h2 id=&quot;根据请求的首部字段由服务器做处理&quot;&gt;根据请求的首部字段,由服务器做处理&lt;/h2&gt;
+  &lt;/li&gt;
+  &lt;li&gt;客户端驱动协商
+    &lt;h2 id=&quot;用户手工选择&quot;&gt;用户手工选择&lt;/h2&gt;
+    &lt;h2 id=&quot;使用javascript脚本在web页面做选择&quot;&gt;使用JavaScript脚本在web页面做选择&lt;/h2&gt;
+  &lt;/li&gt;
+  &lt;li&gt;透明协商&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;http状态码&quot;&gt;http状态码&lt;/h1&gt;
+
+&lt;h2 id=&quot;状态码分类&quot;&gt;状态码分类&lt;/h2&gt;
+
+&lt;p&gt;1XX 请求处理中
+2XX 正常
+3XX 重定向
+4XX 客户端错误
+5XX 服务器错误&lt;/p&gt;
+
+&lt;h1 id=&quot;web服务器&quot;&gt;Web服务器&lt;/h1&gt;
+
+&lt;h2 id=&quot;通过host首部标识域名&quot;&gt;通过host首部标识域名&lt;/h2&gt;
+
+&lt;h2 id=&quot;通信数据转发&quot;&gt;通信数据转发&lt;/h2&gt;
+
+&lt;p&gt;代理&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;转发请求和响应&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;不改变uri每次请求都会在头部追加extra&quot;&gt;不改变uri,每次请求都会在头部追加extra&lt;/h2&gt;
+&lt;p&gt;缓存代理
+透明代理
+网关&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;接收请求,并从服务端获取资源后返回给客户端,对客户端来说无感知
+    &lt;h2 id=&quot;利用网关可以把http协议的通信改变为其他协议通信&quot;&gt;利用网关可以把http协议的通信改变为其他协议通信&lt;/h2&gt;
+    &lt;p&gt;隧道&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;保持通信连接,目的是确保客户端和服务器通信安全&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;http首部&quot;&gt;http首部&lt;/h1&gt;
+
+&lt;p&gt;&lt;img src=&quot;/_pic/201809/http_header.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;根据HTTP版本或者扩展版本的不同,首部可以支持的字段会有所不同,也就是说,可以通过增加头部字段来实现HTTP协议的扩展.&lt;/p&gt;
+
+&lt;h2 id=&quot;keep-alive&quot;&gt;Keep-Alive&lt;/h2&gt;
+
+&lt;h2 id=&quot;63-通用首部字段&quot;&gt;6.3 通用首部字段&lt;/h2&gt;
+
+&lt;p&gt;通用首部字段在请求报文和响应报文中都会使用到&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Cache-Control&lt;/li&gt;
+  &lt;li&gt;Connection&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;请求首部字段&quot;&gt;请求首部字段&lt;/h2&gt;
+
+&lt;p&gt;Accept
+Accept-Charset
+Accept-Encoding
+Accept-Language
+Range&lt;/p&gt;
+&lt;h2 id=&quot;响应首部字段&quot;&gt;响应首部字段&lt;/h2&gt;
+&lt;p&gt;Location&lt;/p&gt;
+&lt;h2 id=&quot;实体首部字段&quot;&gt;实体首部字段&lt;/h2&gt;
+&lt;p&gt;Content-Type
+*&lt;/p&gt;
+
+&lt;h1 id=&quot;https&quot;&gt;https&lt;/h1&gt;
+</description>
+        <pubDate>Thu, 13 Sep 2018 21:34:18 +0800</pubDate>
+        <link>http://localhost:4000/%E5%9F%BA%E7%A1%80/2018/09/13/%E5%9B%BE%E8%A7%A3http.html</link>
+        <guid isPermaLink="true">http://localhost:4000/%E5%9F%BA%E7%A1%80/2018/09/13/%E5%9B%BE%E8%A7%A3http.html</guid>
+        
+        <category>web</category>
+        
+        
+        <category>基础</category>
+        
+      </item>
+    
+  </channel>
+</rss>

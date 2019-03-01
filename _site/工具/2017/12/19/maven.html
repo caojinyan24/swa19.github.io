@@ -1,0 +1,1175 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Maven实战 - </title>
+	<link rel="stylesheet" href="/css/main.css">
+	<link rel="stylesheet" href="/css/index.css">
+	<link rel="stylesheet" href="/css/fontawesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="/css/syntax.css">
+	<link rel="canonical" href="/%E5%B7%A5%E5%85%B7/2017/12/19/maven.html">
+	<link rel="alternate" type="application/rss+xml" title="" href="/feed.xml">
+	<meta name="keywords" content="Maven实战, , ">
+	<meta name="description" content="">
+	<script src="/js/jquery.min.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+	<script src="/js/html5shiv.js"></script>
+	<script src="/js/holder.min.js"></script>
+	<script src="/js/respond.js"></script>
+	<script src="/js/application.js"></script>
+	<script src="/js/lessismore.js"></script>
+  	<style type="text/css">
+	  	.docs-content{
+	  		margin-bottom: 10px;
+	  	}
+  	</style>
+</head>
+
+<body class="index">
+
+<header class="navbar navbar-inverse navbar-fixed-top docs-nav" role="banner">
+  <div class="container">
+    <div class="navbar-header">
+      <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+      <ul class="nav navbar-nav">    
+        <li>
+          <a href="/">主页</a>
+        </li>
+        <li>
+          <a href="/categories/">类别</a>
+        </li>
+        <li>
+          <a href="/tags">标签</a>
+        </li>
+      </ul>
+
+    </nav>
+  </div>
+
+</header>
+<div class="docs-header" id="content">
+  <div class="container">
+  	
+		    <h1></h1>
+      <p>不积跬步，无以至千里</p>
+      
+  </div>
+</div>
+<!---->
+<!--<div class="banner">
+    <div class="container">
+        
+        <a href="/categories/#工具-ref">工具</a>
+        /
+        <a href="/tags/#maven-ref">maven</a>
+        
+    </div>
+</div>
+-->
+<!---->
+
+<div class="container docs-container">
+    <div class="row">
+        <div class="col-md-3">
+        <div class="sidebar hidden-print" role="complementary">
+        <div id="navigation">
+    <h1>目录</h1>
+    <ul class="nav sidenav">
+        
+        
+        
+        
+        
+        
+        <li><a href="#year_2019">2019</a>
+            <ul class="nav">
+                <li><a href="#month_2019_02">02</a></li>
+                
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+    </ul>
+    </li>
+    <li><a href="#year_2018">2018</a>
+        <ul class="nav">
+            <li><a href="#month_2018_11">11</a></li>
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_10">10</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_09">09</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_08">08</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_07">07</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_06">06</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_05">05</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_04">04</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_03">03</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_02">02</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_01">01</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+    </ul>
+    </li>
+    <li><a href="#year_2017">2017</a>
+        <ul class="nav">
+            <li><a href="#month_2017_12">12</a></li>
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2017_11">11</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2017_09">09</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2017_08">08</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+            </ul>
+        </li>
+        
+            
+        </ul>
+</div>
+
+
+
+        </div>
+        </div>
+        <div class="col-md-9" role="main">
+            <div class="panel docs-content">
+            <div class="wrapper">
+                <header class="post-header">
+                    <h1 class="post-title">Maven实战</h1>
+                    <div class="meta"><span class="postdate">2017-12-19 11:19:41</span></div>
+                    <br/>
+                </header>
+                <article class="post-content">
+                    <ul id="markdown-toc">
+  <li><a href="#怎么在项目中使用maven" id="markdown-toc-怎么在项目中使用maven">怎么在项目中使用maven</a></li>
+  <li><a href="#常用的maven命令" id="markdown-toc-常用的maven命令">常用的maven命令</a></li>
+  <li><a href="#maven的pom文件设定jar包依赖的代码规范" id="markdown-toc-maven的pom文件设定jar包依赖的代码规范">maven的pom文件设定jar包依赖的代码规范</a></li>
+  <li><a href="#依赖冲突" id="markdown-toc-依赖冲突">依赖冲突</a></li>
+  <li><a href="#在项目中使用netty启动web服务的方法" id="markdown-toc-在项目中使用netty启动web服务的方法">在项目中使用netty启动web服务的方法</a></li>
+</ul>
+
+<p>这篇文章记录下工作中需要的maven相关的知识</p>
+
+<p>maven是目前普遍使用的项目管理和构建工具,maven的使用不仅仅包括基本的命令,还涉及到和项目的集成.</p>
+
+<h1 id="怎么在项目中使用maven">怎么在项目中使用maven</h1>
+
+<p>在pom文件中添加对jar包的依赖,使得打开项目时,自动下载依赖的jar包</p>
+
+<p>在pom文件中添加maven相关的插件,使得在项目启动时,自动做代码检查,打包等</p>
+
+<h1 id="常用的maven命令">常用的maven命令</h1>
+
+<p>在target下生成项目的jar包或war包:<code class="highlighter-rouge">mvn package -Pdev</code>(指定使用dev环境)</p>
+
+<p>把jar包复制到本地仓库:<code class="highlighter-rouge">mvn install</code></p>
+
+<p>本地打包并上传到远程仓库:<code class="highlighter-rouge">mvn deploy</code></p>
+
+<p>在打包时,跳过测试:<code class="highlighter-rouge">mvn -Dmaven.test.skip=true install/deploy</code></p>
+
+<p>mvn的命令存在依赖关系,如在执行deploy命令时,需要先生成jar包并复制到本地仓库.但各个命令执行时又不会强依赖.因为maven会自动执行前置命令,比如在执行deploy命令时,会首先做build,然后install,最后deploy</p>
+
+<p>检查依赖冲突:<code class="highlighter-rouge">mvn enforcer:enforce</code></p>
+
+<h1 id="maven的pom文件设定jar包依赖的代码规范">maven的pom文件设定jar包依赖的代码规范</h1>
+
+<p>在pom.xml文件中,包括如下元素:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;project</span> <span class="na">xmlns=</span><span class="s">"http://maven.apache.org/POM/4.0.0"</span> <span class="na">xmlns:xsi=</span><span class="s">"http://www.w3.org/2001/XMLSchema-instance"</span>
+         <span class="na">xsi:schemaLocation=</span><span class="s">"http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;modelVersion&gt;</span>4.0.0<span class="nt">&lt;/modelVersion&gt;</span>
+    <span class="nt">&lt;parent&gt;</span>
+        <span class="nt">&lt;groupId&gt;</span>**<span class="nt">&lt;/groupId&gt;</span>
+        <span class="nt">&lt;artifactId&gt;</span>**<span class="nt">&lt;/artifactId&gt;</span>
+        <span class="nt">&lt;version&gt;</span>*.*.*<span class="nt">&lt;/version&gt;</span>
+    <span class="nt">&lt;/parent&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>**<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>**<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;packaging&gt;</span>pom<span class="nt">&lt;/packaging&gt;</span>
+    <span class="nt">&lt;version&gt;</span>*.*.*<span class="nt">&lt;/version&gt;</span>
+    <span class="nt">&lt;name&gt;</span>**<span class="nt">&lt;/name&gt;</span>
+    <span class="nt">&lt;modules&gt;</span>
+        <span class="nt">&lt;module&gt;</span>**<span class="nt">&lt;/module&gt;</span>
+    <span class="nt">&lt;/modules&gt;</span>
+    <span class="nt">&lt;properties&gt;</span>
+        <span class="nt">&lt;project.build.sourceEncoding&gt;</span>UTF-8<span class="nt">&lt;/project.build.sourceEncoding&gt;</span>    
+        <span class="err">&lt;</span>*.version&gt;3.0.4<span class="err">&lt;</span>/*.version&gt;    
+    <span class="nt">&lt;/properties&gt;</span>
+    <span class="nt">&lt;dependencyManagement&gt;</span>
+        <span class="nt">&lt;dependencies&gt;</span>
+            <span class="nt">&lt;dependency&gt;</span>
+                <span class="nt">&lt;groupId&gt;</span>**<span class="nt">&lt;/groupId&gt;</span>
+                <span class="nt">&lt;artifactId&gt;</span>**<span class="nt">&lt;/artifactId&gt;</span>
+                <span class="nt">&lt;version&gt;</span>*.*.*<span class="nt">&lt;/version&gt;</span>
+                <span class="nt">&lt;type&gt;</span>pom<span class="nt">&lt;/type&gt;</span>
+                <span class="nt">&lt;scope&gt;</span>import<span class="nt">&lt;/scope&gt;</span>
+            <span class="nt">&lt;/dependency&gt;</span>            
+        <span class="nt">&lt;/dependencies&gt;</span>
+    <span class="nt">&lt;/dependencyManagement&gt;</span>
+<span class="nt">&lt;/project&gt;</span>
+</code></pre></div></div>
+
+<p>以上为一个标准的父pom,其中主要定义依赖的jar包的版本</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd"&gt;
+    &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+    &lt;parent&gt;
+        &lt;groupId&gt;**&lt;/groupId&gt;
+        &lt;artifactId&gt;**&lt;/artifactId&gt;
+        &lt;version&gt;*.*.*&lt;/version&gt;
+    &lt;/parent&gt;
+    &lt;groupId&gt;**&lt;/groupId&gt;
+    &lt;artifactId&gt;**&lt;/artifactId&gt;
+    &lt;packaging&gt;war&lt;/packaging&gt;
+    &lt;name&gt;service Maven Webapp&lt;/name&gt;
+    &lt;url&gt;http://maven.apache.org&lt;/url&gt;
+    &lt;properties&gt;
+        &lt;profiles.dir&gt;src/profiles&lt;/profiles.dir&gt;
+    &lt;/properties&gt;
+    &lt;dependencies&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;**&lt;/groupId&gt;
+            &lt;artifactId&gt;**&lt;/artifactId&gt;
+            &lt;version&gt;${project.version}&lt;/version&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;**&lt;/groupId&gt;
+            &lt;artifactId&gt;**&lt;/artifactId&gt;
+        &lt;/dependency&gt;        
+    &lt;/dependencies&gt;
+    &lt;build&gt;
+        &lt;resources&gt;
+            &lt;resource&gt;
+                &lt;directory&gt;src/main/resources.${deploy.type}&lt;/directory&gt;
+            &lt;/resource&gt;
+            &lt;resource&gt;
+                &lt;directory&gt;src/main/resources&lt;/directory&gt;
+                &lt;filtering&gt;true&lt;/filtering&gt;
+            &lt;/resource&gt;
+        &lt;/resources&gt;
+        &lt;plugins&gt;
+            &lt;plugin&gt;
+                &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+                &lt;artifactId&gt;maven-eclipse-plugin&lt;/artifactId&gt;
+                &lt;version&gt;2.8&lt;/version&gt;
+                &lt;configuration&gt;
+                    &lt;projectNameTemplate&gt;[artifactId]&lt;/projectNameTemplate&gt;
+                    &lt;wtpmanifest&gt;true&lt;/wtpmanifest&gt;
+                    &lt;wtpapplicationxml&gt;true&lt;/wtpapplicationxml&gt;
+                    &lt;wtpversion&gt;2.0&lt;/wtpversion&gt;
+                    &lt;manifest&gt;${basedir}/src/main/resources/META-INF/MANIFEST.MF&lt;/manifest&gt;
+                &lt;/configuration&gt;
+            &lt;/plugin&gt;
+            &lt;plugin&gt;
+                &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+                &lt;artifactId&gt;maven-compiler-plugin&lt;/artifactId&gt;
+                &lt;version&gt;2.3.2&lt;/version&gt;
+                &lt;configuration&gt;
+                    &lt;source&gt;1.7&lt;/source&gt;
+                    &lt;target&gt;1.7&lt;/target&gt;
+                    &lt;failOnError&gt;true&lt;/failOnError&gt;
+                    &lt;verbose&gt;true&lt;/verbose&gt;
+                    &lt;fork&gt;true&lt;/fork&gt;
+                    &lt;compilerArgument&gt;-nowarn&lt;/compilerArgument&gt;
+                    &lt;encoding&gt;UTF-8&lt;/encoding&gt;
+                &lt;/configuration&gt;
+            &lt;/plugin&gt;            
+            &lt;plugin&gt;
+                &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+                &lt;artifactId&gt;maven-deploy-plugin&lt;/artifactId&gt;
+                &lt;version&gt;2.7&lt;/version&gt;
+                &lt;configuration&gt;
+                    &lt;skip&gt;true&lt;/skip&gt;
+                &lt;/configuration&gt;
+            &lt;/plugin&gt;           
+        &lt;/plugins&gt;
+        &lt;finalName&gt;service&lt;/finalName&gt;
+    &lt;/build&gt;
+    &lt;profiles&gt;
+        &lt;profile&gt;
+            &lt;id&gt;dev&lt;/id&gt;
+            &lt;build&gt;
+                &lt;resources&gt;
+                    &lt;resource&gt;
+                        &lt;directory&gt;${profiles.dir}/dev&lt;/directory&gt;
+                    &lt;/resource&gt;
+                &lt;/resources&gt;
+            &lt;/build&gt;
+        &lt;/profile&gt;
+    &lt;/profiles&gt;
+&lt;/project&gt;
+</code></pre></div></div>
+
+<p>以上为一个子pom,除了引入依赖的jar包之外,还标示这个模块打war包,同时定义了profile和plugin的相关配置.需要注意的是,为了对依赖的jar包的版本做统一的管理,最好要求在父pom的<code class="highlighter-rouge">dependencyManagement</code>标签下集中定义依赖版本.</p>
+
+<p>说明下标签含义</p>
+
+<p><code class="highlighter-rouge">profile</code>:定义各种开发环境的变量,在以上文件中,指定了不同环境依赖资源文件的路径</p>
+
+<p><code class="highlighter-rouge">dependencyManagement</code>:管理依赖包,但不会引入项目的jar包.</p>
+
+<p><code class="highlighter-rouge">scope</code>:指定jar包依赖的传递性,并影响构建路径．默认为compile</p>
+
+<p>其中scope有以下几种</p>
+
+<p><code class="highlighter-rouge">compile</code>:项目中的所有环境中均可用，并且依赖这个项目的项目也可以用到,如果要更换依赖包，还需要直接修改源代码</p>
+
+<p><code class="highlighter-rouge">provided</code>:只用于编译和测试，运行阶段由ｊｄｋ或运行容器来提供依赖,如servlet-api.jar，仅仅是引入api，但是要求每个容器有不同的实现，这样就可以在不同的容器运行</p>
+
+<p><code class="highlighter-rouge">runtime</code>:运行和ｔｅｓｔ可用，编译路径不可用,比如日志slf4j的实现logback、jdbc的实现 mysql， 此时是不能import它的类的，这样就可以在运行时很方便的更换实现类，这是针对于接口编程</p>
+
+<p><code class="highlighter-rouge">test</code>:只用于测试的编译和执行，不具有传递性，也就是依赖该ｊａｒ包的项目无法引入这个ｊａｒ包,用于编译和运行测试代码 ，不会随项目发布</p>
+
+<p><code class="highlighter-rouge">system</code>:</p>
+
+<p><code class="highlighter-rouge">import</code>:只有在<code class="highlighter-rouge">dependencyManagement</code>标签内才可以使用,表示使用一系列依赖来替换这个引入的依赖,不具有传递性</p>
+
+<h1 id="依赖冲突">依赖冲突</h1>
+
+<p>在引入jar包时,可能会存在多个jar包同时依赖一个jar包,且这个jar包依赖的版本不同的情况,这样就会造成依赖冲突.此时,maven怎么确定使用那个版本呢?</p>
+
+<p>有两个原则,一个是最短路径依赖原则,另一个是就近原则,也就是哪个先定义就先用哪个.</p>
+
+<p>依赖冲突可能会造成程序执行的不确定,要避免出现依赖冲突的情况.</p>
+
+<p>当检查出现依赖冲突时,可以通过两个方式来解决,一种是排除法,但是这种方式有可能会造成NoClassDefException异常;比较安全的做法是利用maven最短路径原则,在<code class="highlighter-rouge">dependencyManagement</code>中重新执行版本.</p>
+
+<h1 id="在项目中使用netty启动web服务的方法">在项目中使用netty启动web服务的方法</h1>
+
+<p>首先在pom文件中添加maven的netty插件:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    &lt;build&gt;
+        &lt;plugins&gt;
+            &lt;plugin&gt;
+                &lt;groupId&gt;org.mortbay.jetty&lt;/groupId&gt;
+                &lt;artifactId&gt;maven-jetty-plugin&lt;/artifactId&gt;
+                &lt;version&gt;${jetty.version}&lt;/version&gt;
+                &lt;configuration&gt;
+                    &lt;contextPath&gt;/&lt;/contextPath&gt;
+                    &lt;connectors&gt;
+                        &lt;connector implementation="org.mortbay.jetty.nio.SelectChannelConnector"&gt;
+                            &lt;port&gt;8080&lt;/port&gt;
+                        &lt;/connector&gt;
+                    &lt;/connectors&gt;
+                &lt;/configuration&gt;
+            &lt;/plugin&gt;
+        &lt;/plugins&gt;
+    &lt;/build&gt;
+</code></pre></div></div>
+
+<p>然后在IDE中配置使用maven启动项目,在命令行配置中添加:<code class="highlighter-rouge">netty:run</code>即可</p>
+
+                </article>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<footer class="footer" role="contentinfo">
+	<div class="container">
+		<div class="footer-col-wrapper">
+			<div class="footer-col footer-col-2">
+				<ul class="social-media-list">
+					
+					<li>
+						<a href="https://github.com/swa19"><span class="icon icon--github"><svg viewBox="0 0 16 16"><path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/></svg>
+</span><span class="username">swa19</span></a>
+
+					</li>
+					
+				</ul>
+			</div>
+			<div class="footer-col footer-col-3">
+				<p>我不是个伟大的程序员，我只是个有着一些优秀习惯的好程序员--by Kent Beck</p>
+			</div>
+		</div>
+	</div>
+</footer>
+
+
+</body>
+</html>

@@ -1,0 +1,1078 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>SpringCloud基础教程 - </title>
+	<link rel="stylesheet" href="/css/main.css">
+	<link rel="stylesheet" href="/css/index.css">
+	<link rel="stylesheet" href="/css/fontawesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="/css/syntax.css">
+	<link rel="canonical" href="/%E6%A1%86%E6%9E%B6/2018/04/26/springcloud.html">
+	<link rel="alternate" type="application/rss+xml" title="" href="/feed.xml">
+	<meta name="keywords" content="SpringCloud基础教程, , ">
+	<meta name="description" content="">
+	<script src="/js/jquery.min.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+	<script src="/js/html5shiv.js"></script>
+	<script src="/js/holder.min.js"></script>
+	<script src="/js/respond.js"></script>
+	<script src="/js/application.js"></script>
+	<script src="/js/lessismore.js"></script>
+  	<style type="text/css">
+	  	.docs-content{
+	  		margin-bottom: 10px;
+	  	}
+  	</style>
+</head>
+
+<body class="index">
+
+<header class="navbar navbar-inverse navbar-fixed-top docs-nav" role="banner">
+  <div class="container">
+    <div class="navbar-header">
+      <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+      <ul class="nav navbar-nav">    
+        <li>
+          <a href="/">主页</a>
+        </li>
+        <li>
+          <a href="/categories/">类别</a>
+        </li>
+        <li>
+          <a href="/tags">标签</a>
+        </li>
+      </ul>
+
+    </nav>
+  </div>
+
+</header>
+<div class="docs-header" id="content">
+  <div class="container">
+  	
+		    <h1></h1>
+      <p>不积跬步，无以至千里</p>
+      
+  </div>
+</div>
+<!---->
+<!--<div class="banner">
+    <div class="container">
+        
+        <a href="/categories/#框架-ref">框架</a>
+        /
+        <a href="/tags/#springCloud-ref">springCloud</a>
+        
+    </div>
+</div>
+-->
+<!---->
+
+<div class="container docs-container">
+    <div class="row">
+        <div class="col-md-3">
+        <div class="sidebar hidden-print" role="complementary">
+        <div id="navigation">
+    <h1>目录</h1>
+    <ul class="nav sidenav">
+        
+        
+        
+        
+        
+        
+        <li><a href="#year_2019">2019</a>
+            <ul class="nav">
+                <li><a href="#month_2019_02">02</a></li>
+                
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+    </ul>
+    </li>
+    <li><a href="#year_2018">2018</a>
+        <ul class="nav">
+            <li><a href="#month_2018_11">11</a></li>
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_10">10</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_09">09</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_08">08</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_07">07</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_06">06</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_05">05</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_04">04</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_03">03</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_02">02</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_01">01</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+    </ul>
+    </li>
+    <li><a href="#year_2017">2017</a>
+        <ul class="nav">
+            <li><a href="#month_2017_12">12</a></li>
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2017_11">11</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2017_09">09</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2017_08">08</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+            </ul>
+        </li>
+        
+            
+        </ul>
+</div>
+
+
+
+        </div>
+        </div>
+        <div class="col-md-9" role="main">
+            <div class="panel docs-content">
+            <div class="wrapper">
+                <header class="post-header">
+                    <h1 class="post-title">SpringCloud基础教程</h1>
+                    <div class="meta"><span class="postdate">2018-04-26 19:23:50</span></div>
+                    <br/>
+                </header>
+                <article class="post-content">
+                    <ul id="markdown-toc">
+  <li><a href="#服务注册与发现" id="markdown-toc-服务注册与发现">服务注册与发现</a>    <ul>
+      <li><a href="#eureka" id="markdown-toc-eureka">eureka</a></li>
+      <li><a href="#consul" id="markdown-toc-consul">consul</a></li>
+    </ul>
+  </li>
+  <li><a href="#消费者" id="markdown-toc-消费者">消费者</a>    <ul>
+      <li><a href="#ribbon" id="markdown-toc-ribbon">ribbon</a></li>
+      <li><a href="#feign" id="markdown-toc-feign">feign</a></li>
+    </ul>
+  </li>
+  <li><a href="#分布式配置中心" id="markdown-toc-分布式配置中心">分布式配置中心</a></li>
+  <li><a href="#服务容错" id="markdown-toc-服务容错">服务容错</a></li>
+  <li><a href="#断路器" id="markdown-toc-断路器">断路器</a>    <ul>
+      <li><a href="#资源隔离线程池隔离和信号量隔离" id="markdown-toc-资源隔离线程池隔离和信号量隔离">资源隔离：线程池隔离和信号量隔离</a></li>
+      <li><a href="#降级" id="markdown-toc-降级">降级</a></li>
+      <li><a href="#熔断" id="markdown-toc-熔断">熔断</a></li>
+      <li><a href="#缓存" id="markdown-toc-缓存">缓存</a></li>
+    </ul>
+  </li>
+  <li><a href="#服务网关" id="markdown-toc-服务网关">服务网关</a></li>
+  <li><a href="#分布式消息" id="markdown-toc-分布式消息">分布式消息</a></li>
+  <li><a href="#服务跟踪" id="markdown-toc-服务跟踪">服务跟踪</a>    <ul>
+      <li><a href="#跟踪原理" id="markdown-toc-跟踪原理">跟踪原理</a></li>
+      <li><a href="#logstash" id="markdown-toc-logstash">logstash</a></li>
+      <li><a href="#zipkin" id="markdown-toc-zipkin">zipkin</a></li>
+      <li><a href="#收集" id="markdown-toc-收集">收集</a></li>
+      <li><a href="#抽样" id="markdown-toc-抽样">抽样</a></li>
+    </ul>
+  </li>
+  <li><a href="#参考" id="markdown-toc-参考">参考</a></li>
+</ul>
+
+<p>借用一篇博客中的目录理下springcloud涉及的内容，整理自<code class="highlighter-rouge">Finchley.RC1</code>的SpringCloud文档</p>
+
+<h1 id="服务注册与发现">服务注册与发现</h1>
+<p>SpringCloudNetflix整合了Netflix的部分模块，包括：Eureka(服务发现),Hystrix(断流),Zuul(路由),Ribbon(客户端负载均衡).</p>
+
+<h2 id="eureka">eureka</h2>
+<p>使用Eureka做服务发现  <br />
+服务端：负责管理注册在服务端的所有的client，以下为相关配置</p>
+
+<ol>
+  <li>启动类添加<code class="highlighter-rouge">@EnableEurekaServer</code>注解</li>
+  <li>
+    <p>配置文件中添加服务注册地址和端口号</p>
+
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>spring.application.name=eureka-server
+server.port=7001
+eureka.client.register-with-eureka=false
+eureka.client.fetch-registry=false
+#server,作为服务管理中心管理http://localhost:7001/eureka/地址的服务
+eureka.client.service-url.defaultZone=http://localhost:${server.port}/eureka/
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>添加maven依赖</p>
+
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> &lt;dependency&gt;
+     &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;
+     &lt;artifactId&gt;spring-cloud-starter-eureka-server&lt;/artifactId&gt;
+ &lt;/dependency&gt;
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<p>客户端：</p>
+
+<ol>
+  <li>
+    <p>配置文件中添加服务注册地址和端口号</p>
+
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>eureka.client.service-url.defaultZone=http://localhost:7001/eureka/
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>添加maven依赖</p>
+
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> &lt;dependency&gt;
+     &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;
+     &lt;artifactId&gt;spring-cloud-starter-netflix-eureka-client&lt;/artifactId&gt;
+ &lt;/dependency&gt;
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h2 id="consul">consul</h2>
+<h1 id="消费者">消费者</h1>
+<h2 id="ribbon">ribbon</h2>
+<h2 id="feign">feign</h2>
+<h1 id="分布式配置中心">分布式配置中心</h1>
+<h1 id="服务容错">服务容错</h1>
+<h1 id="断路器">断路器</h1>
+
+<p>SpringCloud采用了Netflix的Hystrix来实现断路器，为了解决服务中的雪崩问题，它采用的机制有：</p>
+
+<h2 id="资源隔离线程池隔离和信号量隔离">资源隔离：线程池隔离和信号量隔离</h2>
+
+<p>每个服务分配独立的线程池，每个请求设置超时时间，堆积的请求进入线程池队列，从而保证了各个接口的请求不会因为抢占系统资源而互相影响。</p>
+
+<p>每个线程池存在一个计数器，统计当前有多少个线程在运行，当超过设置的最大线程数则丢弃新的请求，调用回调函数返回。避免请求量大的时候新的请求不断堆积在内存中等待。</p>
+
+<h2 id="降级">降级</h2>
+
+<p>当出现超时、资源不足时，会触发降级机制，此时不会请求接口，而是直接调用回调接口返回</p>
+
+<h2 id="熔断">熔断</h2>
+
+<p>当失败率达到设置的阈值，熔断器触发的快速失败会通过尝试连接来判断服务是否恢复</p>
+
+<h2 id="缓存">缓存</h2>
+
+<h1 id="服务网关">服务网关</h1>
+<h1 id="分布式消息">分布式消息</h1>
+<h1 id="服务跟踪">服务跟踪</h1>
+<h2 id="跟踪原理">跟踪原理</h2>
+<h2 id="logstash">logstash</h2>
+<h2 id="zipkin">zipkin</h2>
+<h2 id="收集">收集</h2>
+<h2 id="抽样">抽样</h2>
+
+<h1 id="参考">参考</h1>
+
+<p><a href="http://cloud.spring.io/spring-cloud-static/Finchley.RC1/single/spring-cloud.html">SpringCloud</a></p>
+
+                </article>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<footer class="footer" role="contentinfo">
+	<div class="container">
+		<div class="footer-col-wrapper">
+			<div class="footer-col footer-col-2">
+				<ul class="social-media-list">
+					
+					<li>
+						<a href="https://github.com/swa19"><span class="icon icon--github"><svg viewBox="0 0 16 16"><path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/></svg>
+</span><span class="username">swa19</span></a>
+
+					</li>
+					
+				</ul>
+			</div>
+			<div class="footer-col footer-col-3">
+				<p>我不是个伟大的程序员，我只是个有着一些优秀习惯的好程序员--by Kent Beck</p>
+			</div>
+		</div>
+	</div>
+</footer>
+
+
+</body>
+</html>

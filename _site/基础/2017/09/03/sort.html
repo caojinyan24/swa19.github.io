@@ -1,0 +1,1069 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>排序功能开发总结 - </title>
+	<link rel="stylesheet" href="/css/main.css">
+	<link rel="stylesheet" href="/css/index.css">
+	<link rel="stylesheet" href="/css/fontawesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="/css/syntax.css">
+	<link rel="canonical" href="/%E5%9F%BA%E7%A1%80/2017/09/03/sort.html">
+	<link rel="alternate" type="application/rss+xml" title="" href="/feed.xml">
+	<meta name="keywords" content="排序功能开发总结, , ">
+	<meta name="description" content="">
+	<script src="/js/jquery.min.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+	<script src="/js/html5shiv.js"></script>
+	<script src="/js/holder.min.js"></script>
+	<script src="/js/respond.js"></script>
+	<script src="/js/application.js"></script>
+	<script src="/js/lessismore.js"></script>
+  	<style type="text/css">
+	  	.docs-content{
+	  		margin-bottom: 10px;
+	  	}
+  	</style>
+</head>
+
+<body class="index">
+
+<header class="navbar navbar-inverse navbar-fixed-top docs-nav" role="banner">
+  <div class="container">
+    <div class="navbar-header">
+      <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+      <ul class="nav navbar-nav">    
+        <li>
+          <a href="/">主页</a>
+        </li>
+        <li>
+          <a href="/categories/">类别</a>
+        </li>
+        <li>
+          <a href="/tags">标签</a>
+        </li>
+      </ul>
+
+    </nav>
+  </div>
+
+</header>
+<div class="docs-header" id="content">
+  <div class="container">
+  	
+		    <h1></h1>
+      <p>不积跬步，无以至千里</p>
+      
+  </div>
+</div>
+<!---->
+<!--<div class="banner">
+    <div class="container">
+        
+        <a href="/categories/#基础-ref">基础</a>
+        /
+        <a href="/tags/#java-ref">java</a>
+        
+    </div>
+</div>
+-->
+<!---->
+
+<div class="container docs-container">
+    <div class="row">
+        <div class="col-md-3">
+        <div class="sidebar hidden-print" role="complementary">
+        <div id="navigation">
+    <h1>目录</h1>
+    <ul class="nav sidenav">
+        
+        
+        
+        
+        
+        
+        <li><a href="#year_2019">2019</a>
+            <ul class="nav">
+                <li><a href="#month_2019_02">02</a></li>
+                
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+    </ul>
+    </li>
+    <li><a href="#year_2018">2018</a>
+        <ul class="nav">
+            <li><a href="#month_2018_11">11</a></li>
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_10">10</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_09">09</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_08">08</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_07">07</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_06">06</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_05">05</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_04">04</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_03">03</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_02">02</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_01">01</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+    </ul>
+    </li>
+    <li><a href="#year_2017">2017</a>
+        <ul class="nav">
+            <li><a href="#month_2017_12">12</a></li>
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2017_11">11</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2017_09">09</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2017_08">08</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+            </ul>
+        </li>
+        
+            
+        </ul>
+</div>
+
+
+
+        </div>
+        </div>
+        <div class="col-md-9" role="main">
+            <div class="panel docs-content">
+            <div class="wrapper">
+                <header class="post-header">
+                    <h1 class="post-title">排序功能开发总结</h1>
+                    <div class="meta"><span class="postdate">2017-09-03 23:00:42</span></div>
+                    <br/>
+                </header>
+                <article class="post-content">
+                    
+<p>页面排序的功能，这个页面会展示一个表或几个表联合查询的各个字段，页面提供根据其中的几个字段进行排序的功能，而这样的页面有5个，且这五个页面中需要排序的字段是一样的。</p>
+
+<p>以上为需求背景</p>
+
+<p>通过分析，我把这些排序的字段再次分为两类，一类是不可通过数据库字段做排序的，因为这些字段的排序规则由人工划定优先级，类似[a,f,t]这样，并且这些字段区分度不高；另一类是可通过数据库直接做排序查询的，包括varchar类型，Bigdecimal类型等；同时五个页面中对排序的字段是一样的，所以我可以使用相同的排序规则。 <br />
+分析之后，我决定构造一个抽象的基类，这个基类对外提供一个接口，通过传入搜索条件和排序的字段，返回符合条件的排序后的数据。</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>public abstract class DataQueryService&lt;T extends AbstractSearchConditon&gt; {  
+ protected List&lt;String&gt; sortKeys = Lists.newArrayList("COLUMN1", "COLUMN2", "COLUMN3", "COLUMN4");
+    public List queryBoxDataByCondition(T queryCondition) {
+        if (sortKeys.contains(queryCondition.getSortKey())) {
+            return queryDataByConditionwithoutIndex(queryCondition);
+        } else {
+            return queryDataByConditionwithIndex(queryCondition);
+        }
+    }
+</code></pre></div></div>
+
+<p>sortKeys这个列表中包含的时需要做内存排序的排序字段，queryDataByConditionwithoutIndex方法实现查询数据并在内存中排序；queryDataByConditionwithIndex实现数据查询，排序通过数据库排序来实现。由于不同的页面的数据是通过查询不同的数据表来展示的，那么各个不同页面的查询方法通过实现这两个方法来完成。</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@Service
+public class APageDataQueryServiceImpl extends DataQueryService&lt;APageSearchConditon&gt; {
+    @Override
+    public List queryDataByConditionwithIndex(APageSearchConditon queryCondition) {
+        return workspaceDao.queryPersonalBoxDataSorted(queryCondition);
+    }
+    @Override
+    protected List queryDataByConditionwithoutIndex(APageSearchConditon queryCondition) {
+    //todo
+    }
+}
+</code></pre></div></div>
+
+<p>完成第一个子类APageDataQueryServiceImpl的两个方法之后，继续其他页面时会发现不管是哪个页面，在内存中的排序规则也是一致的，区别只在于从数据库中查询数据的数据表不一样，于是又有了对基类的再次改造。</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>public abstract class DataQueryService&lt;T extends AbstractSearchConditon&gt; {
+ protected List&lt;String&gt; sortKeys = Lists.newArrayList("COLUMN1", "COLUMN2", "COLUMN3", "COLUMN4");
+
+
+    public List queryBoxDataByCondition(T queryCondition) {
+        logger.debug("queryBoxDataByCondition-begin:{}", queryCondition);
+        if (sort1.contains(queryCondition.getSortKey())) {
+            return queryDataByConditionwithoutIndex(queryCondition);
+        } else {
+            return queryDataByConditionwithIndex(queryCondition);
+        }
+    }
+
+    /**
+     * 不根据数据库索引进行排序
+     * 这个排序规则很简单，根据queryCondition中的offset，计算出当前要显示的column1的值和对应这个值的offset
+     * 如当前的column1有a,b,c,d这四个值，按照[a,c,d,b]进行排序。经过统计之后，值为a的有5条记录，b有3条记录，c有3条记录，d有2条记录.queryCondition中的查询条件为offset=4，pageSize=4，且正序排列；那么对应的展示在页面上的就是展示值为a的最后一条记录，值为c的3条记录。知道了这些之后，就可以直接从数据库中分别查询值为a和c的对应条数的记录拼装后返回即可。
+     * @param queryCondition
+     * @return
+     */
+    private List queryDataByConditionwithoutIndex(T queryCondition) {
+        List result = Lists.newArrayList();
+        Map&lt;String, Map&lt;String, Object&gt;&gt; countMap = countBoxDataByColumnName(queryCondition);
+        Integer flag = 0;//标识当前callno所在位置
+        Integer initOffset = queryCondition.getOffset();
+        Integer initPageSize = queryCondition.getPageSize();
+        Integer offset = initOffset;
+        Integer leftNum = queryCondition.getPageSize();
+        List&lt;String&gt; countColumnList = getSortOrder(sortKey,sortRule, countMap);//获取需求中规定的排序规则
+        for (String columnValue : countColumnList) {
+            Integer slit = countMap.get(columnValue) == null ? 0 : Integer.valueOf(String.valueOf(countMap.get(columnValue).get("num")));//标识当前callno总数量
+            if (flag + slit &gt; offset &amp;&amp; leftNum &gt; 0) {
+                queryCondition.setOffset(offset - flag);
+                queryCondition.setPageSize(leftNum);
+                List slitData = queryBoxDataByColumnName(queryCondition, columnValue);
+                result.addAll(slitData);
+                if (result.size() &lt; initPageSize) {
+                    flag += slitData.size();
+                    offset += slitData.size();
+                    leftNum -= slitData.size();
+                } else {
+                    return result.subList(0, initPageSize);
+                }
+            } else {
+                flag += slit;
+            }
+        }
+        return result;
+    }
+
+    protected abstract List queryDataByConditionwithIndex(T queryCondition);
+   /**
+     * 统计数据库中，待排序字段column1各个值的统计数据
+     *
+     * @param queryCondition 查询条件
+     * @return 外层Map：key为column1的值value1，value为统计数据的Map；内层Map：key为sql查询时的别名，如key为count，value为column1为value1的总数
+     */
+    protected abstract Map&lt;String, Map&lt;String, Object&gt;&gt; countBoxDataByColumnName(T queryCondition);
+
+    /**
+     * 根据column1指定的value（columnValue）查询数据
+     *
+     * @param queryCondition 查询条件，包含offset和pageSize
+     * @param columnValue    column1的值
+     * @return 查的的数据
+     */
+    protected abstract List queryBoxDataByColumnName(T queryCondition, String columnValue);
+
+}
+
+</code></pre></div></div>
+
+<p>通过这样一个抽象之后，各个页面的查询子类只需要实现基类中的三个方法即可完成按照指定字段进行查询数据并排序的功能。<br />
+另外是写代码的过程中，发现的现有代码的问题。现有的项目架构没有一个统一的规划，各个页面的操作其实有很多共通的地方，例如这次为了添加排序规则，我把各个页面的查询类QueryCondition的公共参数抽象到了一个基类中，从而实现了数据查询功能的代码抽象和复用，一方面减少了代码量，另一方面扩展性更好，后续也有利于开发维护。</p>
+
+<blockquote>
+  <p>初接触代码，了解到代码质量这个概念的时候，我并不清楚什么样的代码是好代码。幸运的是我很听话地遵循了《clean code》的教导。如今在面对一些代码的时候，我依旧会疑惑这样的代码是好代码吗？我应该怎样写会更好一点？代码review的时候，不同的程序员对这个问题有不同的答案，连我自己也会随着编程经验的丰富而改变自己的编程习惯。但是不管怎样，我始终坚信的一个准则是：可读性好+简洁+可扩展<br />
+好的代码会让bug无处可藏,当一个系统的代码变得让人不敢动的时候，这个系统已经成为了一个烂系统。</p>
+</blockquote>
+
+                </article>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<footer class="footer" role="contentinfo">
+	<div class="container">
+		<div class="footer-col-wrapper">
+			<div class="footer-col footer-col-2">
+				<ul class="social-media-list">
+					
+					<li>
+						<a href="https://github.com/swa19"><span class="icon icon--github"><svg viewBox="0 0 16 16"><path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/></svg>
+</span><span class="username">swa19</span></a>
+
+					</li>
+					
+				</ul>
+			</div>
+			<div class="footer-col footer-col-3">
+				<p>我不是个伟大的程序员，我只是个有着一些优秀习惯的好程序员--by Kent Beck</p>
+			</div>
+		</div>
+	</div>
+</footer>
+
+
+</body>
+</html>

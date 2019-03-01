@@ -1,0 +1,1166 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Golang-pprof - </title>
+	<link rel="stylesheet" href="/css/main.css">
+	<link rel="stylesheet" href="/css/index.css">
+	<link rel="stylesheet" href="/css/fontawesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="/css/syntax.css">
+	<link rel="canonical" href="/%E5%9F%BA%E7%A1%80/2018/07/08/go-pprof.html">
+	<link rel="alternate" type="application/rss+xml" title="" href="/feed.xml">
+	<meta name="keywords" content="Golang-pprof, , ">
+	<meta name="description" content="">
+	<script src="/js/jquery.min.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+	<script src="/js/html5shiv.js"></script>
+	<script src="/js/holder.min.js"></script>
+	<script src="/js/respond.js"></script>
+	<script src="/js/application.js"></script>
+	<script src="/js/lessismore.js"></script>
+  	<style type="text/css">
+	  	.docs-content{
+	  		margin-bottom: 10px;
+	  	}
+  	</style>
+</head>
+
+<body class="index">
+
+<header class="navbar navbar-inverse navbar-fixed-top docs-nav" role="banner">
+  <div class="container">
+    <div class="navbar-header">
+      <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+      <ul class="nav navbar-nav">    
+        <li>
+          <a href="/">主页</a>
+        </li>
+        <li>
+          <a href="/categories/">类别</a>
+        </li>
+        <li>
+          <a href="/tags">标签</a>
+        </li>
+      </ul>
+
+    </nav>
+  </div>
+
+</header>
+<div class="docs-header" id="content">
+  <div class="container">
+  	
+		    <h1></h1>
+      <p>不积跬步，无以至千里</p>
+      
+  </div>
+</div>
+<!---->
+<!--<div class="banner">
+    <div class="container">
+        
+        <a href="/categories/#基础-ref">基础</a>
+        /
+        <a href="/tags/#go-ref">go</a>
+        
+    </div>
+</div>
+-->
+<!---->
+
+<div class="container docs-container">
+    <div class="row">
+        <div class="col-md-3">
+        <div class="sidebar hidden-print" role="complementary">
+        <div id="navigation">
+    <h1>目录</h1>
+    <ul class="nav sidenav">
+        
+        
+        
+        
+        
+        
+        <li><a href="#year_2019">2019</a>
+            <ul class="nav">
+                <li><a href="#month_2019_02">02</a></li>
+                
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+    </ul>
+    </li>
+    <li><a href="#year_2018">2018</a>
+        <ul class="nav">
+            <li><a href="#month_2018_11">11</a></li>
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_10">10</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_09">09</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_08">08</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_07">07</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_06">06</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_05">05</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_04">04</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_03">03</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_02">02</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_01">01</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+    </ul>
+    </li>
+    <li><a href="#year_2017">2017</a>
+        <ul class="nav">
+            <li><a href="#month_2017_12">12</a></li>
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2017_11">11</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2017_09">09</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2017_08">08</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+            </ul>
+        </li>
+        
+            
+        </ul>
+</div>
+
+
+
+        </div>
+        </div>
+        <div class="col-md-9" role="main">
+            <div class="panel docs-content">
+            <div class="wrapper">
+                <header class="post-header">
+                    <h1 class="post-title">Golang-pprof</h1>
+                    <div class="meta"><span class="postdate">2018-07-08 14:27:23</span></div>
+                    <br/>
+                </header>
+                <article class="post-content">
+                    <h1 id="pprof">pprof</h1>
+<h2 id="pprof是什么">pprof是什么</h2>
+
+<p>在golang的package中,有两个包包含pprof:<code class="highlighter-rouge">runtime/pprof</code>和<code class="highlighter-rouge">net/http/pprof</code>,其中<code class="highlighter-rouge">runtime/pprof</code>工具包可以生成pprof可视化工具可以查看的运行时数据,而<code class="highlighter-rouge">net/http/pprof</code>则用于分析HTTP服务器的运行时数据,所以其使用具有一定的局限性.</p>
+
+<h1 id="如何通过pprof做系统分析">如何通过pprof做系统分析</h1>
+<h2 id="命令行">命令行</h2>
+<p>在当前目录下查看运行时参数:</p>
+
+<p><code class="highlighter-rouge">go run -cpuprofile cpu.prof -memprofile mem.prof -bench</code></p>
+
+<h2 id="独立程序添加">独立程序添加</h2>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import (
+	"fmt"
+	"time"
+	"os"
+	"runtime/pprof"
+)
+
+func Main() {
+	fmt.Println("start pprof...")
+	startCPUProfile()
+	startMemProfile()
+	defer stopCPUProfile()
+	for {
+		time.Sleep(1 * time.Second)
+	}
+
+}
+
+var cpuProfile = "cpu.prof"
+var memProfile = "mem.prof"
+
+func startCPUProfile() {
+	if cpuProfile != "" {
+		f, err := os.Create(cpuProfile)
+		if err != nil {
+			fmt.Fprintf(os.Stderr, "Can not create cpu profile output file: %s",
+				err)
+			return
+		}
+		if err := pprof.StartCPUProfile(f); err != nil {
+			fmt.Fprintf(os.Stderr, "Can not start cpu profile: %s", err)
+			f.Close()
+			return
+		}
+	}
+}
+func stopCPUProfile() {
+	if cpuProfile != "" {
+		pprof.StopCPUProfile() // 把记录的概要信息写到已指定的文件
+	}
+}
+
+func startMemProfile() {
+	if memProfile != "" {
+		f, err := os.Create(memProfile)
+		if err != nil {
+			fmt.Fprintf(os.Stderr, "Can not create mem profile output file: %s", err)
+			return
+		}
+		if err = pprof.WriteHeapProfile(f); err != nil {
+			fmt.Fprintf(os.Stderr, "Can not write %s: %s", memProfile, err)
+		}
+		f.Close()
+	}
+}
+</code></pre></div></div>
+
+<p>pprof还有很多其他的参数，可以通过help查看使用方式</p>
+
+<h2 id="gin框架中的pprof使用">gin框架中的pprof使用</h2>
+
+<p>对于http服务,也可以通过<code class="highlighter-rouge">net/http/pprof</code>包中的工具分析系统情况,用于HTTP服务端生成可以被pprof可视化工具可以使用的profile文件,在gin框架中已经集成了相关的接口,可以在gin框架下很方便地使用pprof做系统分析</p>
+
+<p>在使用的时候，需要匿名引入<code class="highlighter-rouge">net/http/pprof</code>包，并调用<code class="highlighter-rouge">ListenAndServe</code>接口启动监听服务。</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import (
+	"fmt"
+	"net/http"
+	"net/http/pprof"
+
+	"code.byted.org/gopkg/logs"
+	"code.byted.org/hystrix/hystrix-go/hystrix"
+)
+
+var (
+	debugMux = http.NewServeMux()
+)
+
+// 业务代码注册debug handler
+func RegisterDebugHandler(pattern string, handler func(http.ResponseWriter, *http.Request)) {
+	debugMux.HandleFunc(pattern, handler)
+}
+
+func startDebugServer() {
+	if !appConfig.EnablePprof {
+		logs.Info("Debug server not enabled.")
+		return
+	}
+	if appConfig.DebugPort == 0 {
+		logs.Info("Debug port is not specified.")
+		return
+	}
+
+	// pprof handler
+	debugMux.HandleFunc("/debug/pprof/", pprof.Index)
+	debugMux.HandleFunc("/debug/pprof/cmdline", pprof.Cmdline)
+	debugMux.HandleFunc("/debug/pprof/profile", pprof.Profile)
+	debugMux.HandleFunc("/debug/pprof/symbol", pprof.Symbol)
+	debugMux.HandleFunc("/debug/pprof/trace", pprof.Trace)
+
+	// hystrix handler
+	hystrixStreamHandler := hystrix.NewStreamHandler()
+	hystrixStreamHandler.Start()
+	debugMux.Handle("/debug/hystrix.stream", hystrixStreamHandler)
+
+	go func() {
+		debugPort := appConfig.DebugPort
+		logs.Infof("Start pprof and hystrix listen on: %d", debugPort)
+		err := http.ListenAndServe(fmt.Sprintf("0.0.0.0:%d", debugPort), debugMux)
+		if err != nil {
+			logs.Fatalf("Failed to start debug server: %s", err)
+		}
+	}()
+}
+
+</code></pre></div></div>
+
+<p>在gin框架中,通过监听一个debug端口,来实现运行时信息的查看,同时通过实现<code class="highlighter-rouge">RegisterDebugHandler</code>接口,可以实现自定义服务信息的显示.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>func initDebug() {
+	ginex.RegisterDebugHandler("/api/v1/", func(responseWriter http.ResponseWriter, request *http.Request) {
+		responseWriter.Write([]byte(fmt.Sprint("sth")))
+	})
+}
+</code></pre></div></div>
+
+<h1 id="其他">其他</h1>
+
+<ol>
+  <li>查看内存信息</li>
+</ol>
+
+<p>查看堆信息：go tool pprof http://127.0.0.1:8899/debug/pprof/heap</p>
+
+<p>go tool pprof -inuse_space http://127.0.0.1:8899/debug/pprof/heap （查看堆内存的使用信息）</p>
+
+<p>go tool pprof -alloc_space http://127.0.0.1:8899/debug/pprof/heap （查看堆内存的分配信息）</p>
+
+<p><img src="/_pic/201807/heap.png" alt="" /></p>
+
+<p>第二行是server服务</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(pprof) list ServeHTTP
+Total: 1.16MB
+</code></pre></div></div>
+
+<p>通过list命令可以看到在哪个函数占用了多少内存,输出信息中包含了调用堆栈。</p>
+
+<ol>
+  <li>查看cpu信息</li>
+</ol>
+
+<p>go tool pprof http://127.0.0.1:8899/debug/pprof/profile</p>
+
+<ol>
+  <li>查看协程阻塞信息</li>
+</ol>
+
+<p>go tool pprof http://127.0.0.1:8899/debug/pprof/block</p>
+
+<p>在查看之前，需要在代码中通过<code class="highlighter-rouge">runtime.SetBlockProfileRate</code>配置阻塞时间的采样频率，当rate为1的时候表示对每个事件做采样，小于等于0表示不采样。</p>
+
+<p>收集5s内的调用情况：wget http://127.0.0.1:8899/debug/pprof/trace?seconds=5</p>
+
+<ol>
+  <li>查看锁信息</li>
+</ol>
+
+<p>go tool pprof http://127.0.0.1:8899/debug/pprof/mutex</p>
+
+<p>使用之前，需要添加<code class="highlighter-rouge">runtime.SetMutexProfileFraction</code>调用</p>
+
+<h2 id="导出">导出</h2>
+
+<ol>
+  <li>svg格式</li>
+</ol>
+
+<p>在命令后添加-svg选项使得输出以svg的格式显示，导出到文件中</p>
+
+<p>go tool pprof -alloc_space -cum -svg http://127.0.0.1:8899/debug/pprof/heap &gt;alloc.svg</p>
+
+<p>通过浏览器可以打开alloc.svg文件</p>
+
+<p><img src="/_pic/201807/alloc.png" alt="" /></p>
+
+<ol>
+  <li>gv格式</li>
+</ol>
+
+<p>也可以通过添加<code class="highlighter-rouge">--dot</code>生成<code class="highlighter-rouge">.gv</code>文件，并通过dot命令转换为图片</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>go tool pprof --dot  http://127.0.0.1:8899/debug/pprof/block  &gt; block.gv
+dot -Tpng block.gv&gt;block.png
+</code></pre></div></div>
+
+<h1 id="参考">参考</h1>
+
+<p><img src="https://github.com/hyper0x/go_command_tutorial/blob/master/0.12.md" alt="go tool pprof" /></p>
+
+                </article>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<footer class="footer" role="contentinfo">
+	<div class="container">
+		<div class="footer-col-wrapper">
+			<div class="footer-col footer-col-2">
+				<ul class="social-media-list">
+					
+					<li>
+						<a href="https://github.com/swa19"><span class="icon icon--github"><svg viewBox="0 0 16 16"><path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/></svg>
+</span><span class="username">swa19</span></a>
+
+					</li>
+					
+				</ul>
+			</div>
+			<div class="footer-col footer-col-3">
+				<p>我不是个伟大的程序员，我只是个有着一些优秀习惯的好程序员--by Kent Beck</p>
+			</div>
+		</div>
+	</div>
+</footer>
+
+
+</body>
+</html>

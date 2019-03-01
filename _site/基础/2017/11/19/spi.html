@@ -1,0 +1,1296 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>JAVA扩展机制之SPI - </title>
+	<link rel="stylesheet" href="/css/main.css">
+	<link rel="stylesheet" href="/css/index.css">
+	<link rel="stylesheet" href="/css/fontawesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="/css/syntax.css">
+	<link rel="canonical" href="/%E5%9F%BA%E7%A1%80/2017/11/19/spi.html">
+	<link rel="alternate" type="application/rss+xml" title="" href="/feed.xml">
+	<meta name="keywords" content="JAVA扩展机制之SPI, , ">
+	<meta name="description" content="">
+	<script src="/js/jquery.min.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+	<script src="/js/html5shiv.js"></script>
+	<script src="/js/holder.min.js"></script>
+	<script src="/js/respond.js"></script>
+	<script src="/js/application.js"></script>
+	<script src="/js/lessismore.js"></script>
+  	<style type="text/css">
+	  	.docs-content{
+	  		margin-bottom: 10px;
+	  	}
+  	</style>
+</head>
+
+<body class="index">
+
+<header class="navbar navbar-inverse navbar-fixed-top docs-nav" role="banner">
+  <div class="container">
+    <div class="navbar-header">
+      <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+      <ul class="nav navbar-nav">    
+        <li>
+          <a href="/">主页</a>
+        </li>
+        <li>
+          <a href="/categories/">类别</a>
+        </li>
+        <li>
+          <a href="/tags">标签</a>
+        </li>
+      </ul>
+
+    </nav>
+  </div>
+
+</header>
+<div class="docs-header" id="content">
+  <div class="container">
+  	
+		    <h1></h1>
+      <p>不积跬步，无以至千里</p>
+      
+  </div>
+</div>
+<!---->
+<!--<div class="banner">
+    <div class="container">
+        
+        <a href="/categories/#基础-ref">基础</a>
+        /
+        <a href="/tags/#java-ref">java</a>
+        
+    </div>
+</div>
+-->
+<!---->
+
+<div class="container docs-container">
+    <div class="row">
+        <div class="col-md-3">
+        <div class="sidebar hidden-print" role="complementary">
+        <div id="navigation">
+    <h1>目录</h1>
+    <ul class="nav sidenav">
+        
+        
+        
+        
+        
+        
+        <li><a href="#year_2019">2019</a>
+            <ul class="nav">
+                <li><a href="#month_2019_02">02</a></li>
+                
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+    </ul>
+    </li>
+    <li><a href="#year_2018">2018</a>
+        <ul class="nav">
+            <li><a href="#month_2018_11">11</a></li>
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_10">10</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_09">09</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_08">08</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_07">07</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_06">06</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_05">05</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_04">04</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_03">03</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_02">02</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2018_01">01</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+    </ul>
+    </li>
+    <li><a href="#year_2017">2017</a>
+        <ul class="nav">
+            <li><a href="#month_2017_12">12</a></li>
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2017_11">11</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2017_09">09</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            <li><a href="#month_2017_08">08</a></li>
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+        
+            
+            
+            
+            
+        
+        
+        
+        
+        
+                
+            </ul>
+        </li>
+        
+            
+        </ul>
+</div>
+
+
+
+        </div>
+        </div>
+        <div class="col-md-9" role="main">
+            <div class="panel docs-content">
+            <div class="wrapper">
+                <header class="post-header">
+                    <h1 class="post-title">JAVA扩展机制之SPI</h1>
+                    <div class="meta"><span class="postdate">2017-11-19 00:45:27</span></div>
+                    <br/>
+                </header>
+                <article class="post-content">
+                    <ul id="markdown-toc">
+  <li><a href="#spi解决了什么问题" id="markdown-toc-spi解决了什么问题">SPI解决了什么问题</a></li>
+  <li><a href="#jdk-实现原理" id="markdown-toc-jdk-实现原理">jdk 实现原理</a></li>
+  <li><a href="#dubbo对spi的扩展" id="markdown-toc-dubbo对spi的扩展">Dubbo对SPI的扩展</a></li>
+</ul>
+
+<p>昨天看Dubbo中关于服务注册和管理部分的时候，接触到了SPI的概念，了解下java的扩展机制。</p>
+
+<h1 id="spi解决了什么问题">SPI解决了什么问题</h1>
+
+<p>在上次看Dubbo中关于zookeeper注册中心的实现的时候，使用了SPI扩展机制，可以根据配置动态选择实现的子类，从而实现。如果服务的扩展。那么如果不使用这种机制的话要怎么实现呢？
+为了避免调用者了解实现细节，不能将bean注入的事情交给调用者去做，所以可行的方式是调用者做配置，服务提供者根据配置对类做注入。
+那么在根据配置做注入的时候，一种是if-else，这种硬编码的方式不利于做扩展，后边每次新增一个实现类的话，都需要修改代码；另一种是把每个子类的都事先做实例化，这样根据配置可以获取到对应的bean，但是如果一个子类的实例化开销比较大，这种方式就变得可行度不高了。
+所以，SPI做了什么呢？SPI是ServiceProviderInterfaces的简称，也就是服务提供接口，通过SPI服务，在需要扩增基类的接口的时候，只需要在jar包的资源文件下增加一个指定子类的文件即可，对原有的模块没有任何其他影响。
+首先看一下简单的demo：
+创建一个基类和两个实现类</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">package</span> <span class="n">basicExercise</span><span class="p">.</span><span class="n">spi</span><span class="p">;</span>
+
+<span class="p">/**</span>
+ <span class="p">*</span> <span class="n">Created</span> <span class="n">by</span> <span class="n">jinyan</span> <span class="n">on</span> <span class="m">11</span><span class="p">/</span><span class="m">19</span><span class="p">/</span><span class="m">17</span> <span class="m">2</span><span class="p">:</span><span class="m">49</span> <span class="n">PM</span><span class="p">.</span>
+ <span class="p">*/</span>
+<span class="k">public</span> <span class="n">interface</span> <span class="n">Base</span> <span class="p">{</span>
+    <span class="n">void</span> <span class="n">print</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">package</span> <span class="n">basicExercise</span><span class="p">.</span><span class="n">spi</span><span class="p">;</span>
+
+<span class="p">/**</span>
+ <span class="p">*</span> <span class="n">Created</span> <span class="n">by</span> <span class="n">jinyan</span> <span class="n">on</span> <span class="m">11</span><span class="p">/</span><span class="m">19</span><span class="p">/</span><span class="m">17</span> <span class="m">2</span><span class="p">:</span><span class="m">49</span> <span class="n">PM</span><span class="p">.</span>
+ <span class="p">*/</span>
+<span class="k">public</span> <span class="n">class</span> <span class="n">BaseImpl1</span> <span class="n">implements</span> <span class="n">Base</span> <span class="p">{</span>
+
+    <span class="p">@</span><span class="n">Override</span>
+    <span class="k">public</span> <span class="n">void</span> <span class="n">print</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nf">System</span><span class="p">.</span><span class="n">out</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s2">"base1"</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">package</span> <span class="n">basicExercise</span><span class="p">.</span><span class="n">spi</span><span class="p">;</span>
+
+<span class="p">/**</span>
+ <span class="p">*</span> <span class="n">Created</span> <span class="n">by</span> <span class="n">jinyan</span> <span class="n">on</span> <span class="m">11</span><span class="p">/</span><span class="m">19</span><span class="p">/</span><span class="m">17</span> <span class="m">2</span><span class="p">:</span><span class="m">50</span> <span class="n">PM</span><span class="p">.</span>
+ <span class="p">*/</span>
+<span class="k">public</span> <span class="n">class</span> <span class="n">BaseImpl2</span> <span class="n">implements</span> <span class="n">Base</span> <span class="p">{</span>
+
+    <span class="p">@</span><span class="n">Override</span>
+    <span class="k">public</span> <span class="n">void</span> <span class="n">print</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nf">System</span><span class="p">.</span><span class="n">out</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s2">"base2"</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>在资源文件的META-INF/services下创建一个名为basicExercise.spi.Base（基类的FullName），文件内容为</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>basicExercise.spi.BaseImpl1
+</code></pre></div></div>
+
+<p>也就是其中一个子类的FullName
+最后创建一个测试类：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    public static void main(String[] args) {
+        ServiceLoader&lt;Base&gt; sl = ServiceLoader.load(Base.class);
+        Iterator&lt;Base&gt; s = sl.iterator();
+        if (s.hasNext()) {
+            Base ss = s.next();
+            ss.print();
+        }
+    }
+</code></pre></div></div>
+
+<p>运行main方法，控制台打印<code class="highlighter-rouge">base1</code>,说明print执行的是BaseImpl1中的方法。试想如果需要增加一个BaseImpl3的print方法，那么只需要修改资源文件中的basicExercise.spi.Base中文件内容即可，系统中无需做代码修改，这种扩展方式在工程项目中是非常借鉴的。在Dubbo中，提供了多种注册中心，如果未来增加了一个注册中心，Dubbo代码中只需要引入新的jar包即可，Dubbo的调用中如果需要使用未来的这个注册中心，也只需要以原有的方式配置register即可，这就体现了高扩展性。</p>
+
+<h1 id="jdk-实现原理">jdk 实现原理</h1>
+<p>以上对SPI的应用使用的是jdk提供的工具类ServiceLoader，这个类有三个约定好的规则：</p>
+<ol>
+  <li>资源文件要放置在“META-INF/services/”文件夹下</li>
+  <li>资源文件的命名需要按照基类的class全称命名，如示例中的“basicExercise.spi.Base”</li>
+  <li>资源文件中添加的内容为加载的子类的class全名，且不可换行
+在调用Service.load(Class class)方法主要做了两件事情：</li>
+  <li>初始化ServiceLoader</li>
+  <li>对遍历器做初始化，在s.hasNext遍历时，加载资源文件：</li>
+</ol>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>        private boolean hasNextService() {
+            if (nextName != null) {
+                return true;
+            }
+            if (configs == null) {
+                try {
+                    String fullName = PREFIX + service.getName();
+                    if (loader == null)
+                        configs = ClassLoader.getSystemResources(fullName);
+                    else
+                        configs = loader.getResources(fullName);
+                } catch (IOException x) {
+                    fail(service, "Error locating configuration files", x);
+                }
+            }
+            while ((pending == null) || !pending.hasNext()) {
+                if (!configs.hasMoreElements()) {
+                    return false;
+                }
+                pending = parse(service, configs.nextElement());
+            }
+            nextName = pending.next();
+            return true;
+        }
+</code></pre></div></div>
+
+<p>其中<code class="highlighter-rouge">ClassLoader.getSystemResources(fullName)</code>会根据拼接好的资源文件名查找资源文件，并通过<code class="highlighter-rouge">nextName = pending.next();</code>获取到资源文件中设定的子类的名称
+接下来，示例代码中的<code class="highlighter-rouge">next()</code>方法获取到子类的实例</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>        private S nextService() {
+            if (!hasNextService())
+                throw new NoSuchElementException();
+            String cn = nextName;
+            nextName = null;
+            Class&lt;?&gt; c = null;
+            try {
+                c = Class.forName(cn, false, loader);
+            } catch (ClassNotFoundException x) {
+                fail(service,
+                     "Provider " + cn + " not found");
+            }
+            if (!service.isAssignableFrom(c)) {
+                fail(service,
+                     "Provider " + cn  + " not a subtype");
+            }
+            try {
+                S p = service.cast(c.newInstance());
+                providers.put(cn, p);
+                return p;
+            } catch (Throwable x) {
+                fail(service,
+                     "Provider " + cn + " could not be instantiated",
+                     x);
+            }
+            throw new Error();          // This cannot happen
+        }
+</code></pre></div></div>
+
+<p><code class="highlighter-rouge">S p = service.cast(c.newInstance())</code>把原有的基类的实例映射成为子类的实例，最终返回的<code class="highlighter-rouge">Base ss = s.next()</code>ss对象就成为了设定好的子类的实例。
+看到一些博客中提到JDK和Dubbo扩展机制的对比：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Dubbo改进了JDK标准的SPI的以下问题：
+* JDK标准的SPI会一次性实例化扩展点所有实现，如果有扩展实现初始化很耗时，但如果没用上也加载，会很浪费资源。
+* 如果扩展点加载失败，连扩展点的名称都拿不到了。比如：JDK标准的ScriptEngine，通过getName();获取脚本类型的名称，但如果RubyScriptEngine因为所依赖的jruby.jar不存在，导致RubyScriptEngine类加载失败，这个失败原因被吃掉了，和ruby对应不起来，当用户执行ruby脚本时，会报不支持ruby，而不是真正失败的原因。
+* 增加了对扩展点IoC和AOP的支持，一个扩展点可以直接setter注入其它扩展点。
+</code></pre></div></div>
+<p>但是我看源码中只是实例化了配置文件中配置的子类，并没有实例化所有的子类，不太确定这里是否存在谬误。</p>
+<h1 id="dubbo对spi的扩展">Dubbo对SPI的扩展</h1>
+<p>Dubbo中对jdk的扩展机制做了进一步的扩展，整体的实现位于<code class="highlighter-rouge">com.alibaba.dubbo.common.extension</code>包下
+做加载工作的类为<code class="highlighter-rouge">ExtensionLoader</code>
+要使用Dubbo做分布式调用，需要在配置文件配置Provider和Consumer的相关信息，以下仅以Provider注册中心的配置和解析为例，梳理下Dubbo对SPI的实现</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    &lt;dubbo:application name="demo-provider"/&gt;
+    &lt;dubbo:registry address="multicast://224.5.6.7:1234"/&gt;
+    &lt;dubbo:protocol name="dubbo" port="20880"/&gt;
+    &lt;dubbo:service interface="com.alibaba.dubbo.demo.DemoService" ref="demoService"/&gt;
+    &lt;bean id="demoService" class="com.alibaba.dubbo.demo.provider.DemoServiceImpl"/&gt;
+</code></pre></div></div>
+
+<p>在引用了Dubbo服务的项目启动时，类<code class="highlighter-rouge">DubboNamespaceHandler</code>对xml中的配置信息做加载和解析，将各个配置解析到对应的类实体中。
+主要看下对<code class="highlighter-rouge">dubbo:protocol</code>元素的解析</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>                                else if ("protocol".equals(property)
+                                        &amp;&amp; ExtensionLoader.getExtensionLoader(Protocol.class).hasExtension(value)
+                                        &amp;&amp; (!parserContext.getRegistry().containsBeanDefinition(value)
+                                        || !ProtocolConfig.class.getName().equals(parserContext.getRegistry().getBeanDefinition(value).getBeanClassName()))) {
+                                    if ("dubbo:provider".equals(element.getTagName())) {
+                                        logger.warn("Recommended replace &lt;dubbo:provider protocol=\"" + value + "\" ... /&gt; to &lt;dubbo:protocol name=\"" + value + "\" ... /&gt;");
+                                    }
+                                    // 兼容旧版本配置
+                                    ProtocolConfig protocol = new ProtocolConfig();
+                                    protocol.setName(value);
+                                    reference = protocol;
+                                } 
+</code></pre></div></div>
+
+<p>其中的<code class="highlighter-rouge">ExtensionLoader.getExtensionLoader(Protocol.class).hasExtension(value)</code>就是Dubbo中的SPI机制
+<code class="highlighter-rouge">ExtensionLoader.getExtensionLoader(Protocol.class)</code>以<code class="highlighter-rouge">Protocol.class</code>初始化一个ExtensionLoader，并以<code class="highlighter-rouge">Protocol.class</code>为KEY，这个ExtensionLoader为VALUE存入ConcurrentMap&lt;Class<?>, ExtensionLoader<?>&gt;中，并将这个ExtensionLoader对象返回。<code class="highlighter-rouge">ExtensionLoader.hasExtension(value)</code>做的动作就多了。</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>public boolean hasExtension(String name)——&gt;
+private Class&lt;?&gt; getExtensionClass(String name)——&gt;
+private Map&lt;String, Class&lt;?&gt;&gt; getExtensionClasses()——&gt;
+private Map&lt;String, Class&lt;?&gt;&gt; loadExtensionClasses()——&gt;
+private void loadFile(Map&lt;String, Class&lt;?&gt;&gt; extensionClasses, String dir)
+</code></pre></div></div>
+
+<p>loadFile负责从指定的资源文件中，解析资源文件的配置，加载初始化扩展的子类。
+如对<code class="highlighter-rouge">zookeeper=com.alibaba.dubbo.registry.zookeeper.ZookeeperRegistryFactory</code>的配置，在返回的extensionClasses中，key为zookeeper，对应的value为ZookeeperRegistryFactory.class。如此完成注册中心扩展模块的初始化和加载。</p>
+
+<p>再来详细看下最关键的两个接口实现</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    // 此方法已经getExtensionClasses方法同步过。
+    private Map&lt;String, Class&lt;?&gt;&gt; loadExtensionClasses() {
+        final SPI defaultAnnotation = type.getAnnotation(SPI.class);
+        if (defaultAnnotation != null) {
+            String value = defaultAnnotation.value();
+            if (value != null &amp;&amp; (value = value.trim()).length() &gt; 0) {
+                String[] names = NAME_SEPARATOR.split(value);
+                if (names.length &gt; 1) {
+                    throw new IllegalStateException("more than 1 default extension name on extension " + type.getName()
+                            + ": " + Arrays.toString(names));
+                }
+                if (names.length == 1) cachedDefaultName = names[0];
+            }
+        }
+
+        Map&lt;String, Class&lt;?&gt;&gt; extensionClasses = new HashMap&lt;String, Class&lt;?&gt;&gt;();
+        loadFile(extensionClasses, DUBBO_INTERNAL_DIRECTORY);
+        loadFile(extensionClasses, DUBBO_DIRECTORY);
+        loadFile(extensionClasses, SERVICES_DIRECTORY);
+        return extensionClasses;
+    }
+</code></pre></div></div>
+
+<p>对标注了@SPI注解的类，且SPI的value不为空的，会将value指定的值做默认值。所以在RegistryFactory的定义中可以看到，这里设定了默认的注册中心</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    private void loadFile(Map&lt;String, Class&lt;?&gt;&gt; extensionClasses, String dir) {
+        String fileName = dir + type.getName();
+        try {
+            Enumeration&lt;java.net.URL&gt; urls;
+            ClassLoader classLoader = findClassLoader();
+            if (classLoader != null) {
+                urls = classLoader.getResources(fileName);
+            } else {
+                urls = ClassLoader.getSystemResources(fileName);
+            }
+            if (urls != null) {
+                while (urls.hasMoreElements()) {
+                    java.net.URL url = urls.nextElement();
+                    try {
+                        BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream(), "utf-8"));
+                        try {
+                            String line = null;
+                            while ((line = reader.readLine()) != null) {
+                                final int ci = line.indexOf('#');
+                                if (ci &gt;= 0) line = line.substring(0, ci);
+                                line = line.trim();
+                                if (line.length() &gt; 0) {
+                                    try {
+                                        String name = null;
+                                        int i = line.indexOf('=');
+                                        if (i &gt; 0) {
+                                            name = line.substring(0, i).trim();
+                                            line = line.substring(i + 1).trim();
+                                        }
+                                        if (line.length() &gt; 0) {
+                                            Class&lt;?&gt; clazz = Class.forName(line, true, classLoader);
+                                            if (!type.isAssignableFrom(clazz)) {
+                                                throw new IllegalStateException("Error when load extension class(interface: " +
+                                                        type + ", class line: " + clazz.getName() + "), class "
+                                                        + clazz.getName() + "is not subtype of interface.");
+                                            }
+                                            if (clazz.isAnnotationPresent(Adaptive.class)) {
+                                                if (cachedAdaptiveClass == null) {
+                                                    cachedAdaptiveClass = clazz;
+                                                } else if (!cachedAdaptiveClass.equals(clazz)) {
+                                                    throw new IllegalStateException("More than 1 adaptive class found: "
+                                                            + cachedAdaptiveClass.getClass().getName()
+                                                            + ", " + clazz.getClass().getName());
+                                                }
+                                            } else {
+                                                try {
+                                                    clazz.getConstructor(type);
+                                                    Set&lt;Class&lt;?&gt;&gt; wrappers = cachedWrapperClasses;
+                                                    if (wrappers == null) {
+                                                        cachedWrapperClasses = new ConcurrentHashSet&lt;Class&lt;?&gt;&gt;();
+                                                        wrappers = cachedWrapperClasses;
+                                                    }
+                                                    wrappers.add(clazz);
+                                                } catch (NoSuchMethodException e) {
+                                                    clazz.getConstructor();
+                                                    if (name == null || name.length() == 0) {
+                                                        name = findAnnotationName(clazz);
+                                                        if (name == null || name.length() == 0) {
+                                                            if (clazz.getSimpleName().length() &gt; type.getSimpleName().length()
+                                                                    &amp;&amp; clazz.getSimpleName().endsWith(type.getSimpleName())) {
+                                                                name = clazz.getSimpleName().substring(0, clazz.getSimpleName().length() - type.getSimpleName().length()).toLowerCase();
+                                                            } else {
+                                                                throw new IllegalStateException("No such extension name for the class " + clazz.getName() + " in the config " + url);
+                                                            }
+                                                        }
+                                                    }
+                                                    String[] names = NAME_SEPARATOR.split(name);
+                                                    if (names != null &amp;&amp; names.length &gt; 0) {
+                                                        Activate activate = clazz.getAnnotation(Activate.class);
+                                                        if (activate != null) {
+                                                            cachedActivates.put(names[0], activate);
+                                                        }
+                                                        for (String n : names) {
+                                                            if (!cachedNames.containsKey(clazz)) {
+                                                                cachedNames.put(clazz, n);
+                                                            }
+                                                            Class&lt;?&gt; c = extensionClasses.get(n);
+                                                            if (c == null) {
+                                                                extensionClasses.put(n, clazz);
+                                                            } else if (c != clazz) {
+                                                                throw new IllegalStateException("Duplicate extension " + type.getName() + " name " + n + " on " + c.getName() + " and " + clazz.getName());
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    } catch (Throwable t) {
+                                        IllegalStateException e = new IllegalStateException("Failed to load extension class(interface: " + type + ", class line: " + line + ") in " + url + ", cause: " + t.getMessage(), t);
+                                        exceptions.put(line, e);
+                                    }
+                                }
+                            } // end of while read lines
+                        } finally {
+                            reader.close();
+                        }
+                    } catch (Throwable t) {
+                        logger.error("Exception when load extension class(interface: " +
+                                type + ", class file: " + url + ") in " + url, t);
+                    }
+                } // end of while urls
+            }
+        } catch (Throwable t) {
+            logger.error("Exception when load extension class(interface: " +
+                    type + ", description file: " + fileName + ").", t);
+        }
+    }
+
+</code></pre></div></div>
+<p>判断类实现上是否标注Adaptive注解，如果标注了注解，将这个类作为适配类暂存，否则通过字节码生成适配类。生成适配类的过程通过<code class="highlighter-rouge">public T getAdaptiveExtension()</code>实现。
+类ExtensionFactory也标注了SPI注解，是一个扩展点，它的扩展类包括了以下三个：</p>
+
+<p><img src="/_pic/201711/ExtensionFactory.png" alt="" /></p>
+
+<p>其中的<code class="highlighter-rouge">AdaptiveExtensionFactory</code>就标注了Adaptive注解。
+对没有标注了Adaptive注解的实现类，对其做实例化的时候，需要对它生成一个新的字节码，并使用这个新生成的字节码做实例化。在生成字节码的时候，做的工作是：对于标注了Adaptive注解的方法，会寻找对应的扩展类并作为参数传入set方法。</p>
+
+<p>在代码中有一个代码实现方式很特别，每次获取一个变量的时候，首先判断是否为空，如果为空，则做相关的初始化动作。这种实现方式的好处是节省了内存，避免存储过多信息；另一个是懒加载，避免了一开始做太多初始化工作。另外看代码的时候会觉得很乱，如loadFile方法在多处被调用，看起来很乱，但在运行的时候，这种处理方式可以保证初始化工作只做一次。可能是实现流程太复杂了，已经理不清楚调用顺序了，所以索性采用了这种保险的方式吧，这种处理还是可以借鉴下的。
+JDK的这种扩展方式很巧妙，通过把配置信息放入到配置文件中，避免了代码的硬编码，动态实现加载对原有代码没有侵入。以后设计系统可以多多采用这种扩展方式。</p>
+
+
+                </article>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<footer class="footer" role="contentinfo">
+	<div class="container">
+		<div class="footer-col-wrapper">
+			<div class="footer-col footer-col-2">
+				<ul class="social-media-list">
+					
+					<li>
+						<a href="https://github.com/swa19"><span class="icon icon--github"><svg viewBox="0 0 16 16"><path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/></svg>
+</span><span class="username">swa19</span></a>
+
+					</li>
+					
+				</ul>
+			</div>
+			<div class="footer-col footer-col-3">
+				<p>我不是个伟大的程序员，我只是个有着一些优秀习惯的好程序员--by Kent Beck</p>
+			</div>
+		</div>
+	</div>
+</footer>
+
+
+</body>
+</html>
