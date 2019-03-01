@@ -16,6 +16,7 @@ github_username:  swa19
 site.baseurl: /
 # markdown
 markdown: kramdown
+theme: minima
 kramdown:
   auto_ids:       true
   entity_output:  as_char
@@ -25,7 +26,9 @@ kramdown:
   hard_wrap:      false
   footnote_nr:    1
   show_warnings:  false
-
+plugins:
+  - jekyll-feed
+  
 include: ['/_pic']
 
 
