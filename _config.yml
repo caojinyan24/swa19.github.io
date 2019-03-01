@@ -38,3 +38,5 @@ include: ['/_pic']
 
 
 
+
+theme: jekyll-theme-slate
