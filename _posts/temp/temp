@@ -138,3 +138,9 @@ https://studygolang.com/articles/15472
 
 charles 使用
 dns配置
+
+修改一个东西，没有检查引用方的使用情况
+
+提问方式
+
+go对象的转换和对象指针的转换
